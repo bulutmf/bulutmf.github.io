@@ -90,7 +90,7 @@
                       .append($('<td>').text(lines.length - i))
                       .append($('<td>').text(splitted[0]))
                       .append($('<td>').text(splitted[1]))
-                      .append($('<td>').text(splitted[3] + '</br>' + '<em>' + splitted[2] + '</em>'))
+                      .append($('<td>').text(splitted[3]).append('</br>').append('<em>').text(splitted[2]))
                   );
                }
               }, 'text');
