@@ -67,7 +67,31 @@
 
       <div class="page-header">
         <h1>Publications & Patents</h1>
+        <h4><font color='red'>Outdated!</font></h4>
       </div>
+
+      <table class="table table-striped">
+        <thead>
+          <th>#</th>
+          <th>Type</th>
+          <th>Year</th>
+          <th>Publication</th>
+        </thead>
+        <tbody>
+          <script>
+            window.onload = function() {
+              let url = 'list.csv';
+              $.get(url, function(file) {
+                var lines = file.split("\r\n");
+                for(var i  in lines){
+                  console.log("line " + i + " :" + lines[i]);
+               }
+              }, 'text');
+            };
+          </script>
+        </tbody>
+      </table>
+
       <table class="table table-striped">
         <thead>
           <th>#</th>
