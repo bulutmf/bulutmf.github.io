@@ -70,7 +70,7 @@
         <h4><font color='red'>Outdated!</font></h4>
       </div>
 
-      <table class="table table-striped">
+      <table id="publ_list" class="table table-striped">
         <thead>
           <th>#</th>
           <th>Type</th>
@@ -85,12 +85,12 @@
                 var lines = file.split("\r\n");
                 for(var i  in lines){
                   var splitted = lines[i].split(';');
-                  document.write("<tr>");
-                  document.write("<td>" + i + "</td>");
-                  document.write("<td>" + splitted[0] + "</td>");
-                  document.write("<td>" + splitted[1] + "</td>");
-                  document.write("<td>" + splitted[2] + "</td>");
-                  document.write("</tr>");
+                  $("#publ_list").find('tbody')
+                    .append($('<tr>')
+                      .append($('<td>'.text(i)))
+                      .append($('<td>'.text(splitted[0])))
+                      .append($('<td>'.text(splitted[1])))
+                  );
                }
               }, 'text');
             };
