@@ -84,7 +84,13 @@
               $.get(url, function(file) {
                 var lines = file.split("\r\n");
                 for(var i  in lines){
-                  console.log("line " + i + " :" + lines[i]);
+                  var splitted = lines[i].split(';');
+                  document.write("<tr>");
+                  document.write("<td>" + str(i) + "</td>");
+                  document.write("<td>" + splitted[0] + "</td>");
+                  document.write("<td>" + splitted[1] + "</td>");
+                  document.write("<td>" + splitted[2] + "</td>");
+                  document.write("</tr>");
                }
               }, 'text');
             };
