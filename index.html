@@ -41,7 +41,8 @@
             html += '<td>' + splitted[3] + ', ' + splitted[4] + '</br>' + '<em>' + splitted[2] + '</em>' + '</td>';
             html += '</tr>';
          }
-         $("#publ_list").html(html);
+         console.log(html);
+         $("#publ_list")find('tbody').html(html);
         }, 'text');
       };
     </script>
