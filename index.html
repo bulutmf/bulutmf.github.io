@@ -29,7 +29,7 @@
       window.onload = function() {
         let url = 'list.csv';
         $.get(url, function(file) {
-          var lines = file.split("\r\n");
+          var lines = file.split("\n");
           var html = ""
           for(var i  in lines) {
             console.log(i + ',' + lines[i]);
