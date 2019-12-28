@@ -32,7 +32,7 @@
           var lines = file.split("\r\n");
           var html = ""
           for(var i  in lines) {
-            console.log(lines[i]);
+            console.log(i + ',' + lines[i]);
             var splitted = lines[i].split(';');
             html += '<tr>';
             html += '<td>' + (lines.length - i) + '</td>';
