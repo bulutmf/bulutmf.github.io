@@ -40,10 +40,9 @@
             html += '<td>' + (lines.length - i - 1) + '</td>';
             html += '<td>' + splitted[0] + '</td>';
             html += '<td>' + splitted[1] + '</td>';
-            html += '<td>' + splitted[3] + ', ' + splitted[4] + '</br>' + '<em>' + splitted[2] + '</em>' + '</td>';
+            html += '<td>' + splitted[3] + '</br>' + splitted[4] + '</br>' + '<em>' + splitted[2] + '</em>' + '</td>';
             html += '</tr>';
          }
-         console.log(html);
          $("#publ_list").find('tbody').html(html);
         }, 'text');
       };
@@ -90,8 +89,10 @@
       </p>
 
       <div class="page-header">
-        <h1>Publications & Patents</h1>
-        <h4><font color='red'>Outdated!</font></h4>
+        <h1>Publications</h1>
+        <h4>
+          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a>
+        </h4>
       </div>
 
       <table id="publ_list" class="table table-striped">
@@ -106,258 +107,12 @@
         </tbody>
       </table>
 
-      <table class="table table-striped">
-        <thead>
-          <th>#</th>
-          <th>Type</th>
-          <th>Year</th>
-          <th>Publication</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>18</td>
-            <td>Journal</td>
-            <td>2015</td>
-            <td>
-              LineKing: Coffee Shop Wait-Time Monitoring Using Smartphones, IEEE Transactions of Mobile Computing
-              <a target="_blank" href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6991601&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6991601">
-                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-              </a>
-            </br>
-            <em>
-              M. F. Bulut, M. Demirbas, F. Ferhatosmaoglu
-            </em>
-          </tr>
-          <tr>
-            <td>17</td>
-            <td>Patent-Issued</td>
-            <td>2015</td>
-            <td>
-              Mediation and presentation of communications
-              <a target="_blank" href="http://www.google.com/patents/US20130346495">
-                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-              </a>
-              </br>
-              <em>
-                M. F. Bulut, W. C. Barlow, J. E. Christensen, D. S. Marshak, A. L. Schirmer, A. D. Travis
-              </em>
-              </br>
-              <em>
-                US Patent #: 9084099
-              </em>
-            </td>
-          </tr>
-          <tr>
-            <td>16</td>
-            <td>Patent-Issued</td>
-            <td>2015</td>
-            <td>
-              Aggregation and queuing of communications
-              <a target="_blank" href="http://www.google.com/patents/US20130346595">
-                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-              </a>
-              </br>
-              <em>M. F. Bulut, J. E. Christensen, D. S. Marshak, A. L. Schirmer, A. D. Travis</em>
-              </br>
-              <em>
-                US Patent #: 9043388
-              </em>
-            </td>
-          </tr>
-          <tr>
-            <td>15</td>
-            <td>Thesis</td>
-            <td>2014</td>
-            <td>
-              Crowdsourced Location-based Sensing, Ph.D. Thesis, Computer Science and Engineering, University at Buffalo
-              </br>
-              <em>M. F. Bulut</em>
-            </td>
-          </tr>
-          <tr>
-            <td>14</td>
-            <td>Poster</td>
-            <td>2014</td>
-            <td>
-              Coffee Shop Line Length Monitoring Using Smartphones, HotMobile
-              <a target="_blank" href="http://hotmobile.org/2014/papers/posters/bulut_coffee.pdf">
-                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-              </a>
-              </br>
-              <em>M. F. Bulut, M. Demirbas</em>
-            </td>
-          </tr>
-          <tr>
-            <td>13</td>
-            <td>Conference</td>
-            <td>2013</td>
-            <td>
-              A holistic approach for energy efficient proximity alert on Android, IEEE Global Communications Conference (GLOBECOM)
-              <a target="_blank" href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6831501&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6831501">
-                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-              </a>
-              </br>
-              <em>M. F. Bulut, M. Demirbas</em>
-            </td>
-          </tr>
-          <tr>
-            <td>12</td>
-            <td>Workshop</td>
-            <td>2013</td>
-            <td>
-              PhoneLab: A large programmable smartphone testbed, International Workshop on Sensing and Big Data Mining in conjunction with SenSys
-              <a target="_blank" href="http://dl.acm.org/citation.cfm?id=2536718">
-                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-              </a>
-              </br>
-              <em>A. Nandugudi, A. Maiti, T. Ki, M. F. Bulut, M. Demirbas, T. Kosar, C. Qiao, SY. Ko, G. Challen</em>
-            </td>
-          </tr>
-          <tr>
-            <td>11</td>
-            <td>Conference</td>
-            <td>2013</td>
-            <td>
-              Participant Behavior in PhoneLab, Third International Conference on the Analysis of Mobile Phone Datasets (NetMob)
-              <a target="_blank" href="https://blue.cse.buffalo.edu/papers/2013/netmob2013-phonelab/netmob2013-phonelab.pdf">
-                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-              </a>
-              </br>
-              <em>A. Nandugudi, A. Maiti, M. F. Bulut, S. Batra, T. Ki, G. Challen, M. Demirbas, S. Y. Ko, T. Kosar, C. Qiao</em>
-            </td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td>Workshop</td>
-            <td>2013</td>
-            <td>
-              CrowdReply: A Crowdsourced Multiple Choice Question Answering System, International Workshop on Mobile Sensing in conjunction with IPSN
-              <a target="_blank" href="http://research.microsoft.com/en-us/um/beijing/events/ms_ipsn13/papers/aydin.pdf">
-                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-              </a>
-              </br>
-              <em>B. I. Aydin, Y. S. Yilmaz, M. F. Bulut, M. Demirbas</em>
-            </td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td>Workshop</td>
-            <td>2013</td>
-            <td>
-              Energy Efficient Proximity Alert on Android, Pervasive Computing and Communications Workshops in conjunction with PerCom
-              <a target="_blank" href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6529474&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6529474">
-                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-              </a>
-              </br>
-              <em>M. F. Bulut, M. Demirbas</em>
-            </td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>Workshop</td>
-            <td>2013</td>
-            <td>
-              Eywa: Crowdsourced and cloudsourced omniscience, Pervasive Computing and Communications Workshops in conjunction with PerCom
-              </br>
-              <em>M. Demirbas, Y. S. Yilmaz, M. F. Bulut</em>
-            </td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>Journal</td>
-            <td>2013</td>
-            <td>
-              Trend Sensing via Twitter, Int. J. of Ad Hoc and Ubiquitous Computing
-              <a target="_blank" href="http://www.inderscienceonline.com/doi/abs/10.1504/IJAHUC.2013.056271">
-                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-              </a>
-              </br>
-              <em>Y. S. Yilmaz, M. F. Bulut, C. G. Akcora, M. A. Bayir, M. Demirbas</em>
-            </td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>Conference</td>
-            <td>2012</td>
-            <td>
-              LineKing: Crowdsourced line wait-time estimation using smartphones, Mobile Computing, Applications, and Services (MobiCASE)
-              <a target="_blank" href="http://link.springer.com/chapter/10.1007/978-3-642-36632-1_12#page-1">
-                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-              </a>
-              </br>
-              <em>M. F. Bulut, Y. S. Yilmaz, M. Demirbas, N. Ferhatosmanoglu, H. Ferhatosmanoglu</em>
-            </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Poster</td>
-            <td>2012</td>
-            <td>
-              PhoneLab: A large-scale participatory smartphone testbed, USENIX NSDI poster session
-              </br>
-              <em>R. Baldawa, M. Benedict, M. F. Bulut, G. Challen, M. Demirbas, J. Inamdar, T. Ki, S. Y. Ko, T. Kosar, L. Mandvekar, A. Sathyaraja, C. Qiao, S. Zawicki</em>
-            </td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Patent-Pending</td>
-            <td>2012</td>
-            <td>
-              Gathering context information for a communication
-              <a target="_blank" href="http://www.google.com/patents/US20130346514">
-                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-              </a>
-              </br>
-              <em>W. C. Barlow, M. F. Bulut, J. E. Christensen, D. S. Marshak, A. L. Schirmer, A. D. Travis</em>
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Workshop</td>
-            <td>2011</td>
-            <td>
-              Crowdsourcing location-based queries, Pervasive Computing and Communications Workshops in conjunction with PerCom
-              <a target="_blank" href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=5766944&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D5766944">
-                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-              </a>
-              </br>
-              <em>M. F. Bulut, Y. S. Yilmaz, M. Demirbas</em>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Conference</td>
-            <td>2009</td>
-            <td>
-              Recognizing faces in news photographs on the web, Computer and Information Sciences (ISCIS)
-              <a target="_blank" href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=5291920&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D5291920">
-                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-              </a>
-              </br>
-              <em>H. Zitouni, M. F. Bulut, P. Duygulu</em>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Conference</td>
-            <td>2009</td>
-            <td>
-              Naming of Faces on Photographs by Using the Relationship between People, IEEE 17th Signal Processing and Communications Applications Conference (SIU)
-              <a target="_blank" href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=5136349&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D5136349">
-                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
-              </a>
-              </br>
-              <em>M. F. Bulut, P. Duygulu</em>
-            </td>
-          </tr>
-        </tbody>
-      </table>
 
     </div>
 
     <footer class="footer">
       <div class="container">
-        <p class="text-muted">Last Updated 8 Jan 2016</p>
+        <p class="text-muted">Last Updated 28 Dec 2019</p>
       </div>
     </footer>
 
