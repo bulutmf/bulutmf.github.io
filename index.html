@@ -83,14 +83,14 @@
               let url = 'list.csv';
               $.get(url, function(file) {
                 var lines = file.split("\r\n");
-                for(var i  in lines){
+                for(var i  in lines) {
                   var splitted = lines[i].split(';');
                   $("#publ_list").find('tbody')
                     .append($('<tr>')
                       .append($('<td>').text(lines.length - i))
                       .append($('<td>').text(splitted[0]))
                       .append($('<td>').text(splitted[1]))
-                      .append($('<td>').text(splitted[3]).append('</br>').append('<em>').text(splitted[2]))
+                      .append($('<td>').html(splitted[3] + '</br>' + '<em>' + splitted[2] + '</em>'))
                   );
                }
               }, 'text');
