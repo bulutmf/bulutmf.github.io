@@ -86,7 +86,7 @@
                 for(var i  in lines) {
                   console.log(lines[i]);
                   var splitted = lines[i].split(';');
-                  $("#publ_list").find('tbody')
+                  $("#publ_list tr:last")
                     .append($('<tr>')
                       .append($('<td>').text(lines.length - i))
                       .append($('<td>').text(splitted[0]))
