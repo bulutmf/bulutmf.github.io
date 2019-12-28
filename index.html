@@ -83,20 +83,18 @@
               let url = 'list.csv';
               $.get(url, function(file) {
                 var lines = file.split("\r\n");
+                var html = ""
                 for(var i  in lines) {
                   console.log(lines[i]);
                   var splitted = lines[i].split(';');
-                  $("#publ_list tr:last")
-                    .append($('<tr>')
-                      .append($('<td>').text(lines.length - i))
-                      .append($('<td>').text(splitted[0]))
-                      .append($('<td>').text(splitted[1]))
-                      .append($('<td>').html(
-                        splitted[3] + ', ' + splitted[4] + '</br>' +
-                        '<em>' + splitted[2] + '</em>'
-                      ))
-                  );
+                  html += '<tr>';
+                  html += '<td>' + (lines.length - i) + '</td>';
+                  html += '<td>' + splitted[0] + '</td>';
+                  html += '<td>' + splitted[1] + '</td>';
+                  html += '<td>' + splitted[3] + ', ' + splitted[4] + '</br>' + '<em>' + splitted[2] + '</em>' + '</td>';
+                  html += '</tr>';
                }
+               $("#publ_list").html(html);
               }, 'text');
             };
           </script>
