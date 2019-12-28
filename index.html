@@ -32,6 +32,8 @@
           var lines = file.split("\n");
           var html = ""
           for(var i  in lines) {
+            if (lines[i] === null || lines[i] === '') continue;
+            
             console.log(i + ',' + lines[i]);
             var splitted = lines[i].split(';');
             html += '<tr>';

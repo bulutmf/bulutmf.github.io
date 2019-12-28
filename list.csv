@@ -1,7 +1,24 @@
-Conference;2019;T. Suk, J. Hwang, M. F. Bulut, Z. Zeng;Failure-Aware Application Placement Modeling and Optimization in High Turnover DevOps Environment;IEEE Cloud 2019;;20.8%
-Conference;2019;M. F. Bulut, C. Adam, M. Hernanzdez, M. Vukovic;Cognitive Compliance: Analyze, Monitor and Enforce Compliance in the Cloud;IEEE Cloud 2019;;20.8
-Conference;2019;L. Tacchio, MD Nine, T. Kosar, M. F. Bulut, J. Hwang;Cross-layer Optimization of Big Data Transfer Throughput and Energy Consumption;IEEE Cloud 2019;;
-Conference;2018;MD Nine, L. Tacchio, A. Imran, T. Kosar, M. F. Bulut, J. Hwang;GreenDataFlow: Minimizing the Energy Footprint of Global Data Movement;IEEE BigData 2018;;18%
-Conference;2018;K. Guner, MD Nine, M. F. Bulut, T. Kosar;FastHLA: Energy Efficient Mobile Data Transfer Optimization Based on Historical Log Analysis;ACM MOBIWAC 2018;;26%
-Conference;2018;A. Kalia, J. Xiao, M. F. Bulut, M. Vukovic, N. Anerousis;Cataloger: Catalog Recommendation Service for IT Change Requests;ICSOC 2018;;
-Conference;2018;C. Adam, N. Anerousis, M. F. Bulut, R. Filepp, A. Kalia, B. Peterson, J. Rofrano, M. Vukovic, J. Xiao;Design and Evaluation of a Self Service Delivery Framework;ICSOC 2018;;
+Conference;2019;T. Suk, J. Hwang, M. F. Bulut, Z. Zeng;Failure-Aware Application Placement Modeling and Optimization in High Turnover DevOps Environment;IEEE Cloud;;20.8%
+Conference;2019;M. F. Bulut, C. Adam, M. Hernanzdez, M. Vukovic;Cognitive Compliance: Analyze, Monitor and Enforce Compliance in the Cloud;IEEE Cloud;;20.8
+Conference;2019;L. Tacchio, MD Nine, T. Kosar, M. F. Bulut, J. Hwang;Cross-layer Optimization of Big Data Transfer Throughput and Energy Consumption;IEEE Cloud;;
+Arxiv;2019;M.F. Bulut, H. Sun, P. Arora, M. Vukovic, K. Koenig, J. Young;Technical Health Check for Cloud Service Providers;Arxiv;;
+Journal;2019;T. Kosar, I. Alan, M. F. Bulut;Energy-Aware Data Throughput Optimization for Next Generation Internet;Elsevier Information Science;;4.3
+Poster;2018;MD Nine, J. Hwang, M. F. Bulut, T. Kosar;GreenNF: Energy Efficient Network Function Virtualization;OSDI;;
+Conference;2018;MD Nine, L. Tacchio, A. Imran, T. Kosar, M. F. Bulut, J. Hwang;GreenDataFlow: Minimizing the Energy Footprint of Global Data Movement;IEEE BigData;;18%
+Conference;2018;K. Guner, MD Nine, M. F. Bulut, T. Kosar;FastHLA: Energy Efficient Mobile Data Transfer Optimization Based on Historical Log Analysis;ACM MOBIWAC;;26%
+Journal;2018;K. Kloeckner, C. Adam, N. Anerousis, N. Ayachitula, M. F. Bulut et al.;Building a Cognitive Platform for the Managed IT Services Lifecycle;IBM Journal of Research & Development;;
+Conference;2017;A. Kalia, J. Xiao, M. F. Bulut, M. Vukovic, N. Anerousis;Cataloger: Catalog Recommendation Service for IT Change Requests;ICSOC;;
+Conference;2017;C. Adam, N. Anerousis, M. F. Bulut, R. Filepp, A. Kalia, B. Peterson, J. Rofrano, M. Vukovic, J. Xiao;Design and Evaluation of a Self Service Delivery Framework;ICSOC;;
+Journal;2015;M. F. Bulut, M. Demirbas, H. Ferhatosmanoglu;Coffee Shop Wait-Time Monitoring using Smartphones;IEEE Transactions on Mobile Computing;;2.912
+PhD Thesis;2014;M. F. Bulut;Crowdsourced Location-based Sensing;Computer Science and Engineering, University at Buffalo;;
+Poster;2014;M. F. Bulut, M. Demirbas;Coffee Shop Line Length Monitoring using Smartphones;HotMobile;;
+Conference;2013;M. F. Bulut, M. Demirbas;A Holistic Approach for Energy Efficient Proximity Alert on Android;IEEE Global Communications Conference, IEEE Globecom;;
+Conference;2013;A. Nandugudi, A. Maiti, M. F. Bulut, S. Batra, T. Ki, G. Challen, M. Demirbas, S. Ko, T. Kosar, C. Qiao;Participant Behavior in PhoneLab;Third International Conference on the Analysis of Mobile Phone Datasets (NetMob);;
+Journal;2013;Y. Yilmaz, M. F. Bulut, C. G. Akcora, M. A. Bayir, M. Demirbas;Trend Sensing via Twitter;International Journal of Ad Hoc and Ubiquitous Computing, IJAHUC;;
+Workshop;2013;A. Nandugudi, A. Maiti, T. Ki, M. F. Bulut, M. Demirbas, T. Kosar, C. Qiao, S. Ko, G. Challen;PhoneLab: A Large Programmable Smartphone Testbed;Workshop on Sensing and Big Data Mining (SenseMine) in conjunction with ACM SenSys;;
+Workshop;2013;B. Aydin, Y. Yilmaz, M. F. Bulut, M. Demirbas;CrowdReply: A Crowdsourced Multiple Choice Question Answering System;Workshop on Mobile Sensing in conjunction with IPSN;;
+Workshop;2013;M. F. Bulut, M. Demirbas;Energy Efficient Proximity Alert on Android;International Workshop on Pervasive Collaboration and Social Networking (PerCol) in conjunction with PerCom;;
+Workshop;2013;M. Demirbas, Y. Yilmaz, M. F. Bulut;Eywa: Crowdsourced and Cloudsourced omniscience;International Workshop on Pervasive Collaboration and Social Networking (PerCol) in conjunction with PerCom;;
+Conference,2012,M. F. Bulut, Y. S. Yilmaz, M. Demirbas, N. Ferhatosmanoglu, H. Ferhatosmanoglu;LineKing: Crowdsourced Line Wait-Time Estimation using Smartphones;International Conference on Mobile Computing, Applications and Services, MobiCASE;;
+Poster;2012;R. Baldawa, M. Benedict, M. F. Bulut, G. Challen, M. Demirbas, J. Inamdar, T. Ki, S. Ko, T. Kosar, L. Mandvekar, A. Sathyaraja, C. Qiao, S. Zawicki;PhoneLab: A Large-scale Participatory Smartphone Testbed;NSDI;;
+Workshop;2011;M. F. Bulut, Y. S. Yilmaz, M. Demirbas;Crowdsourcing Location-based Queries;Proceedings of International Workshop on Pervasive Collaboration and Social Networking (PerCol) in conjunction with PerCom;;
