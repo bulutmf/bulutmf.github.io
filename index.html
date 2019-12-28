@@ -24,6 +24,27 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script>
+      window.onload = function() {
+        let url = 'list.csv';
+        $.get(url, function(file) {
+          var lines = file.split("\r\n");
+          var html = ""
+          for(var i  in lines) {
+            console.log(lines[i]);
+            var splitted = lines[i].split(';');
+            html += '<tr>';
+            html += '<td>' + (lines.length - i) + '</td>';
+            html += '<td>' + splitted[0] + '</td>';
+            html += '<td>' + splitted[1] + '</td>';
+            html += '<td>' + splitted[3] + ', ' + splitted[4] + '</br>' + '<em>' + splitted[2] + '</em>' + '</td>';
+            html += '</tr>';
+         }
+         $("#publ_list").html(html);
+        }, 'text');
+      };
+    </script>
   </head>
 
   <body>
@@ -78,26 +99,7 @@
           <th>Publication</th>
         </thead>
         <tbody>
-          <script>
-            window.onload = function() {
-              let url = 'list.csv';
-              $.get(url, function(file) {
-                var lines = file.split("\r\n");
-                var html = ""
-                for(var i  in lines) {
-                  console.log(lines[i]);
-                  var splitted = lines[i].split(';');
-                  html += '<tr>';
-                  html += '<td>' + (lines.length - i) + '</td>';
-                  html += '<td>' + splitted[0] + '</td>';
-                  html += '<td>' + splitted[1] + '</td>';
-                  html += '<td>' + splitted[3] + ', ' + splitted[4] + '</br>' + '<em>' + splitted[2] + '</em>' + '</td>';
-                  html += '</tr>';
-               }
-               $("#publ_list").html(html);
-              }, 'text');
-            };
-          </script>
+
         </tbody>
       </table>
 
