@@ -33,11 +33,11 @@
           var html = ""
           for(var i  in lines) {
             if (lines[i] === null || lines[i] === '') continue;
-            
+
             console.log(i + ',' + lines[i]);
             var splitted = lines[i].split(';');
             html += '<tr>';
-            html += '<td>' + (lines.length - i) + '</td>';
+            html += '<td>' + (lines.length - i - 1) + '</td>';
             html += '<td>' + splitted[0] + '</td>';
             html += '<td>' + splitted[1] + '</td>';
             html += '<td>' + splitted[3] + ', ' + splitted[4] + '</br>' + '<em>' + splitted[2] + '</em>' + '</td>';
