@@ -7,7 +7,6 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
     <title>Fatih Bulut</title>
 
@@ -27,20 +26,18 @@
 
     <script>
       window.onload = function() {
-        let url = 'list.csv';
+        let url = 'http://bulutmf.github.io/list.csv';
         $.get(url, function(file) {
           var lines = file.split("\n");
           var html = ""
           for(var i  in lines) {
             if (lines[i] === null || lines[i] === '') continue;
-
-            console.log(i + ',' + lines[i]);
             var splitted = lines[i].split(';');
             html += '<tr>';
             html += '<td>' + (lines.length - i - 1) + '</td>';
             html += '<td>' + splitted[0] + '</td>';
             html += '<td>' + splitted[1] + '</td>';
-            html += '<td>' + splitted[3] + '</br>' + splitted[4] + '</br>' + '<em>' + splitted[2] + '</em>' + '</td>';
+            html += '<td>' + splitted[3] + '</br>' + '<em>' + splitted[2] + '</em>' + '</br>' + splitted[4] + '</td>';
             html += '</tr>';
          }
          $("#publ_list").find('tbody').html(html);
@@ -51,47 +48,30 @@
 
   <body>
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="">Fatih Bulut</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">About</a></li>
-            <li><a target="_blank" href="https://medium.com/@dataturka">Blog</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teaching <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="CSCI-GA.2262-​001/index.html">CSCI-GA.2262-​001 Spring/20</a></li>
-                <li><a href="is690q/index.html">IS690Q Spring/16</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+    <div id="nav_container"></div>
 
     <!-- Begin page content -->
     <div class="container">
       <div class="page-header">
-        <h1>Bio</h1>
+        <h1>Short Bio</h1>
       </div>
       <p class="lead">
         I am currently working in Hybrid Cloud Services department of IBM T.J. Watson Research Center. I am broadly interested in Cloud and AI. In the past, I successfully built data-driven systems and applications in the context of Mobile Computing, Crowdsourcing and Social Networks. I have years of experience on robust, scalable, cloud-native applications and architectures
+      </p>
+      <p class="lead">
+        <a target="_blank" href="https://twitter.com/fatih_bulut">Twitter</a>
+        &nbsp|&nbsp
+        <a target="_blank" href="https://www.linkedin.com/in/fatih-bulut-18ba5511">LinkedIn</a>
       </p>
 
       <div class="page-header">
         <h1>Publications</h1>
         <h4>
-          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a>
+          <a target="_blank" href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a>
+          &nbsp|&nbsp
+          <a target="_blank" href="https://dblp.org/pers/hd/b/Bulut:Muhammed_Fatih">DBLP</a>
+          &nbsp|&nbsp
+          <a target="_blank" href="https://researcher.watson.ibm.com/researcher/view.php?person=us-mfbulut">IBM Research</a>
         </h4>
       </div>
 
@@ -110,12 +90,7 @@
 
     </div>
 
-    <footer class="footer">
-      <div class="container">
-        <p class="text-muted">Last Updated 28 Dec 2019</p>
-      </div>
-    </footer>
-
+    <div id="footer_container"></div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -125,5 +100,12 @@
     <script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap-3.3.6-dist/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+
+    <!-- Load our React component. -->
+    <script src="navigation.js"></script>
+    <script src="footer.js"></script>
   </body>
 </html>
