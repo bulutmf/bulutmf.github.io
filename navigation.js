@@ -41,7 +41,7 @@ class Navigation extends React.Component {
     })), e("a", {
       className: "navbar-brand",
       href: goBack + "index.html"
-    }, "Fatih Bulut")), e("div", {
+    }, "M. Fatih Bulut")), e("div", {
       id: "navbar",
       className: "collapse navbar-collapse"
     }, e("ul", {
@@ -66,11 +66,26 @@ class Navigation extends React.Component {
       className: "caret"
     })), e("ul", {
       className: "dropdown-menu"
-    }, e("li", null, e("a", {
-      href: goBack + "CSCI-GA.2262-%E2%80%8B001/index.html"
-    }, "CSCI-GA.2262-001 Spring/20")), e("li", null, e("a", {
+    }, 
+    e("li", null, e("a", {
+      href: goBack + "CSCI-GA.2262-%E2%80%8B001/2021_spring.html"
+    }, e("Text", {
+      style: {textDecorationStyle: 'solid'}
+    }, "CSCI-GA.2262-001 Spring/21"))
+    ), 
+    e("li", null, e("a", {
+      href: goBack + "CSCI-GA.2262-%E2%80%8B001/2020_spring.html"
+    }, e("Text", {
+      style: {textDecorationLine: 'line-through', textDecorationStyle: 'solid'}
+    }, "CSCI-GA.2262-001 Spring/20"))
+    ), 
+    e("li", null, e("a", {
       href: goBack + "is690q/index.html"
-    }, "IS690Q Spring/16"))))))));
+    }, e("Text", {
+      style: {textDecorationLine: 'line-through', textDecorationStyle: 'solid'}
+    }, "IS690Q Spring/16"))
+    ))
+    )))));
   }
 }
 
