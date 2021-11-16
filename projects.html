@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Projects</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="bootstrap-3.3.6-dist/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="sticky-footer-navbar.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script>
+      window.onload = function() {
+        let url = 'list.csv';
+        $.get(url, function(file) {
+          var lines = file.split("\n");
+          var html = ""
+          for(var i  in lines) {
+            if (lines[i] === null || lines[i] === '') continue;
+            var splitted = lines[i].split(';');
+            html += '<tr>';
+            html += '<td>' + (lines.length - i - 1) + '</td>';
+            html += '<td>' + splitted[0] + '</td>';
+            html += '<td>' + splitted[1] + '</td>';
+            html += '<td>' + splitted[3] + '</br>' + '<em>' + splitted[2] + '</em>' + '</br>' + splitted[4] + '</td>';
+            html += '</tr>';
+         }
+         $("#publ_list").find('tbody').html(html);
+        }, 'text');
+      };
+    </script>
+  </head>
+
+  <body>
+
+    <div id="nav_container"></div>
+
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h1>Selected Projects</h1>
+      </div>
+      <p class="lead">
+        <b>Compliance Risk Quantification</b></br> Natural Language to Risk Quantification using Common Vulnerability Scoring System (CVSS) to standardize risk quantification across different security processes (Compliance, Patching etc.) in Hybrid and Multi Cloud settings.
+
+        <ul>
+          <li><a href="https://www.computer.org/csdl/proceedings-article/cloud/2021/006000a566/1ymJ11j4PDi" target="_blank">IEEE Cloud 2021 Paper: NL2Vul: Natural Language to Standard Vulnerability Score for Cloud Security Posture Management</a></li>
+          <li><a href="https://research.ibm.com/blog/cloud-resistance-strength" target="_blank">New service from IBM Research and X-Force Red makes vulnerability management more efficient</a></li>
+          <li><a href="https://www.ibm.com/blogs/research/2020/10/hybrid-cloud-for-ai/" target="_blank">How IBM Research Is Differentiating Its Hybrid Cloud Platform with AI</a></li>
+          <li><a href="https://medium.com/ibm-cloud/natural-language-to-risk-score-for-cis-benchmarks-using-deep-neural-networks-7b83c63f105b" target="_blank">Natural Language to Risk Score for CIS Benchmarks using Deep Neural Networks</a></li>
+          
+        </ul>
+      </p>
+
+      <p class="lead">
+        <b>Continuous & Cognitive Compliance</b></br> A cloud native solution for making sure of continuous compliance for IBM managed Cloud infrastructure to various regulations such as HIPAA, PCI-DSS etc.Mapping of various regulatory documents to common hierarchy using Machine Learning.
+        <ul>
+          <li><a href="https://ieeexplore.ieee.org/abstract/document/8814576" target="_blank">IEEE Cloud 2020 Paper: Cognitive Compliance: Analyze, Monitor and Enforce Compliance in the Cloud</a></li>
+          <li><a href="https://mediacenter.ibm.com/media/Open+IT+UpA+IBM+Services+Platform+with+Watson%2C+Continuous+Compliance/1_nzjgkg6l" target="_blank">Open IT Up: IBM Services Platform with Watson, Continuous Compliance</a></li>
+          
+        </ul>
+      </p>
+
+      <p class="lead">
+        <b>Technical Health Check as a Service</b></br> An AI-powered solution for assessing risk of IT environments and providing a heat map on various components on their health (and risk).
+        <ul>
+          <li><a href="https://arxiv.org/abs/1906.11607" target="_blank">Arxiv Paper: Technical Health Check For Cloud Service Providers</a></li>
+          <li><a href="https://ieeexplore.ieee.org/abstract/document/8269344" target="_blank">IBM Journal of Research and Development 2018 Paper: Building a cognitive platform for the managed IT services lifecycle</a></li>
+          <li><a href="https://link.springer.com/chapter/10.1007/978-3-319-69035-3_40" target="_blank">ICSOC 2017 Paper: Cataloger: Catalog Recommendation Service for IT Change Requests</a></li>
+          <li><a href="https://link.springer.com/chapter/10.1007/978-3-319-69035-3_31" target="_blank">ICSOC 2017 Paper: Design and Evaluation of a Self-Service Delivery Framework</a></li>
+        </ul>
+      </p>
+
+      <p class="lead">
+        <b>GreenDataFlow (Open Collaboration with University at Buffalo)</b></br> An energy-efficient data transfer solution via application level parameter optimization without compromising from the performance.
+
+        <ul>
+          <li><a href="https://ieeexplore.ieee.org/abstract/document/8814571" target="_blank">IEEE Cloud 2019 Paper: Cross-Layer Optimization of Big Data Transfer Throughput and Energy Consumption</a></li>
+          <li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0020025518307874" target="_blank">Elsevier Information Sciences Paper: Energy-aware data throughput optimization for next generation internet</a></li>
+          <li><a href="https://ieeexplore.ieee.org/abstract/document/8622570" target="_blank">IEEE BigData 2018 Paper: GreenDataFlow: Minimizing the Energy Footprint of Global Data Movement</a></li>
+          
+        </ul>
+      </p>
+
+      <p class="lead">
+        <b>Risk-based Continuous Patching</b></br> A cognitive solution for assessing risk of vulnerabilities and enabling continuous patching for IBM managed servers.
+
+        <ul>
+          <li><a href="https://ieeexplore.ieee.org/abstract/document/8814582" target="_blank">IEEE Cloud 2019 Paper: Failure-Aware Application Placement Modeling and Optimization in High Turnover DevOps Environment</a></li>
+          
+        </ul>
+      </p>
+
+      <p class="lead">
+        <b>Network Firewall Automation</b></br> A Big Data Analytics solution for network firewall automation, to enable IBMers to easily set up network connection from IBM Cloud to IBM Internal Network. Data collected through the firewall network is enriched with business context and processed with Spark to provide insights to the interested parties.
+      </p>
+
+      <p class="lead">
+        <b>Zombie App Detection</b></br> A solution to detect inactive and active resources with 90% accuracy in Bluemix (IBM Cloud) using machine learning.
+      </p>
+
+      <p class="lead">
+        <b>RoomSurfer</b></br> An IoT based solution for monitoring, predicting occupancy status of Conference Rooms in IBM Offices.
+      </p>
+
+      <p class="lead">
+        <b>LineKing</b></br> A solution for forecasting line wait-times in coffee shops using visitors’ smartphones.
+
+        <ul>
+          <li><a href="https://ieeexplore.ieee.org/abstract/document/6991601" target="_blank">IEEE Transcations on Mobile Computing: LineKing: Coffee Shop Wait-Time Monitoring Using Smartphones</a></li>
+          <li><a href="https://link.springer.com/chapter/10.1007/978-3-642-36632-1_12" target="_blank">MobiCase Paper: LineKing: Crowdsourced Line Wait-Time Estimation Using Smartphones</a></li>
+          <li><a href="https://hotmobile.org/2014/papers/posters/bulut_coffee.pdf" target="_blank">HotMobile Paper: Coffee Shop Line Length Monitoring Using Smartphones</a></li>
+          
+        </ul>
+        
+      </p>
+
+      <p class="lead">
+        <b>Energy-Efficient Proximity Alert on Android</b></br> An energy-efficient proximity alert service for Android phones.
+
+        <ul>
+          <li><a href="https://ieeexplore.ieee.org/abstract/document/6529474" target="_blank">IEEE PerCom Workshops 2013 Paper: Energy efficient proximity alert on Android</a></li>
+          <li><a href="https://ieeexplore.ieee.org/abstract/document/6831501" target="_blank">IEEE Globecom 2013 Paper: A holistic approach for energy efficient proximity alert on Android</a></li>
+          
+        </ul>
+
+      </p>
+
+      <p class="lead">
+        <b>PhoneLab</b></br> The first large-scale smartphone testbed (Android) with more than 300 participants.
+
+        <ul>
+          <li><a href="https://dl.acm.org/doi/abs/10.1145/2536714.2536718" target="_blank">ACM SenseMine 2013 Paper: PhoneLab: A Large Programmable Smartphone Testbed</a></li>
+          <li><a href="https://ieeexplore.ieee.org/abstract/document/6831501" target="_blank">IEEE Globecom 2013 Paper: A holistic approach for energy efficient proximity alert on Android</a></li>
+          <li><a href="https://ieeexplore.ieee.org/abstract/document/6529480" target="_blank">IEEE Percom Workshops 2013 Paper: Eywa: Crowdsourced and cloudsourced omniscience</a></li>
+        </ul>
+      </p>
+
+      <p class="lead">
+        <b>Trend Sensing via Twitter</b></br> A passive sensing framework for identifying trends via Twitter.
+
+        <ul>
+          <li><a href="https://www.inderscienceonline.com/doi/abs/10.1504/IJAHUC.2013.056271" target="_blank">Trend sensing via Twitter</a></li>
+        </ul>
+      </p>
+
+      <p class="lead">
+        <b>Location-based question answering via Social Networks</b></br> A solution over Twitter and Foursquare to investigate the feasibility of answering location-based questions by crowdsourcing.        .
+
+        <ul>
+          <li><a href="https://ieeexplore.ieee.org/abstract/document/5766944" target="_blank">IEEE Percom workshops: Crowdsourcing location-based queries</a></li>
+        </ul>
+      </p>
+
+
+      
+
+    </div>
+
+    <div id="footer_container"></div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="bootstrap-3.3.6-dist/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="bootstrap-3.3.6-dist/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+
+    <!-- Load our React component. -->
+    <script src="navigation.js"></script>
+    <script src="footer.js"></script>
+  </body>
+</html>

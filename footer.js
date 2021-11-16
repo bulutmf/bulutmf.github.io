@@ -15,7 +15,7 @@ class Footer extends React.Component {
       className: 'container'
     }, f_e("p", {
       className: "text-muted"
-    }, "Last Updated Apr 28, 2021")));
+    }, "Last Updated Nov 16, 2021")));
   }
 }
 
