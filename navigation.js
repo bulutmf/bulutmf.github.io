@@ -74,7 +74,7 @@ class Navigation extends React.Component {
     e("li", null, e("a", {
       href: goBack + "CSCI-GA.2262-%E2%80%8B001/2021_spring.html"
     }, e("Text", {
-      style: {textDecorationStyle: 'solid'}
+      style: {textDecorationLine: 'line-through', textDecorationStyle: 'solid'}
     }, "CSCI-GA.2262-001 Spring/21"))
     ), 
     e("li", null, e("a", {
