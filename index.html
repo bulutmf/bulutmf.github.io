@@ -25,7 +25,7 @@
     <![endif]-->
 
     <script>
-      window.onload = function() {
+      window.onload = function() {        
         let url = 'list.csv';
         $.get(url, function(file) {
           var lines = file.split("\n");
@@ -42,7 +42,50 @@
          }
          $("#publ_list").find('tbody').html(html);
         }, 'text');
+
+        // Local testing START
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+          const file = event.target.files[0];
+
+          if (!file) {
+              alert('No file selected!');
+              return;
+          }
+
+          const reader = new FileReader();
+          reader.onload = function(event) {
+              const fileContent = event.target.result;
+              const lines = fileContent.split(/\r?\n/);
+              const outputElement = document.getElementById('output');
+              
+              var html = "";
+              lines.forEach((line, index) => {
+                  console.log(`Line ${index + 1}: ${line}`); 
+                  if (line !== null && line !== '') {
+                    var splitted = line.split(';');
+                    html += '<tr>';
+                    html += '<td>' + (lines.length - index - 1) + '</td>';
+                    html += '<td>' + splitted[0] + '</td>';
+                    html += '<td>' + splitted[1] + '</td>';
+                    html += '<td>' + splitted[3] + '</br>' + '<em>' + splitted[2] + '</em>' + '</br>' + splitted[4] + '</br>' + '<font color="green">' + splitted[5] + "</font>" + '</td>';
+                    html += '</tr>';
+                  }
+              });
+              $("#publ_list").find('tbody').html(html);
+          };
+          reader.onerror = function(error) {
+              console.error('Error reading file:', error);
+          };
+
+          // Read the file as text
+          reader.readAsText(file);
+        });
+        // Local testing END
+
       };
+
+
+      
     </script>
   </head>
 
@@ -84,6 +127,9 @@
           <a target="_blank" href="https://dblp.org/pers/hd/b/Bulut:Muhammed_Fatih">DBLP</a>
         </h4>
       </div>
+
+
+      <!-- <input type="file" id="fileInput" /> -->
 
       <table id="publ_list" class="table table-striped">
         <thead>
