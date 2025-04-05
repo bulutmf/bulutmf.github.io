@@ -52,9 +52,6 @@ class Navigation extends React.Component {
       href: goBack + "index.html"
     }, "About")),  
     e("li", null, e("a", {
-      href: goBack + "projects.html"
-    }, "Projects")),
-    e("li", null, e("a", {
       target: "_blank",
       href: "https://medium.com/@dataturka"
     }, "Blog")), e("li", {
