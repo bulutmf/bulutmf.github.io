@@ -41,7 +41,7 @@ class Navigation extends React.Component {
     })), e("a", {
       className: "navbar-brand",
       href: goBack + "index.html"
-    }, "Muhammed Fatih Bulut")), e("div", {
+    }, "Fatih Bulut")), e("div", {
       id: "navbar",
       className: "collapse navbar-collapse"
     }, e("ul", {
