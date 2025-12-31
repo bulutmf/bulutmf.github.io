@@ -220,8 +220,9 @@
         renderPublications(publications);
         setupFilters(publications);
 
-        // Update the hero stat with actual count
-        document.getElementById('pub-count').textContent = publications.length + '+';
+        // Update the hero stat with actual count (animated)
+        const pubCountEl = document.getElementById('pub-count');
+        animateCounter(pubCountEl, publications.length, '+');
       } catch (error) {
         console.error('Error loading publications:', error);
       }
@@ -305,16 +306,13 @@
 
       document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-      // Animate stat counters on page load
+      // Animate patent and years stats on page load
       setTimeout(() => {
-        const patentStat = document.querySelector('.stat-value');
-        if (patentStat && patentStat.textContent === '40+') {
-          animateCounter(patentStat, 40, '+');
-        }
-        const yearsStat = document.querySelectorAll('.stat-value')[2];
-        if (yearsStat && yearsStat.textContent === '15+') {
-          animateCounter(yearsStat, 15, '+');
-        }
+        const stats = document.querySelectorAll('.stat-value');
+        // Patents (first stat)
+        if (stats[0]) animateCounter(stats[0], 40, '+');
+        // Years (third stat) - publications is handled after CSV load
+        if (stats[2]) animateCounter(stats[2], 15, '+');
       }, 300);
     }
 
