@@ -1,166 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>Fatih Bulut</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fatih Bulut | Principal AI/ML Architect</title>
+  <meta name="description"
+    content="Principal AI/ML Architect at Microsoft. 40+ patents, AI security expert, former IBM researcher, NYU & Columbia instructor.">
+  <meta name="author" content="Fatih Bulut">
 
-    <!-- Bootstrap core CSS -->
-    <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="bootstrap-3.3.6-dist/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+</head>
 
-    <!-- Custom styles for this template -->
-    <link href="sticky-footer-navbar.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <script>
-      window.onload = function() {        
-        let url = 'list.csv';
-        $.get(url, function(file) {
-          var lines = file.split("\n");
-          var html = ""
-          for(var i  in lines) {
-            if (lines[i] === null || lines[i] === '') continue;
-            var splitted = lines[i].split(';');
-            html += '<tr>';
-            html += '<td>' + (lines.length - i - 1) + '</td>';
-            html += '<td>' + splitted[0] + '</td>';
-            html += '<td>' + splitted[1] + '</td>';
-            html += '<td>' + splitted[3] + '</br>' + '<em>' + splitted[2] + '</em>' + '</br>' + splitted[4] + '</br>' + '<font color="green">' + splitted[5] + "</font>" + '</td>';
-            html += '</tr>';
-         }
-         $("#publ_list").find('tbody').html(html);
-        }, 'text');
-
-        // Local testing START
-        document.getElementById('fileInput').addEventListener('change', function(event) {
-          const file = event.target.files[0];
-
-          if (!file) {
-              alert('No file selected!');
-              return;
-          }
-
-          const reader = new FileReader();
-          reader.onload = function(event) {
-              const fileContent = event.target.result;
-              const lines = fileContent.split(/\r?\n/);
-              const outputElement = document.getElementById('output');
-              
-              var html = "";
-              lines.forEach((line, index) => {
-                  console.log(`Line ${index + 1}: ${line}`); 
-                  if (line !== null && line !== '') {
-                    var splitted = line.split(';');
-                    html += '<tr>';
-                    html += '<td>' + (lines.length - index - 1) + '</td>';
-                    html += '<td>' + splitted[0] + '</td>';
-                    html += '<td>' + splitted[1] + '</td>';
-                    html += '<td>' + splitted[3] + '</br>' + '<em>' + splitted[2] + '</em>' + '</br>' + splitted[4] + '</br>' + '<font color="green">' + splitted[5] + "</font>" + '</td>';
-                    html += '</tr>';
-                  }
-              });
-              $("#publ_list").find('tbody').html(html);
-          };
-          reader.onerror = function(error) {
-              console.error('Error reading file:', error);
-          };
-
-          // Read the file as text
-          reader.readAsText(file);
-        });
-        // Local testing END
-
-      };
-
-
-      
-    </script>
-  </head>
-
-  <body>
-
-    <div id="nav_container"></div>
-
-    <!-- Begin page content -->
-    <div class="container">
-      <!-- Bio and News side by side -->
-      <div class="row">
-        <!-- Bio Column (Left) -->
-        <div class="col-md-8">
-          <div class="page-header">
-            <h1>Short Bio</h1>
-          </div>
-          <p class="lead">
-I work as a Principal AI/ML Architect at Microsoft, focusing on identifying high-impact opportunities, building production-ready prototypes, and collaborating with engineering teams to ship solutions. My expertise spans the intersection of AI, security, and cloud technologies.
-
-With 40+ patents and experience shipping AI security products at both Microsoft and IBM, I am known for rapid execution and taking full ownership of initiatives from conception to delivery. I have also taught courses at NYU and Columbia universities. You can follow me on LinkedIn to know more about me.          </p>
-          <p class="lead">
-            <a target="_blank" href="https://www.linkedin.com/in/fatih-bulut-18ba5511">LinkedIn</a>
-          </p>
-        </div>
-
-        <!-- News Column (Right) -->
-        <div class="col-md-4">
-          <div id="news_container"></div>
-        </div>
-      </div>
-
-      <div class="page-header">
-        <h1>Publications</h1>
-        <h4>
-          <a target="_blank" href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ&view_op=list_works&sortby=pubdate">Google Scholar</a>
-          &nbsp|&nbsp
-          <a target="_blank" href="https://dblp.org/pers/hd/b/Bulut:Muhammed_Fatih">DBLP</a>
-        </h4>
-      </div>
-
-
-      <!-- <input type="file" id="fileInput" /> -->
-
-      <table id="publ_list" class="table table-striped">
-        <thead>
-          <th>#</th>
-          <th>Type</th>
-          <th>Year</th>
-          <th>Publication</th>
-        </thead>
-        <tbody>
-
-        </tbody>
-      </table>
-
-
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">Fatih Bulut</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="https://medium.com/@dataturka" target="_blank">Blog</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank" class="nav-icon"
+            title="Google Scholar">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
     </div>
+  </nav>
 
-    <div id="footer_container"></div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Fatih Bulut</h1>
+      <p class="hero-title">Principal AI/ML Architect @ Microsoft</p>
+      <div class="hero-stats">
+        <a href="https://patents.google.com/?inventor=muhammed+fatih+bulut&oq=muhammed+fatih+bulut" target="_blank"
+          class="stat" title="View patents on Google Patents">
+          <div class="stat-value">40+</div>
+          <div class="stat-label">Patents</div>
+        </a>
+        <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ&view_op=list_works&sortby=pubdate"
+          target="_blank" class="stat" title="View on Google Scholar">
+          <div class="stat-value" id="pub-count">—</div>
+          <div class="stat-label">Publications</div>
+        </a>
+        <div class="stat">
+          <div class="stat-value">15+</div>
+          <div class="stat-label">Years in AI/ML</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="bootstrap-3.3.6-dist/assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="bootstrap-3.3.6-dist/assets/js/ie10-viewport-bug-workaround.js"></script>
+  <!-- Main Content -->
+  <main class="main">
+    <div class="container">
+      <div class="content-grid">
+        <!-- Bio Column -->
+        <div class="bio-column">
+          <section id="about">
+            <div class="section-header">
+              <h2 class="section-title">About</h2>
+            </div>
+            <div class="bio-card fade-in">
+              <p class="bio-text">
+                As a Principal AI/ML Architect at Microsoft, I identify high-impact opportunities and work with
+                engineering teams to ship AI-powered solutions. My focus is at the intersection of AI, security, and
+                cloud.
+              </p>
+              <p class="bio-text" style="margin-top: 1rem;">
+                With 40+ patents and experience shipping AI security products at both Microsoft and IBM, I am known for
+                rapid execution and taking full ownership of initiatives from conception to delivery. I currently teach
+                at
+                <a href="https://sps.columbia.edu/person/fatih-bulut-0" target="_blank">Columbia University</a> and
+                previously taught at NYU.
+              </p>
+              <div class="bio-links">
+                <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="btn btn-primary">
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  </svg>
+                  LinkedIn
+                </a>
+                <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ&view_op=list_works&sortby=pubdate"
+                  target="_blank" class="btn btn-secondary">
+                  Google Scholar
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
 
-    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+        <!-- News Sidebar -->
+        <aside>
+          <div class="news-card fade-in">
+            <h3 class="news-title">📰 News</h3>
+            <ul class="news-list" id="news-list">
+              <li class="news-item">
+                <span class="news-date">Dec 2025:</span> Presented on <a
+                  href="https://docs.google.com/presentation/d/1a6eVw_8GHwsz1ic2fbQLYsZBnt9m3NEf/edit?usp=sharing&ouid=114034349652044161485&rtpof=true&sd=true"
+                  target="_blank">autonomous detection engineering at ACSAC</a>—AI-driven detection authoring and
+                lessons from agentic security systems.
+              </li>
+              <li class="news-item">
+                <span class="news-date">Nov 2025:</span> Interviewed on <a
+                  href="https://www.youtube.com/watch?v=DYzHYmtfiBY" target="_blank">Kesisen Yollar</a>, featuring
+                Turkish-born tech professionals in the US.
+              </li>
+              <li class="news-item">
+                <span class="news-date">Oct 2025:</span> Invited talk on AI and Cybersecurity at the <a
+                  href="https://youtu.be/PiJpDvAMCg4?t=23457" target="_blank">Turkish AI Summit 2025</a>.
+              </li>
+              <li class="news-item news-hidden">
+                <span class="news-date">Sep 2025:</span> Talk on <a
+                  href="https://docs.google.com/presentation/d/1PpmjJIvAo1sYSUoU1CGGCDVEfgFn2Us5/edit?rtpof=true&sd=true"
+                  target="_blank">"Chasing Threat Actors with AI"</a> at Artificial Unintelligence Conference.
+              </li>
+              <li class="news-item news-hidden">
+                <span class="news-date">Aug 2025:</span> Guest on the <a
+                  href="https://www.youtube.com/watch?v=UgMyFzQoq2M" target="_blank">Harness podcast</a> discussing AI
+                and security intersections—detection engineering, AI hardening, and future possibilities.
+              </li>
+              <li class="news-item news-hidden">
+                <span class="news-date">Feb 2025:</span> Spoke at the <a
+                  href="https://www.linkedin.com/posts/globalturksai_harvard-forum1-forum2-activity-7295446673139392513-RWlu"
+                  target="_blank">Harvard AI Forum</a> on "AI Research, Innovation, and Opportunities".
+              </li>
+            </ul>
+            <button class="news-toggle" id="news-toggle">View all news →</button>
+          </div>
+        </aside>
+      </div>
 
-    <!-- Load our React component. -->
-    <script src="navigation.js"></script>
-    <script src="news.js"></script>
-    <script src="footer.js"></script>
-  </body>
+      <!-- Publications Section -->
+      <section class="publications-section" id="publications">
+        <div class="section-header">
+          <h2 class="section-title">Publications</h2>
+          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ&view_op=list_works&sortby=pubdate"
+            target="_blank" class="section-link">Google Scholar →</a>
+        </div>
+
+        <div class="pub-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="Conference">Conference</button>
+          <button class="filter-btn" data-filter="Journal">Journal</button>
+          <button class="filter-btn" data-filter="Arxiv">Arxiv</button>
+          <button class="filter-btn" data-filter="Workshop">Workshop</button>
+        </div>
+
+        <div class="pub-grid" id="pub-grid">
+          <!-- Publications loaded dynamically -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank">Google Scholar</a>
+        <a href="https://dblp.org/pers/hd/b/Bulut:Muhammed_Fatih" target="_blank">DBLP</a>
+        <a href="https://medium.com/@dataturka" target="_blank">Medium</a>
+      </div>
+      <p>© 2025 Fatih Bulut. Built with ☕ and curiosity.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Load and parse publications from CSV
+    async function loadPublications() {
+      try {
+        const response = await fetch('list.csv');
+        const text = await response.text();
+        const lines = text.trim().split('\n').filter(line => line.trim());
+
+        const publications = lines.map((line, index) => {
+          const parts = line.split(';');
+          return {
+            type: parts[0] || '',
+            year: parts[1] || '',
+            authors: parts[2] || '',
+            title: parts[3] || '',
+            venue: parts[4] || '',
+            award: parts[5] || '',
+            number: lines.length - index
+          };
+        }).filter(pub => pub.title);
+
+        renderPublications(publications);
+        setupFilters(publications);
+
+        // Update the hero stat with actual count
+        document.getElementById('pub-count').textContent = publications.length + '+';
+      } catch (error) {
+        console.error('Error loading publications:', error);
+      }
+    }
+
+    function renderPublications(publications, filter = 'all') {
+      const grid = document.getElementById('pub-grid');
+      const filtered = filter === 'all'
+        ? publications
+        : publications.filter(p => p.type.toLowerCase() === filter.toLowerCase());
+
+      grid.innerHTML = filtered.map(pub => {
+        const badgeClass = pub.type.toLowerCase().replace(' ', '');
+        const linksHtml = pub.venue || '';
+        const awardHtml = pub.award ? `<div class="pub-award">🏆 ${pub.award}</div>` : '';
+
+        return `
+          <article class="pub-card" data-type="${pub.type}">
+            <div class="pub-header">
+              <span class="pub-number">#${pub.number}</span>
+              <span class="pub-badge ${badgeClass}">${pub.type}</span>
+              <span class="pub-year">${pub.year}</span>
+            </div>
+            <h3 class="pub-title">${pub.title}</h3>
+            <p class="pub-authors">${pub.authors}</p>
+            <div class="pub-venue">${linksHtml}</div>
+            ${awardHtml}
+          </article>
+        `;
+      }).join('');
+    }
+
+    function setupFilters(publications) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderPublications(publications, btn.dataset.filter);
+        });
+      });
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      loadPublications();
+      initAnimations();
+      initBackToTop();
+      initNewsToggle();
+    });
+
+    // Animated counter for stats
+    function animateCounter(element, target, suffix = '') {
+      const duration = 1500;
+      const start = 0;
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(start + (target - start) * easeOut);
+        element.textContent = current + suffix;
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+      requestAnimationFrame(update);
+    }
+
+    // Scroll fade-in animations
+    function initAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+      // Animate stat counters on page load
+      setTimeout(() => {
+        const patentStat = document.querySelector('.stat-value');
+        if (patentStat && patentStat.textContent === '40+') {
+          animateCounter(patentStat, 40, '+');
+        }
+        const yearsStat = document.querySelectorAll('.stat-value')[2];
+        if (yearsStat && yearsStat.textContent === '15+') {
+          animateCounter(yearsStat, 15, '+');
+        }
+      }, 300);
+    }
+
+    // Back to top button
+    function initBackToTop() {
+      const btn = document.getElementById('back-to-top');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      });
+
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // News toggle
+    function initNewsToggle() {
+      const toggle = document.getElementById('news-toggle');
+      const hiddenItems = document.querySelectorAll('.news-hidden');
+      let expanded = false;
+
+      toggle.addEventListener('click', () => {
+        expanded = !expanded;
+        hiddenItems.forEach((item, index) => {
+          if (expanded) {
+            setTimeout(() => item.classList.add('show'), index * 100);
+          } else {
+            item.classList.remove('show');
+          }
+        });
+        toggle.textContent = expanded ? '← Show less' : 'View all news →';
+      });
+    }
+  </script>
+</body>
+
 </html>
