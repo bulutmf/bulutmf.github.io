@@ -363,6 +363,28 @@ a:hover {
   font-weight: 600;
 }
 
+.news-upcoming {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(59, 130, 246, 0.03));
+  border-left: 3px solid var(--accent-primary);
+  border-radius: var(--radius-md);
+  padding-left: var(--spacing-3);
+  margin-left: calc(-1 * var(--spacing-3) - 3px);
+}
+
+.news-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent-primary);
+  background: rgba(59, 130, 246, 0.12);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
 /* News Toggle */
 .news-hidden {
   display: none;
