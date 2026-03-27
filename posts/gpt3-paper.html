@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper Summary: Language Models are Few-Shot Learners (GPT-3 Paper) | Fatih Bulut</title>
+  <meta name="description"
+    content="This paper is one of the important foundational papers from OpenAI, published in 2020. GPT-3 demonstrates that LLMs pretrained with large volume of data can learn very quickly with few examples, possibly cutting the need for fine-tuning.">
+  <meta name="author" content="Fatih Bulut">
+  <meta property="og:title" content="Paper Summary: Language Models are Few-Shot Learners (GPT-3 Paper)">
+  <meta property="og:description"
+    content="A summary of the GPT-3 paper, its few-shot learning results, scaling behavior, and key evaluation takeaways.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">Fatih Bulut</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank" class="nav-icon"
+            title="Google Scholar">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="blog-header post-header">
+    <div class="container">
+      <a href="../blog.html" class="post-back-link">← Back to Blog</a>
+      <div class="blog-card-meta post-meta">
+        <span class="blog-date">Jan 13, 2023</span>
+        <div class="blog-tags">
+          <span class="blog-tag">LLMs</span>
+          <span class="blog-tag">AI</span>
+          <span class="blog-tag">GPT-3</span>
+          <span class="blog-tag">OpenAI</span>
+        </div>
+      </div>
+      <h1 class="post-title">Paper Summary: Language Models are Few-Shot Learners (GPT-3 Paper)</h1>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="container">
+      <article class="post-article">
+        <div class="post-content">
+          <p>This paper is one of the important foundational papers from OpenAI, published in 2020.</p>
+
+          <p><strong>TL;DR</strong>: A typical approach for developing a powerful transformer based Large Language model (LLM) in a specific domain involves two phases: pretraining and fine-tuning, while the former refers to training, utilizing a large volume of data, using self-supervised learning, the latter refers to the adaptation of pretrained model to a task at hand, e.g., sentiment analysis. While this typical approach seems to be powerful, achieving SOTA results on many benchmarks, it still requires task-specific fine-tuning datasets which involve 1000s of examples. In contrast, we human adapt and learn quicker with zero or a few examples. This paper demonstrates that an LLM that is pretrained with large volume of data, and large in size, has the ability to learn very quickly with few examples (few-shot), possibly cutting the need for fine-tuning in many tasks if not all. It also demonstrates that increasing model size, in terms of parameters, also increases the model's learning capacity.</p>
+
+          <p>GPT as an acronym refers to "Generative Pre-trained Transformers". Before GPT-3 (this paper), there were previous versions. Even though there are differences between GPT family models, in essence, it all depends on Transformer architecture: <a href="https://arxiv.org/abs/1706.03762" target="_blank">Attention Is All You Need</a>.</p>
+
+          <p>In this paper, the authors emphasize that no gradient update or fine tuning applied to pretrained LLM: "<em>For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model</em>".</p>
+
+          <p>The paper attempts to clarify <em>Meta-learning</em>, by defining <em>outer loop</em> and <em>inner loop</em>. Outer loop includes learning via backpropagation and SGD, while inner loop includes learning via forward pass. Inner loop can include <em>zero-shot</em>, <em>one-shot and few-shot</em> (or in-context learning) learning as introduced in the paper.</p>
+
+          <p>GPT-3 paper in essence explores the in-context learning, with increasing parameter size. Every use case is evaluated in 3 conditions: <em>zero-shot</em>, <em>one-shot</em> and <em>few-shot</em>. In most use cases, model performance increases with addition of natural language task description, and number of examples given to GPT-3 in model's context. There are also tasks which few-shot performance struggles: ML inferences tasks like ANLI dataset, reading comprehension like RACE or QuAC.</p>
+
+          <p>GPT-3 is pretrained with multiple datasets. Datasets like CommonCrawl may include samples from test and evaluation sets and hence authors develop a systematic tool to measure data contamination and quantify its effect on the performance. However, they have found a bug in their filtering approach later after pretraining and they did not rerun the pretraining with the concern on the cost: "<em>Unfortunately, a bug in the filtering caused us to ignore some overlaps, and due to the cost of training it was not feasible to retrain the model</em>". Instead they tried to remove the overlapping examples from the evaluation dataset, if matched by 13-gram.</p>
+
+          <h3>Notes from the paper</h3>
+          <ul>
+            <li>Gap between zero, one and few shot performance often grows with model capacity. Larger models are more proficient meta learners.</li>
+            <li>Context size of GPT-3 is 2048 tokens, meaning there is a limit how much few shot examples one can give to the model.</li>
+            <li>One-shot resembles to how human learns, that is why authors include this in the comparisons.</li>
+            <li>Data quality is an important aspect of pretraining an LLM. Authors take reasonable steps to make sure that the data quality is high: "3 steps to improve the average quality of our datasets: (1) we downloaded and filtered a version of CommonCrawl based on similarity to a range of high-quality reference corpora, (2) we performed fuzzy deduplication at the document level, within and across datasets, to prevent redundancy and preserve the integrity of our held-out validation set as an accurate measure of overfitting, and (3) we also added known high-quality reference corpora to the training mix to augment CommonCrawl and increase its diversity."</li>
+            <li>In total dataset used for pretraining nearly contains 3 trillion words. The size of CommonCrawl after filtering is 570GB, roughly equivalent to 400 billion byte-pair encoded tokens.</li>
+            <li>Not all datasets are seen by GPT equally. Higher quality curated datasets (such as Wikipedia) are sampled 2–3 times than lower quality datasets (such as CommonCrawl).</li>
+            <li>They found out that potential contamination in the dataset is high, but they see no effect in the performance.</li>
+            <li>A lesson for pretraining: "<em>larger models can typically use a larger batch size, but require a smaller learning rate</em>".</li>
+            <li>GPT-3 did not excel in all scenarios: "<em>GPT-3 appears to be weak in the few-shot or one-shot setting at some tasks that involve comparing two sentences or snippets</em>".</li>
+            <li>Another concern for practical adoption of GPT-3 is its size, even for inference. However, authors mention that distillation techniques might be a way forward to reduce the size of the model for practical deployment.</li>
+          </ul>
+
+          <h3>Evaluation Notes</h3>
+          <p>GPT-3 is evaluated in many datasets and tasks:</p>
+
+          <h4>Language modeling, Cloze and Completion Tasks</h4>
+          <ul>
+            <li>Penn Tree Bank (PTB) dataset — GPT-3 achieves a new SOTA by 15pt margin achieving 20.50 perplexity.</li>
+            <li>LAMBADA dataset — tests modeling of long-range dependencies. GPT-3 achieves 76%, 8% gain over SOTA.</li>
+            <li>HellaSwag dataset — GPT-3 achieves 79.3% accuracy in few-shot learning and outperforms 1.5B fine-tuned model.</li>
+            <li>StoryCloze dataset — GPT-3 achieves 87.7% in few-shot (K=70) while fine-tuned BERT model outperforms GPT-3 by 4.1%.</li>
+          </ul>
+
+          <h4>Closed book question answering tasks</h4>
+          <ul>
+            <li>GPT-3 has either better or close results to fine-tuned Google's T5 11B models on 3 different datasets.</li>
+          </ul>
+
+          <h4>Language translation</h4>
+          <ul>
+            <li>The dataset that is used to pretrain GPT-3 has 93% English and 7% other languages samples.</li>
+            <li>GPT-3 is found to be good at translating to English but suffers in the other direction.</li>
+          </ul>
+
+          <h4>Winograd Schema-like tasks</h4>
+          <ul>
+            <li>GPT-3 performs slightly worse than SOTA or human performance.</li>
+            <li>On more challenging dataset, GPT-3 achieves 77.7% while RoBERTa achieves 79% and SOTA is 84.6%.</li>
+          </ul>
+
+          <h4>Common sense reasoning or Q/A</h4>
+          <ul>
+            <li>PIQA dataset — GPT-3 achieves SOTA beating RoBERTa fine-tuned model (possible data contamination disclaimer).</li>
+            <li>ARC dataset — Similar results to fine-tuned RoBERTa baseline. Worse than SOTA by 27% and 22%.</li>
+            <li>OpenBookQA dataset — GPT-3 is short of 20 points from SOTA, but performs similar to BERT-large fine-tuned model.</li>
+          </ul>
+
+          <h4>Reading comprehension</h4>
+          <ul>
+            <li>Evaluated using 5 datasets. Results are on par with baselines like BERT but short of SOTA performances.</li>
+          </ul>
+
+          <h4>SuperGLUE benchmark</h4>
+          <ul>
+            <li>GPT-3 outperforms a fine-tuned BERT-large on four of eight tasks.</li>
+            <li>Few-shot score steadily improves with the number of examples, scaling to 32 before hitting context size limit.</li>
+          </ul>
+
+          <h4>NLI</h4>
+          <ul>
+            <li>RTE dataset — GPT-3 results are close to random, and less than SOTA results.</li>
+          </ul>
+
+          <h4>Synthetic and qualitative tasks</h4>
+          <ul>
+            <li>GPT-3 performed poorly on correcting reverse chars word, which authors believe is due to BPE tokenization.</li>
+          </ul>
+
+          <h3>Conclusion</h3>
+          <p>GPT-3 is the first paper that demonstrates that LLMs can achieve SOTA results and learn from few examples, and hence open the door for generic LLMs that does not even need fine-tuning for specific tasks.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank">Google Scholar</a>
+        <a href="https://dblp.org/pers/hd/b/Bulut:Muhammed_Fatih" target="_blank">DBLP</a>
+        <a href="../blog.html">Blog</a>
+      </div>
+      <p>&copy; 2025 Fatih Bulut. Built with ☕ and curiosity.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 300);
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+
+</html>

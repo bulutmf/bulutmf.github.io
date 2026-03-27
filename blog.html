@@ -59,6 +59,73 @@
     <div class="container">
       <div class="blog-list">
 
+        <!-- Post 0: Speed Is the New Moat -->
+        <article class="blog-card" id="speed-is-the-new-moat">
+          <div class="blog-card-header" onclick="togglePost(this)">
+            <div class="blog-card-meta">
+              <span class="blog-date">Mar 27, 2026</span>
+              <div class="blog-tags">
+                <span class="blog-tag">AI</span>
+                <span class="blog-tag">Engineering</span>
+                <span class="blog-tag">Architecture</span>
+              </div>
+            </div>
+            <h2 class="blog-card-title">Talk Is Cheap. In the Age of AI, Code Is Cheaper.</h2>
+            <p class="blog-card-excerpt">
+              AI has compressed the cost of building software and the cost of copying it. The durable edge is no longer just code quality, but how fast an organization can ship, learn, and adapt on top of the right architecture.
+            </p>
+            <div class="blog-card-actions">
+              <a href="posts/speed-is-the-new-moat.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
+              <span class="blog-expand-btn">Preview ↓</span>
+            </div>
+          </div>
+          <div class="blog-card-body">
+            <p><strong>Talk is cheap. In the age of AI, code is cheaper.</strong></p>
+            <p><strong>Show me how fast you can ship.</strong></p>
+
+            <p>Linus Torvalds made "talk is cheap, show me the code" famous for a reason. For a long time, it was a durable moat. If you could design well, implement fast, and actually ship working systems, you had a meaningful edge. I always liked that standard. Ideas are easy. Working software is harder. Code was proof.</p>
+
+            <p>That assumption is changing fast.</p>
+
+            <p>Not over the course of years. Over the course of months.</p>
+
+            <p>AI coding tools and agentic workflows have already shifted the ground under software development. What used to take days can now take hours. Boilerplate is abundant. Scaffolding is instant. Even non-trivial implementation work is getting compressed by tools that can generate, refactor, test, and debug with increasing competence. Whether you use AutoGen, Semantic Kernel, LangGraph, Claude SDK, GitHub Copilot SDK, or whatever comes next, the pattern is clear: building is getting cheaper.</p>
+
+            <p>And if building is getting cheaper, then copying is getting cheaper too.</p>
+
+            <p>That changes the game.</p>
+
+            <p>The moat is no longer just the ability to write code. The moat is how quickly you can turn an idea into a shipped product, learn from reality, and adapt before everyone else catches up. In other words, execution speed matters more than ever.</p>
+
+            <p>But "move fast" by itself is still lazy advice.</p>
+
+            <p>Speed only works if the underlying platform is designed for speed. I have seen too many projects that are still living in the past: tightly coupled systems, brittle integrations, unclear interfaces, slow deployment paths, no real observability, no meaningful evaluation loop, and architecture that makes every change feel like surgery. Putting AI agents on top of that does not create leverage. It just helps you produce technical debt faster.</p>
+
+            <p>That is the part many organizations are underestimating.</p>
+
+            <p>In an AI-native world, architecture matters more, not less. If agents are going to write more of the code, then human leverage shifts upward. The hard part is not typing every line yourself. The hard part is designing systems that can absorb rapid change without breaking every quarter. The hard part is creating the conditions for continuous iteration: modular services, clear boundaries, reusable components, fast feedback loops, measurable quality, and the ability to swap models, tools, and workflows without rebuilding the entire product.</p>
+
+            <p>That is what enables real speed.</p>
+
+            <p>Execution is not just code generation. Execution is choosing the right problem. It is framing the workflow correctly. It is knowing what to automate and what to keep under human control. It is validating in production. It is learning from users faster than competitors. It is making architectural decisions today that do not trap you tomorrow.</p>
+
+            <p><strong>This is why I think the winners in this moment will not simply be the teams with the most AI tools. They will be the teams that combine AI-assisted speed with architectural discipline.</strong> They will ship fast, but they will also be able to change direction fast. They will not confuse velocity with chaos. They will build systems that can evolve as models, frameworks, and user expectations evolve.</p>
+
+            <p>Because they will evolve. Constantly.</p>
+
+            <p>We are entering a phase where coding itself is becoming commoditized. That does not mean engineering matters less. It means engineering judgment matters more. Architectural oversight matters more. Product sense matters more. Operational excellence matters more. The human role is moving away from manually producing every artifact and toward orchestrating systems that can move quickly without collapsing under their own weight.</p>
+
+            <p>So yes, AI is making it easier than ever to build.</p>
+
+            <p>It is also making it easier than ever to be copied.</p>
+
+            <p>That is why the new moat is speed. Not reckless speed. Not speed at the expense of design. Speed built on the right foundation. Speed that turns change into shipped learning. Speed that lets you adapt while others are still debating.</p>
+
+            <p><strong>Ship fast. Learn fast. Adapt faster.</strong><br>
+            <strong>Speed is the new moat.</strong></p>
+          </div>
+        </article>
+
         <!-- Post 1: Friday Reads -->
         <article class="blog-card" id="friday-reads">
           <div class="blog-card-header" onclick="togglePost(this)">
@@ -74,7 +141,10 @@
             <p class="blog-card-excerpt">
               As anyone in tech, I constantly get bombarded with countless papers, links, and resources to read. I dedicate Fridays to tackling this "technical debt" by reading through as much as possible.
             </p>
-            <span class="blog-expand-btn">Read more ↓</span>
+            <div class="blog-card-actions">
+              <a href="posts/friday-reads.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
+              <span class="blog-expand-btn">Preview ↓</span>
+            </div>
           </div>
           <div class="blog-card-body">
             <p>As anyone in tech, I constantly get bombarded with countless papers, links, and resources to read. While I try to keep up, it's often impossible to go through them all, and they inevitably pile up in my browser's collection. Despite my efforts to be selective, the list grows faster than I can manage. So, I dedicate Fridays to tackling this "technical debt" by reading through as much as possible. Starting today, I'm sharing what I've learned along the way, hoping it might be helpful to others as well. Enjoy!</p>
@@ -116,7 +186,10 @@
             <p class="blog-card-excerpt">
               This paper is one of the important foundational papers from OpenAI, published in 2020. GPT-3 demonstrates that LLMs pretrained with large volume of data can learn very quickly with few examples, possibly cutting the need for fine-tuning.
             </p>
-            <span class="blog-expand-btn">Read more ↓</span>
+            <div class="blog-card-actions">
+              <a href="posts/gpt3-paper.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
+              <span class="blog-expand-btn">Preview ↓</span>
+            </div>
           </div>
           <div class="blog-card-body">
             <p>This paper is one of the important foundational papers from OpenAI, published in 2020.</p>
@@ -222,7 +295,10 @@
             <p class="blog-card-excerpt">
               This is a recent paper from Google Research and DeepMind that introduces Med-PaLM, a Large Language Model tailored to answer questions about the clinical (medical) domain, achieving SOTA results on various domain specific datasets.
             </p>
-            <span class="blog-expand-btn">Read more ↓</span>
+            <div class="blog-card-actions">
+              <a href="posts/clinical-knowledge.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
+              <span class="blog-expand-btn">Preview ↓</span>
+            </div>
           </div>
           <div class="blog-card-body">
             <p>This is a recent paper (December 2022) from Google Research and DeepMind that appeared in <a href="https://arxiv.org/abs/2212.13138" target="_blank">Arxiv</a>.</p>
@@ -253,7 +329,10 @@
             <p class="blog-card-excerpt">
               You probably heard the buzz around "metaverse". Regardless of which side of the argument you are in, in this article, I discuss metaverse security — from infrastructure to identity to data privacy.
             </p>
-            <span class="blog-expand-btn">Read more ↓</span>
+            <div class="blog-card-actions">
+              <a href="posts/metaverse-security.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
+              <span class="blog-expand-btn">Preview ↓</span>
+            </div>
           </div>
           <div class="blog-card-body">
             <p>You probably heard the buzz around "metaverse". Some people believe that the metaverse is our inevitable future, some others believe that the metaverse is a bubble that will burst eventually... Regardless of which side of the arguments you are in, in this article, I would like to discuss about <strong>metaverse security</strong>.</p>
@@ -332,7 +411,10 @@
             <p class="blog-card-excerpt">
               This paper proposes a methodology to use side channel information (electromagnetic signals) to identify malware activity, type, and identity, even in the presence of obfuscation. A paper from ACSAC 2021.
             </p>
-            <span class="blog-expand-btn">Read more ↓</span>
+            <div class="blog-card-actions">
+              <a href="posts/obfuscation-revealed.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
+              <span class="blog-expand-btn">Preview ↓</span>
+            </div>
           </div>
           <div class="blog-card-body">
             <p>This is a <a href="https://dl.acm.org/doi/10.1145/3485832.3485894" target="_blank">paper</a> that appeared in ACSAC 2021.</p>
@@ -377,7 +459,10 @@
             <p class="blog-card-excerpt">
               Risk management is a fundamental part of Cloud Service Management. This post explains how an AI-based approach can standardize different domains to quantify risk using NLP, applied in IBM Cloud Pak for Multicloud Management.
             </p>
-            <span class="blog-expand-btn">Read more ↓</span>
+            <div class="blog-card-actions">
+              <a href="posts/nl-risk-score.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
+              <span class="blog-expand-btn">Preview ↓</span>
+            </div>
           </div>
           <div class="blog-card-body">
             <p>Risk management is a fundamental part of Cloud Service Management. Understanding up-to-date risk posture of the cloud environment is a desiring feature of today's complex IT infrastructure.</p>
@@ -426,7 +511,10 @@
             <p class="blog-card-excerpt">
               A disclosure: I am not an avid blogger, however, I do read and write quite a lot and always willing to become an avid blogger.
             </p>
-            <span class="blog-expand-btn">Read more ↓</span>
+            <div class="blog-card-actions">
+              <a href="posts/before-beginning.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
+              <span class="blog-expand-btn">Preview ↓</span>
+            </div>
           </div>
           <div class="blog-card-body">
             <p>First a disclosure: I am not an avid blogger, however, I do read and write quite a lot and always willing to become an avid blogger (no surprise!). I wrote in Blogspot before, stories related to Cloud, Data and all other things, even about democracy. This is my attempt to get back into the blogging world again. I plan to write on stuff related to Data Science, Artificial Intelligence and Cloud et al.</p>
@@ -472,11 +560,11 @@
           body.style.maxHeight = '0';
         });
         card.classList.remove('expanded');
-        btn.textContent = 'Read more ↓';
+        btn.textContent = 'Preview ↓';
       } else {
         card.classList.add('expanded');
         body.style.maxHeight = body.scrollHeight + 'px';
-        btn.textContent = 'Show less ↑';
+        btn.textContent = 'Hide preview ↑';
         body.addEventListener('transitionend', function handler() {
           if (card.classList.contains('expanded')) {
             body.style.maxHeight = 'none';

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>From Browser Tabs to Insights: My Friday Reads 9/27/2024 | Fatih Bulut</title>
+  <meta name="description"
+    content="As anyone in tech, I constantly get bombarded with countless papers, links, and resources to read. I dedicate Fridays to tackling this technical debt by reading through as much as possible.">
+  <meta name="author" content="Fatih Bulut">
+  <meta property="og:title" content="From Browser Tabs to Insights: My Friday Reads 9/27/2024">
+  <meta property="og:description"
+    content="A Friday reading roundup on AI, security, and agentic systems, from Tines and CrowdStrike to code in pretraining and TaskGen.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">Fatih Bulut</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank" class="nav-icon"
+            title="Google Scholar">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="blog-header post-header">
+    <div class="container">
+      <a href="../blog.html" class="post-back-link">← Back to Blog</a>
+      <div class="blog-card-meta post-meta">
+        <span class="blog-date">Sep 27, 2024</span>
+        <div class="blog-tags">
+          <span class="blog-tag">AI</span>
+          <span class="blog-tag">Security</span>
+          <span class="blog-tag">Weekly Reads</span>
+        </div>
+      </div>
+      <h1 class="post-title">From Browser Tabs to Insights: My Friday Reads 9/27/2024</h1>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="container">
+      <article class="post-article">
+        <div class="post-content">
+          <p>As anyone in tech, I constantly get bombarded with countless papers, links, and resources to read. While I try to keep up, it's often impossible to go through them all, and they inevitably pile up in my browser's collection. Despite my efforts to be selective, the list grows faster than I can manage. So, I dedicate Fridays to tackling this "technical debt" by reading through as much as possible. Starting today, I'm sharing what I've learned along the way, hoping it might be helpful to others as well. Enjoy!</p>
+
+          <h3>Tines launched Workbench</h3>
+          <p>Tines is a workflow automation platform focused on security, IT, and engineering, designed to streamline tools and data, allowing complex workflows to be executed effortlessly. Recently, Tines introduced <strong>Workbench</strong>, an AI-powered chat interface that leverages templates to create automated workflows with the help of AI. This innovation gives companies greater confidence in transitioning from manual workflows to AI-driven automation. One standout feature on their <a href="https://www.tines.com/product/workbench/" target="_blank">website</a> is a phishing triage and response demo, showcasing how organizations can automate critical security processes.</p>
+
+          <h3>CrowdStrike announced a set of innovations in Fal.Con</h3>
+          <p>CrowdStrike hosted its annual Fal.Con conference last week, unveiling several new AI-powered features. Some key highlights include:</p>
+          <ul>
+            <li><strong>AI-powered parsers</strong>: Logs can be notoriously difficult to work with, and despite efforts like OCSF, log standardization remains inconsistent. To address this, CrowdStrike introduced an AI-powered data ingestion pipeline. Users can provide a sample of logs, and Falcon SIEM, leveraging large language models (LLMs), will analyze the structure and content to automatically generate parsers. Interestingly, CrowdStrike emphasized the use of "multiple" LLMs, hinting that both encoder and decoder models may be at play.</li>
+            <li><strong>AI-powered Attack Path Analysis</strong>: Many organizations still rely on CVSS scores to prioritize vulnerabilities, though it's well known that CVSS alone isn't sufficient to identify the most critical risks. Falcon Exposure Management's Attack Path Analysis goes beyond CVSS scores, incorporating environmental factors. AI is then applied to reason through this data, enabling better prioritization of vulnerabilities.</li>
+            <li><strong>Automated Leads, GenAI-Based Response and Triage</strong>: Another notable announcement was on the XDR front, aimed at assisting security teams, particularly Security Operations Centers (SOC), in cutting through the noise to focus on the most impactful alerts and incidents. CrowdStrike claims that their <strong>Charlotte AI</strong> can now handle incident and alert triage, which is often considered one of the most challenging and time-consuming tasks in SOC operations.</li>
+          </ul>
+          <p>For more details, you can explore these topics further on the CrowdStrike <a href="https://www.crowdstrike.com/blog/ai-innovations-expedite-and-elevate-analyst-experience-fal-con-2024/" target="_blank">blog</a>.</p>
+
+          <h3>To Code, or Not To Code? Exploring Impact of Code in Pre-training</h3>
+          <p>The value of incorporating code in pretraining is a well-known advantage in the LLM community, though there has yet to be a comprehensive ablation study that fully demonstrates its effects. This <a href="https://arxiv.org/abs/2408.10914" target="_blank">paper</a> systematically examines how adding code to the pretraining dataset influences LLM performance. While it doesn't fully address the "why," it serves as a significant empirical study that highlights the impact of code in pretraining.</p>
+          <p>What other types of data could yield similar benefits? It's an open question, and perhaps the next breakthrough in LLM development lies in identifying those data types.</p>
+
+          <h3>TaskGen: A Task-Based Memory-Infused Agentic Framework using StrictJSON</h3>
+          <p>This <a href="https://github.com/simbianai/taskgen/blob/main/Paper/TaskGen%20Paper.pdf" target="_blank">paper</a> comes from a startup called <strong>Simbian</strong>, which focuses on developing autonomous agents to tackle security challenges. It introduces a new agent-based framework that enforces strict JSON output, leading to significant time and cost savings. The framework also introduces the concepts of <strong>Inner Agent</strong> and <strong>Meta Agents</strong>, which add an interesting dimension to the design and functionality of autonomous systems.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank">Google Scholar</a>
+        <a href="https://dblp.org/pers/hd/b/Bulut:Muhammed_Fatih" target="_blank">DBLP</a>
+        <a href="../blog.html">Blog</a>
+      </div>
+      <p>&copy; 2025 Fatih Bulut. Built with ☕ and curiosity.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 300);
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+
+</html>

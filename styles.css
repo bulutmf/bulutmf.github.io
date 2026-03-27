@@ -852,9 +852,26 @@ a.stat:hover::after {
   line-height: 1.6;
 }
 
+.blog-card-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-3);
+  flex-wrap: wrap;
+}
+
+.blog-open-link {
+  font-size: var(--font-size-sm);
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.blog-open-link:hover {
+  color: var(--accent-secondary);
+}
+
 .blog-expand-btn {
   display: inline-block;
-  margin-top: var(--spacing-3);
   font-size: var(--font-size-sm);
   color: var(--accent-primary);
   font-weight: 500;
@@ -923,4 +940,247 @@ a.stat:hover::after {
 
 .blog-card-body a:hover {
   color: var(--accent-secondary);
+}
+
+/* ====================================
+   Standalone Post Page
+   ==================================== */
+
+.post-header {
+  position: relative;
+  text-align: left;
+  padding-bottom: var(--spacing-6);
+  overflow: clip;
+}
+
+.post-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(59, 130, 246, 0.18), transparent 34%),
+    radial-gradient(circle at 88% 0%, rgba(139, 92, 246, 0.16), transparent 28%);
+  pointer-events: none;
+}
+
+.post-header .container {
+  max-width: 860px;
+  position: relative;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.78) 0%, rgba(15, 23, 42, 0.42) 100%);
+  box-shadow:
+    0 24px 80px rgba(2, 6, 23, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.post-header .container::after {
+  content: "";
+  position: absolute;
+  left: clamp(1.5rem, 3vw, 2.5rem);
+  right: clamp(1.5rem, 3vw, 2.5rem);
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.6), rgba(139, 92, 246, 0));
+}
+
+.post-header + .main {
+  padding-top: 0;
+}
+
+.post-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-6);
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: var(--radius-full);
+  background: rgba(15, 23, 42, 0.38);
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.post-back-link:hover {
+  color: var(--text-primary);
+  border-color: rgba(59, 130, 246, 0.35);
+  background: rgba(30, 41, 59, 0.68);
+  transform: translateX(-2px);
+}
+
+.post-meta {
+  margin-bottom: var(--spacing-4);
+}
+
+.post-header .blog-card-meta {
+  gap: var(--spacing-4);
+}
+
+.post-header .blog-tag {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.14);
+}
+
+.post-title {
+  font-size: clamp(1.9rem, 4.6vw, 3.1rem);
+  line-height: 1.06;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #f8fbff 0%, #a5c8ff 38%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-wrap: balance;
+}
+
+.post-excerpt {
+  display: none;
+}
+
+.post-article {
+  max-width: 760px;
+  margin: calc(var(--spacing-8) * -1) auto var(--spacing-16);
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.post-content {
+  position: relative;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.72) 100%);
+  box-shadow:
+    0 18px 50px rgba(2, 6, 23, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.post-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: clamp(1.5rem, 3vw, 2.25rem);
+  width: 88px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+}
+
+.post-content p,
+.post-content ul,
+.post-content ol,
+.post-content blockquote {
+  font-size: 1.08rem;
+  color: var(--text-secondary);
+  line-height: 1.88;
+  margin-top: var(--spacing-6);
+}
+
+.post-content > p:first-child {
+  margin-top: var(--spacing-4);
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  color: var(--text-primary);
+  line-height: 1.72;
+}
+
+.post-content h2,
+.post-content h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-top: var(--spacing-12);
+  margin-bottom: calc(var(--spacing-2) * -1);
+}
+
+.post-content h4 {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: var(--spacing-8);
+}
+
+.post-content ul,
+.post-content ol {
+  padding-left: var(--spacing-6);
+}
+
+.post-content li {
+  margin-top: var(--spacing-3);
+}
+
+.post-content blockquote {
+  border-left: 3px solid var(--accent-primary);
+  padding: var(--spacing-4) var(--spacing-6);
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+.post-content strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.post-content a {
+  color: var(--accent-primary);
+  text-decoration: underline;
+  text-decoration-color: rgba(59, 130, 246, 0.3);
+  text-underline-offset: 3px;
+  transition:
+    color var(--transition-fast),
+    text-decoration-color var(--transition-fast);
+}
+
+.post-content a:hover {
+  color: var(--accent-secondary);
+  text-decoration-color: var(--accent-secondary);
+}
+
+.post-content hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: var(--spacing-12) 0;
+}
+
+@media (max-width: 600px) {
+  .post-header .container {
+    padding: var(--spacing-6);
+    border-radius: 22px;
+  }
+
+  .post-title {
+    font-size: clamp(1.8rem, 8.5vw, 2.4rem);
+  }
+
+  .post-article {
+    margin-top: calc(var(--spacing-6) * -1);
+  }
+
+  .post-content {
+    padding: var(--spacing-6);
+    border-radius: 20px;
+  }
+
+  .post-content p,
+  .post-content ul,
+  .post-content ol,
+  .post-content blockquote {
+    font-size: 1rem;
+  }
 }

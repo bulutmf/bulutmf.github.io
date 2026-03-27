@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper Summary: Large Language Models Encode Clinical Knowledge | Fatih Bulut</title>
+  <meta name="description"
+    content="This is a recent paper from Google Research and DeepMind that introduces Med-PaLM, a Large Language Model tailored to answer questions about the clinical domain, achieving SOTA results on various domain specific datasets.">
+  <meta name="author" content="Fatih Bulut">
+  <meta property="og:title" content="Paper Summary: Large Language Models Encode Clinical Knowledge">
+  <meta property="og:description"
+    content="A summary of Med-PaLM, instruction prompt tuning, and the promise and limits of LLMs in clinical settings.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">Fatih Bulut</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank" class="nav-icon"
+            title="Google Scholar">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="blog-header post-header">
+    <div class="container">
+      <a href="../blog.html" class="post-back-link">← Back to Blog</a>
+      <div class="blog-card-meta post-meta">
+        <span class="blog-date">Jan 6, 2023</span>
+        <div class="blog-tags">
+          <span class="blog-tag">LLMs</span>
+          <span class="blog-tag">Clinical AI</span>
+        </div>
+      </div>
+      <h1 class="post-title">Paper Summary: Large Language Models Encode Clinical Knowledge</h1>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="container">
+      <article class="post-article">
+        <div class="post-content">
+          <p>This is a recent paper (December 2022) from Google Research and DeepMind that appeared in <a href="https://arxiv.org/abs/2212.13138" target="_blank">Arxiv</a>.</p>
+
+          <p><strong>TL;DR</strong>: The paper introduces a Large Language Model (LLM) that is tailored to answer questions about clinical (medical) domain. It achieves SOTA results on various domain specific datasets.</p>
+
+          <p>Large Language Models continue to demonstrate great potentials in natural language understanding and generation. These models do not just answer factual questions such as: "Where is Eiffel Tower?" but also show signs of reasoning and coming up with answers that mimics human thought process. Even though we are still early in the journey, there are increasing number of demonstrations of LLMs in domain specific use cases. In this paper, authors explored how LLMs can be used to answer questions in clinical domain.</p>
+
+          <p>Since this is a paper from Google, the authors utilize <a href="https://ai.googleblog.com/2022/04/pathways-language-model-palm-scaling-to.html" target="_blank">Google's PaLM</a>, a 540-billion parameter, dense decoder-only Transformer model trained with the Pathways system. Currently, there are various challenges, such as hallucinations, consistency, in LLMs that prevent wider adoption in critical domains such as in clinical settings. Authors recognize these challenges and introduce a framework for human evaluation of model answers. I think this is critical for these kinds of systems as we are currently not there yet to comprehensively evaluate the accuracy of these models.</p>
+
+          <p>The paper showcased that Flan-PaLM (an instruction-tuned variant of PaLM itself), achieves SOTA on various benchmarks. It uses a combination of few shot, chain of thoughts and self-consistency prompting strategies. At the same time, human evaluation reveals that there are gaps in responses. To alleviate this, authors introduced "instruction prompt tuning", a parameter-efficient alignment of LLMs to new domains using a few examples, and called the new model Med-PaLM, which basically applied instruction prompt tuning to adapt Flan-PaLM to medical domain. Med-PaLM sampled examples from MultiMedQA free-response datasets (HealthSearchQA, MedicationQA, LiveQA). A panel of five clinicians was asked to provide exemplar answers, in total 40 examples used for instruction prompt tuning training. Notice the few examples used to tune the model. The results show promising but still inferior to clinicians.</p>
+
+          <p>As LLMs shows promising results, clinical settings will be one area companies will definitely target, however at the same time, it will be one of the most challenging ones given the regulations and human aspects.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank">Google Scholar</a>
+        <a href="https://dblp.org/pers/hd/b/Bulut:Muhammed_Fatih" target="_blank">DBLP</a>
+        <a href="../blog.html">Blog</a>
+      </div>
+      <p>&copy; 2025 Fatih Bulut. Built with ☕ and curiosity.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 300);
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+
+</html>

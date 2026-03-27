@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metaverse [and] Security | Fatih Bulut</title>
+  <meta name="description"
+    content="You probably heard the buzz around metaverse. Regardless of which side of the argument you are in, this article discusses metaverse security from infrastructure to identity to data privacy.">
+  <meta name="author" content="Fatih Bulut">
+  <meta property="og:title" content="Metaverse [and] Security">
+  <meta property="og:description"
+    content="A discussion of metaverse security spanning infrastructure, identity, data privacy, ownership, and societal implications.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">Fatih Bulut</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank" class="nav-icon"
+            title="Google Scholar">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="blog-header post-header">
+    <div class="container">
+      <a href="../blog.html" class="post-back-link">← Back to Blog</a>
+      <div class="blog-card-meta post-meta">
+        <span class="blog-date">Jun 6, 2022</span>
+        <div class="blog-tags">
+          <span class="blog-tag">Metaverse</span>
+          <span class="blog-tag">Security</span>
+        </div>
+      </div>
+      <h1 class="post-title">Metaverse [and] Security</h1>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="container">
+      <article class="post-article">
+        <div class="post-content">
+          <p>You probably heard the buzz around "metaverse". Some people believe that the metaverse is our inevitable future, some others believe that the metaverse is a bubble that will burst eventually... Regardless of which side of the arguments you are in, in this article, I would like to discuss about <strong>metaverse security</strong>.</p>
+
+          <p>In case you do not know yet (!), the term "metaverse" originally was coined in the 1992 novel of <em>Neil Stephenson, Snow Crash,</em> to describe a virtual world, 21st century dystopia. The number of definitions has just grown by then.</p>
+
+          <blockquote>
+            <p>"Three-dimensional Internet that is populated with live people" — <em>Philip Rosedale</em> (creator of Second Life)</p>
+            <p>"The next platform and medium will be more immersive, an embodied Internet where you are in the experience, not just looking at it and we call this the metaverse" — Mark Zuckerberg</p>
+          </blockquote>
+
+          <p>In order to understand the metaverse security, we first need to understand the intrinsic characteristics of metaverse:</p>
+          <ul>
+            <li><strong>Immersiveness:</strong> Realistic to allow users to feel immersed</li>
+            <li><strong>Hyper spatiotemporality:</strong> Break of limitations of time and space</li>
+            <li><strong>Sustainability:</strong> Maintains a closed economic loop</li>
+            <li><strong>Interoperability:</strong> Move seamlessly across worlds</li>
+            <li><strong>Scalability:</strong> Handle many avatars and graphics</li>
+            <li><strong>Heterogeneity:</strong> Virtual spaces, physical spaces, devices</li>
+          </ul>
+
+          <p>In metaverse, we will be interacting in a virtual world directed [possibly] by activities within a physical world. It is not actually real, but feels like real; to the point that you may not be able to tell the differences (immersive). Metaverse is supposed to be as sufficient as living in a real world, but in a virtual one. Metaverse is full of opportunities, providing smooth and multi modal interactions that may not even be possible in a real world.</p>
+
+          <p><strong>All well! But what about "Security"?</strong></p>
+
+          <p>Let's talk about the layers of metaverse first. We can separate metaverse into three main building blocks: Infrastructure (5G, WiFi, Cloud, Edge etc.), Human Interface (AR/VR, mobile, smart glasses) and Virtual World (and ecosystem around it). Each one of these provides an angle for an attacker to exploit.</p>
+
+          <h3>Infrastructure security</h3>
+          <p>This one probably is the one that we are most familiar with and has the tools to protect from attackers. In the context of infrastructure security, there are multiple entry points for the attackers. Obviously VR/AR is an integral part of metaverse and the security of these devices are critical. If one can successfully compromise AR/VR device then the rest will follow. For example, attackers can move the person from one virtual world to another. Attackers can potentially cause physical harm to the user by disorienting the person. Therefore, security of the AR/VR devices are critical, keeping them up to date regarding patches (OS and apps), hardening with security controls are just some of the first steps to secure the devices.</p>
+
+          <p>AR/VR security is obviously the starting point but then there is the security of the underlying physical infrastructure (cloud, edge, 5G etc.), integrity and the provenance of software that are running on them and so on...</p>
+
+          <h3>What about identity?</h3>
+          <p>Identity is probably the most important part of the metaverse security. How do we make sure that the avatar that you are interacting in metaverse is actually the one that is intended for (impersonation)? Would there be a central authority to provide such an identity service and verification of it (linkability)? If so, how would this work if we go from one metaverse to another (interoperability)?</p>
+
+          <p>There is a common belief that there will NOT be just one metaverse, but rather multiple of them. Hence, interoperability will be crucial for seamless operation and interaction. But decentralization comes with its own challenges regarding the identity and its consistency.</p>
+
+          <p>There are other identity related questions in metaverse: What if somebody steal my identity and operate on my behalf? How do we prevent/detect it?</p>
+
+          <h3>What about my data?</h3>
+          <p>Data privacy is another important aspect of metaverse security. Can somebody sneak into my room and listen my conversation (man in the room)? How can I make sure that my data is transmitted securely and nobody is tampering with it (unauthorized data access)? Obviously encryption of data "in place" and "in transit" are critical here.</p>
+
+          <p>Another part of the story is AI security. Since AI is one of the most prominent enablers of metaverse, how do we prevent false data injection which might eventually affect the downstream AI models?</p>
+
+          <h3>How about ownership?</h3>
+          <p>Ownership is another important component of the metaverse. Given the leap in blockchain technology, NFTs can be used in metaverse to prove ownership. Some of the questions are: How do I prove an ownership in metaverse? Can somebody steal from me? What if this is a fraud? How do I verify and make sure that I am not robbed or theft?</p>
+
+          <h3>Societal Impacts</h3>
+          <p>Given the penetration of technology in real life, we have been witnessing increased surveillance by the governments in all areas of our lives. How is the concept of "central authority" going to work in metaverse? If a fight broke up in metaverse, who is going to intervene? Do we have a central authority, like a government, who can provide this service? If so, how do we make sure that the central authority is not biased and fair to all parties? These are serious questions and should be considered well, as the societal implications can be foundational.</p>
+
+          <h3>Conclusion</h3>
+          <p>This article gives some starting points to think about metaverse security and its implication to our [new] world. As we see more adoption of AR/VR and more metaverse ecosystems, we will need to answer all of these questions to be able to securely operate in this new era.</p>
+
+          <p><strong>References</strong></p>
+          <ul>
+            <li><a href="https://arxiv.org/pdf/2203.02662.pdf" target="_blank">https://arxiv.org/pdf/2203.02662.pdf</a></li>
+            <li><a href="https://arxiv.org/pdf/2203.03854.pdf" target="_blank">https://arxiv.org/pdf/2203.03854.pdf</a></li>
+            <li><a href="https://blogs.microsoft.com/blog/2022/03/28/the-metaverse-is-coming-here-are-the-cornerstones-for-securing-it" target="_blank">Microsoft Blog: Cornerstones for securing the metaverse</a></li>
+            <li><a href="https://securityintelligence.com/articles/metaverse-security-challenges/" target="_blank">Security Intelligence: Metaverse security challenges</a></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank">Google Scholar</a>
+        <a href="https://dblp.org/pers/hd/b/Bulut:Muhammed_Fatih" target="_blank">DBLP</a>
+        <a href="../blog.html">Blog</a>
+      </div>
+      <p>&copy; 2025 Fatih Bulut. Built with ☕ and curiosity.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 300);
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+
+</html>

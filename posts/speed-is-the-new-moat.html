@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Talk Is Cheap. In the Age of AI, Code Is Cheaper. | Fatih Bulut</title>
+  <meta name="description"
+    content="AI has compressed the cost of building software and the cost of copying it. The durable edge is no longer just code quality, but how fast an organization can ship, learn, and adapt on top of the right architecture.">
+  <meta name="author" content="Fatih Bulut">
+  <meta property="og:title" content="Talk Is Cheap. In the Age of AI, Code Is Cheaper.">
+  <meta property="og:description"
+    content="AI has compressed the cost of building software and the cost of copying it. The durable edge is execution speed built on the right architecture.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">Fatih Bulut</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank" class="nav-icon"
+            title="Google Scholar">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="blog-header post-header">
+    <div class="container">
+      <a href="../blog.html" class="post-back-link">← Back to Blog</a>
+      <div class="blog-card-meta post-meta">
+        <span class="blog-date">Mar 27, 2026</span>
+        <div class="blog-tags">
+          <span class="blog-tag">AI</span>
+          <span class="blog-tag">Engineering</span>
+          <span class="blog-tag">Architecture</span>
+        </div>
+      </div>
+      <h1 class="post-title">Talk Is Cheap. In the Age of AI, Code Is Cheaper.</h1>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="container">
+      <article class="post-article">
+        <div class="post-content">
+          <p><strong>Talk is cheap. In the age of AI, code is cheaper.</strong></p>
+          <p><strong>Show me how fast you can ship.</strong></p>
+
+          <p>Linus Torvalds made "talk is cheap, show me the code" famous for a reason. For a long time, it was a durable moat. If you could design well, implement fast, and actually ship working systems, you had a meaningful edge. I always liked that standard. Ideas are easy. Working software is harder. Code was proof.</p>
+
+          <p>That assumption is changing fast.</p>
+
+          <p>Not over the course of years. Over the course of months.</p>
+
+          <p>AI coding tools and agentic workflows have already shifted the ground under software development. What used to take days can now take hours. Boilerplate is abundant. Scaffolding is instant. Even non-trivial implementation work is getting compressed by tools that can generate, refactor, test, and debug with increasing competence. Whether you use AutoGen, Semantic Kernel, LangGraph, Claude SDK, GitHub Copilot SDK, or whatever comes next, the pattern is clear: building is getting cheaper.</p>
+
+          <p>And if building is getting cheaper, then copying is getting cheaper too.</p>
+
+          <p>That changes the game.</p>
+
+          <p>The moat is no longer just the ability to write code. The moat is how quickly you can turn an idea into a shipped product, learn from reality, and adapt before everyone else catches up. In other words, execution speed matters more than ever.</p>
+
+          <p>But "move fast" by itself is still lazy advice.</p>
+
+          <p>Speed only works if the underlying platform is designed for speed. I have seen too many projects that are still living in the past: tightly coupled systems, brittle integrations, unclear interfaces, slow deployment paths, no real observability, no meaningful evaluation loop, and architecture that makes every change feel like surgery. Putting AI agents on top of that does not create leverage. It just helps you produce technical debt faster.</p>
+
+          <p>That is the part many organizations are underestimating.</p>
+
+          <p>In an AI-native world, architecture matters more, not less. If agents are going to write more of the code, then human leverage shifts upward. The hard part is not typing every line yourself. The hard part is designing systems that can absorb rapid change without breaking every quarter. The hard part is creating the conditions for continuous iteration: modular services, clear boundaries, reusable components, fast feedback loops, measurable quality, and the ability to swap models, tools, and workflows without rebuilding the entire product.</p>
+
+          <p>That is what enables real speed.</p>
+
+          <p>Execution is not just code generation. Execution is choosing the right problem. It is framing the workflow correctly. It is knowing what to automate and what to keep under human control. It is validating in production. It is learning from users faster than competitors. It is making architectural decisions today that do not trap you tomorrow.</p>
+
+          <p><strong>This is why I think the winners in this moment will not simply be the teams with the most AI tools. They will be the teams that combine AI-assisted speed with architectural discipline.</strong> They will ship fast, but they will also be able to change direction fast. They will not confuse velocity with chaos. They will build systems that can evolve as models, frameworks, and user expectations evolve.</p>
+
+          <p>Because they will evolve. Constantly.</p>
+
+          <p>We are entering a phase where coding itself is becoming commoditized. That does not mean engineering matters less. It means engineering judgment matters more. Architectural oversight matters more. Product sense matters more. Operational excellence matters more. The human role is moving away from manually producing every artifact and toward orchestrating systems that can move quickly without collapsing under their own weight.</p>
+
+          <p>So yes, AI is making it easier than ever to build.</p>
+
+          <p>It is also making it easier than ever to be copied.</p>
+
+          <p>That is why the new moat is speed. Not reckless speed. Not speed at the expense of design. Speed built on the right foundation. Speed that turns change into shipped learning. Speed that lets you adapt while others are still debating.</p>
+
+          <p><strong>Ship fast. Learn fast. Adapt faster.</strong><br>
+          <strong>Speed is the new moat.</strong></p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank">Google Scholar</a>
+        <a href="https://dblp.org/pers/hd/b/Bulut:Muhammed_Fatih" target="_blank">DBLP</a>
+        <a href="../blog.html">Blog</a>
+      </div>
+      <p>&copy; 2025 Fatih Bulut. Built with ☕ and curiosity.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 300);
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper Summary: Obfuscation Revealed — Leveraging Electromagnetic Signals for Obfuscated Malware Classification | Fatih Bulut</title>
+  <meta name="description"
+    content="This paper proposes a methodology to use side channel information, electromagnetic signals, to identify malware activity, type, and identity even in the presence of obfuscation. A paper from ACSAC 2021.">
+  <meta name="author" content="Fatih Bulut">
+  <meta property="og:title" content="Paper Summary: Obfuscation Revealed — Leveraging Electromagnetic Signals for Obfuscated Malware Classification">
+  <meta property="og:description"
+    content="A paper summary on using electromagnetic side-channel signals for malware detection, family classification, and obfuscation analysis.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">Fatih Bulut</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank" class="nav-icon"
+            title="Google Scholar">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="blog-header post-header">
+    <div class="container">
+      <a href="../blog.html" class="post-back-link">← Back to Blog</a>
+      <div class="blog-card-meta post-meta">
+        <span class="blog-date">Jan 14, 2022</span>
+        <div class="blog-tags">
+          <span class="blog-tag">Malware</span>
+          <span class="blog-tag">IoT</span>
+          <span class="blog-tag">Security</span>
+        </div>
+      </div>
+      <h1 class="post-title">Paper Summary: Obfuscation Revealed — Leveraging Electromagnetic Signals for Obfuscated Malware Classification</h1>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="container">
+      <article class="post-article">
+        <div class="post-content">
+          <p>This is a <a href="https://dl.acm.org/doi/10.1145/3485832.3485894" target="_blank">paper</a> that appeared in ACSAC 2021.</p>
+
+          <p><strong>TL;DR</strong>: The paper proposes a methodology to use side channel information (electromagnetic signals (EM)) to be able to identify malware activity, malware type and identity, even in the presence of obfuscation.</p>
+
+          <p>Internet of Things (IoT) have become ubiquitous in the last decade. From home security cameras, to our ovens and fridges, everything you can imagine is becoming smarter, with the help of IoT. One of the hinderances to wider adoption of IoT, as you might expect, is security. The core problem is that security usually is seen as an afterthought process rather than a core component of device's design and software implementation.</p>
+
+          <p>There are two major ways of detecting malware in software today: static or dynamic analysis. Static analysis is great, possibly more reliable but failed to detect in the existence of obfuscation. At the end, as our security tools become more sophisticated, hackers become more sophisticated as well, a vicious cycle. Therefore dynamic analysis to detect malware is a more resilient approach than a static analysis one might think. However, malicious actors also become more dynamic and try to detect the "detection". Once successful, the malware ceases the operation and becomes more difficult for security tools to reveal it.</p>
+
+          <p>This paper proposes a different way of detecting malware. Instead of installing a software to your device and monitor the activities, the paper proposes to use <em>side channel information</em>, i.e. <em>EM</em>. The idea of using side channel information to detect malware, or anomalous activities in general is not a new one. Beyond EM, people in the field also tried "heat" as another source to detect such activities. The paper claims the following differences from the state-of-the-art:</p>
+          <ul>
+            <li>On-the-wild malware detection instead of proof-of-concept samples.</li>
+            <li>Examination of scenarios that involve benign dataset and obfuscated malware to test for robustness.</li>
+            <li>Most existing works use anomaly detection with small sample size which have advantage of detecting any new different activity as anomalous but at the same time also prone to generate lots of false positives.</li>
+            <li>Experiments with wide-ranging classification models in real-world malware analysis: type, obfuscation or variant.</li>
+          </ul>
+
+          <p><strong>Malware dataset</strong>: 4,790 32-bit ELF ARM malware samples collected from Virusign. In total 19 different families detected, Mirai (43.5%) and Bashlite (35.8%) are the majorities. Combination of static and dynamic code obfuscation is used to enrich the dataset. Finally, benign dataset is added by monitoring and logging under the normal running conditions.</p>
+
+          <p><strong>Methodology</strong>: Raw EM data is processed and spectrogram of the signal is computed to reduce the noise. Feature extraction using NICV is applied to reduce the amount of time and resources needed for classification. Two neural networks architectures are used for the experiments: MLP and CNN along with traditional machine learning algorithms, Naive Bayes and SVM.</p>
+
+          <p><strong>Results</strong>: The paper presents promising results as it can identify the type of malware with &gt;98% accuracy where CNN outperforms the others. It is also shown that it is effective in detecting novel malware by 99.38% accuracy. Obfuscation techniques are also classified with 82.70% accuracy, again CNN is outperforming the others.</p>
+
+          <p>The main use case of the paper is for analysts to have an environment where they can experiment with malware. When it comes to IoT security, would such approach work? One can imagine that scalability and cost can become a big challenge as we cannot put additional device next to each and every IoT device for sensing EM. Even though the approach is not intrusive and definitely helpful for analysts, we still need an approach that can work in scale to protect IoT devices from attacks.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank">Google Scholar</a>
+        <a href="https://dblp.org/pers/hd/b/Bulut:Muhammed_Fatih" target="_blank">DBLP</a>
+        <a href="../blog.html">Blog</a>
+      </div>
+      <p>&copy; 2025 Fatih Bulut. Built with ☕ and curiosity.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 300);
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+
+</html>

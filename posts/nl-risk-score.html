@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Natural Language to Risk Score for CIS Benchmarks using Deep Neural Networks | Fatih Bulut</title>
+  <meta name="description"
+    content="Risk management is a fundamental part of Cloud Service Management. This post explains how an AI-based approach can standardize different domains to quantify risk using NLP, applied in IBM Cloud Pak for Multicloud Management.">
+  <meta name="author" content="Fatih Bulut">
+  <meta property="og:title" content="Natural Language to Risk Score for CIS Benchmarks using Deep Neural Networks">
+  <meta property="og:description"
+    content="An explanation of using NLP and deep learning to quantify CIS benchmark risk in cloud service management.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">Fatih Bulut</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank" class="nav-icon"
+            title="Google Scholar">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="blog-header post-header">
+    <div class="container">
+      <a href="../blog.html" class="post-back-link">← Back to Blog</a>
+      <div class="blog-card-meta post-meta">
+        <span class="blog-date">Nov 20, 2019</span>
+        <div class="blog-tags">
+          <span class="blog-tag">AI</span>
+          <span class="blog-tag">Security</span>
+          <span class="blog-tag">Deep Learning</span>
+          <span class="blog-tag">Cloud</span>
+        </div>
+      </div>
+      <h1 class="post-title">Natural Language to Risk Score for CIS Benchmarks using Deep Neural Networks</h1>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="container">
+      <article class="post-article">
+        <div class="post-content">
+          <p>Risk management is a fundamental part of Cloud Service Management. Understanding up-to-date risk posture of the cloud environment is a desiring feature of today's complex IT infrastructure.</p>
+
+          <p>In today's IT world, different security processes are used to make sure that the cloud environment is safe, secure and compliant. <strong>Patch Management</strong> and <strong>Health Checks</strong> are two major examples of such compliance processes. Quantifying the risk for these compliance processes are critical in order to understand the current risk posture of the IT environment. While quantifying the risk in a certain compliance domain is well-defined and standardized, it is yet to become a global rule for different domains due to lack of the standard process.</p>
+
+          <p>This blog post explains how the AI-based approach can standardize different domains to quantify risk using natural language processing (NLP). In particular, Center for Internet Security (CIS) Benchmarks are used for the case study and applied in the IBM product, IBM Cloud Pak for Multicloud Management.</p>
+
+          <h3>Background: Common Vulnerability Exposures</h3>
+          <p>Since the year 1998, the systems and software vulnerabilities have been collected in one place called National Vulnerability Database (NVD), hosted by National Institute of Standards and Technology (NIST). Software vendors release software patches based on the found vulnerabilities. Patches often include one or multiple Common Vulnerability Exposures (CVE) assigned to them. Each CVE is assigned a vulnerability score in the range of 0–10 based on Common Vulnerability Scoring System (CVSS) by a security analyst.</p>
+
+          <p>Patch management is one example of the security processes in today's Cloud Service Management. Another process is Health Checking. Health Checks are usually performed by standards. Center for Internet Security (CIS) Benchmarks are an example of such standards that are widely used today. CIS benchmarks aim to make sure that managed systems are secure, safe and compliant. However, today there is no standard way of assigning a risk score for each failed health check similar to each missing patch.</p>
+
+          <h3>Classification with Deep Neural Networks</h3>
+          <p>Deep Learning is considered to be a subfield of machine learning, which itself is a subfield of Artificial Intelligence. Deep Learning has shown to be an effective method of machine learning when there is large amount of data for training. In our case, we are particularly interested in classification of a given description of text into a Common Vulnerability Scoring System (CVSS).</p>
+
+          <h4>Data</h4>
+          <p>Our primary source of data are the vulnerability descriptions and their associated CVSS scores from National Vulnerability Database (NVD). As of writing this blog post, there are more than 123K vulnerabilities reported in NVD as of Nov 2019. This constitutes a considerable amount of data. Our second source of data is IBM Technical Specification Standard Documents.</p>
+
+          <h4>Model</h4>
+          <p>Our approach is based on Deep Learning. The first layer is the input layer, where given a text we generate an embedding out of it. We use state-of-the-art embedding techniques (including language modeling) to achieve the best performance. Next, we have hidden layers, where we use CNN, LSTM and other state-of-the-art sequence-to-sequence models. Finally, we have the output layer, where the layer tries to capture the different dimensions of the CVSS. Our approach is to build an initial model with NVD data (Vanilla NVD Model), and later use transfer learning with the data from IBM Technical Specification Standard Documents and CIS Benchmarks.</p>
+
+          <h4>Feedback</h4>
+          <p>AI models can learn, and capture important features and output information we would want to receive. However, AI models usually impose limitations to achieve 100% accuracy. The precision is really important for mission critical models that have higher impact when it goes wrong. Hence, we developed a UI where Subject Matter Experts (SMEs) can easily verify (or change) the mapping assigned by the AI model.</p>
+
+          <h3>IBM Cloud Pak for Multicloud Management</h3>
+          <p>IBM Cloud Pak for Multicloud Management, running on Red Hat OpenShift, provides consistent visibility, governance, and automation from on premises to the edge. CIS Policy Controller is one of the policy controllers. CIS Policy controller implements CIS Kubernetes Benchmark 1.4.0. Each control in this benchmark comes with a score that is quantified using the AI risk framework explained above.</p>
+
+          <h3>Conclusion</h3>
+          <p>We have shown how AI based risk quantification can be done in a standard way for a given natural language description. Today in IBM Cloud Pak for Multicloud Management, one of the policy controllers is CIS Policy Controller, and each failed CIS Kubernetes Benchmark 1.4.0 check comes with a risk score assigned by our AI model and verified by a subject matter expert.</p>
+
+          <p><em>Authors: Muhammed Fatih Bulut (Senior Research Engineer, IBM Research), Jinho Hwang (Research Staff Member, IBM Research), Milton Hernandez (Distinguished Engineer, IBM Research)</em></p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank">Google Scholar</a>
+        <a href="https://dblp.org/pers/hd/b/Bulut:Muhammed_Fatih" target="_blank">DBLP</a>
+        <a href="../blog.html">Blog</a>
+      </div>
+      <p>&copy; 2025 Fatih Bulut. Built with ☕ and curiosity.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 300);
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+
+</html>
