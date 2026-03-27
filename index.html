@@ -25,7 +25,7 @@
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#publications">Publications</a></li>
-        <li><a href="https://medium.com/@dataturka" target="_blank">Blog</a></li>
+        <li><a href="blog.html">Blog</a></li>
         <li>
           <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
             <svg viewBox="0 0 24 24">
@@ -88,7 +88,7 @@
                 cloud.
               </p>
               <p class="bio-text" style="margin-top: 1rem;">
-                With 40+ patents and experience working on various high-impact projects at both Microsoft and IBM, I strive for
+                With 40+ patents, 40+ publications, and experience working on various high-impact projects at both Microsoft and IBM, I strive for
                 rapid execution and taking full ownership of initiatives from conception to delivery. I currently teach
                 at
                 <a href="https://sps.columbia.edu/person/fatih-bulut-0" target="_blank">Columbia University</a> and
@@ -120,6 +120,9 @@
                 <span class="news-date">Jun 2026:</span><span class="news-badge">Upcoming</span> Speaking on autonomous detection engineering at the Silicon Valley Cybersecurity Conference, June 10-12, 2026, San Jose, California, USA.
               </li>
               <li class="news-item">
+                <span class="news-date">Mar 2026:</span> Our paper <strong>"AVDA: Autonomous Vibe Detection Authoring for Cybersecurity"</strong> has been accepted at <strong>FSE 2026</strong> (ACM International Conference on the Foundations of Software Engineering)!
+              </li>
+              <li class="news-item">
                 <span class="news-date">Jan 2026:</span> Published in <a
                   href="https://www.microsoft.com/en-us/security/blog/2026/01/29/turning-threat-reports-detection-insights-ai/" target="_blank">Microsoft Security Blog</a> on AI-assisted detection engineering—practical tips
                 for defenders on extracting TTPs from threat reports and analyzing detection coverage gaps with AI.
@@ -140,17 +143,17 @@
                   href="https://youtu.be/PiJpDvAMCg4?t=23457" target="_blank">Turkish AI Summit 2025</a>. <em>(in
                   Turkish)</em>
               </li>
-              <li class="news-item news-hidden">
+              <li class="news-item">
                 <span class="news-date">Sep 2025:</span> Talk on <a
                   href="https://docs.google.com/presentation/d/1PpmjJIvAo1sYSUoU1CGGCDVEfgFn2Us5/edit?rtpof=true&sd=true"
                   target="_blank">"Chasing Threat Actors with AI"</a> at Artificial Unintelligence Conference.
               </li>
-              <li class="news-item news-hidden">
+              <li class="news-item">
                 <span class="news-date">Aug 2025:</span> Guest on the <a
                   href="https://www.youtube.com/watch?v=UgMyFzQoq2M" target="_blank">Harness podcast</a> discussing AI
                 and security intersections—detection engineering, AI hardening, and future possibilities.
               </li>
-              <li class="news-item news-hidden">
+              <li class="news-item">
                 <span class="news-date">Feb 2025:</span> Spoke at the <a
                   href="https://www.linkedin.com/posts/globalturksai_harvard-forum1-forum2-activity-7295446673139392513-RWlu"
                   target="_blank">Harvard AI Forum</a> on "AI Research, Innovation, and Opportunities".
@@ -199,7 +202,7 @@
         <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank">LinkedIn</a>
         <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank">Google Scholar</a>
         <a href="https://dblp.org/pers/hd/b/Bulut:Muhammed_Fatih" target="_blank">DBLP</a>
-        <a href="https://medium.com/@dataturka" target="_blank">Medium</a>
+        <a href="blog.html">Blog</a>
       </div>
       <p>© 2025 Fatih Bulut. Built with ☕ and curiosity.</p>
     </div>
@@ -344,20 +347,34 @@
 
     // News toggle
     function initNewsToggle() {
+      const VISIBLE_COUNT = 3;
       const toggle = document.getElementById('news-toggle');
-      const hiddenItems = document.querySelectorAll('.news-hidden');
+      const allItems = document.querySelectorAll('#news-list .news-item');
+      const totalCount = allItems.length;
+      const hiddenCount = totalCount - VISIBLE_COUNT;
       let expanded = false;
+
+      // Hide items beyond VISIBLE_COUNT
+      allItems.forEach((item, i) => {
+        if (i >= VISIBLE_COUNT) item.classList.add('news-hidden');
+      });
+
+      // Hide toggle if nothing to expand
+      if (hiddenCount <= 0) { toggle.style.display = 'none'; return; }
+
+      toggle.textContent = `View all ${totalCount} news →`;
 
       toggle.addEventListener('click', () => {
         expanded = !expanded;
-        hiddenItems.forEach((item, index) => {
+        allItems.forEach((item, i) => {
+          if (i < VISIBLE_COUNT) return;
           if (expanded) {
-            setTimeout(() => item.classList.add('show'), index * 100);
+            setTimeout(() => item.classList.add('show'), (i - VISIBLE_COUNT) * 80);
           } else {
             item.classList.remove('show');
           }
         });
-        toggle.textContent = expanded ? '← Show less' : 'View all news →';
+        toggle.textContent = expanded ? '← Show less' : `View all ${totalCount} news →`;
       });
     }
   </script>
