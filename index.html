@@ -22,6 +22,9 @@
   <nav class="nav">
     <div class="nav-container">
       <a href="index.html" class="nav-brand">Fatih Bulut</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#publications">Publications</a></li>
@@ -47,30 +50,6 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container hero-content">
-      <h1>Fatih Bulut</h1>
-      <p class="hero-title">Principal AI/ML Architect @ Microsoft</p>
-      <div class="hero-stats">
-        <a href="https://patents.google.com/?inventor=muhammed+fatih+bulut&oq=muhammed+fatih+bulut" target="_blank"
-          class="stat" title="View patents on Google Patents">
-          <div class="stat-value">40+</div>
-          <div class="stat-label">Patents</div>
-        </a>
-        <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ&view_op=list_works&sortby=pubdate"
-          target="_blank" class="stat" title="View on Google Scholar">
-          <div class="stat-value" id="pub-count">—</div>
-          <div class="stat-label">Publications</div>
-        </a>
-        <!-- <div class="stat">
-          <div class="stat-value">15+</div>
-          <div class="stat-label">Years in AI/ML</div>
-        </div> -->
-      </div>
-    </div>
-  </section>
-
   <!-- Main Content -->
   <main class="main">
     <div class="container">
@@ -78,10 +57,25 @@
         <!-- Bio Column -->
         <div class="bio-column">
           <section id="about">
-            <div class="section-header">
-              <h2 class="section-title">About</h2>
-            </div>
             <div class="bio-card fade-in">
+              <div class="bio-header">
+                <div>
+                  <h1 class="bio-name">Fatih Bulut</h1>
+                  <p class="bio-role">Principal AI/ML Architect @ Microsoft</p>
+                </div>
+                <div class="bio-stats">
+                  <a href="https://patents.google.com/?inventor=muhammed+fatih+bulut&oq=muhammed+fatih+bulut&sort=new" target="_blank"
+                    class="stat" title="View patents on Google Patents">
+                    <div class="stat-value">40+</div>
+                    <div class="stat-label">Patents</div>
+                  </a>
+                  <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ&view_op=list_works&sortby=pubdate"
+                    target="_blank" class="stat" title="View on Google Scholar">
+                    <div class="stat-value" id="pub-count">—</div>
+                    <div class="stat-label">Publications</div>
+                  </a>
+                </div>
+              </div>
               <p class="bio-text">
                 As a Principal AI/ML Architect at Microsoft, I identify high-impact opportunities and work with
                 engineering teams to ship AI-powered solutions. My focus is at the intersection of AI, security, and
@@ -378,6 +372,7 @@
       });
     }
   </script>
+  <script src="nav.js"></script>
 </body>
 
 </html>
