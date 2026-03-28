@@ -7,13 +7,16 @@
   <title>Blog | Fatih Bulut</title>
   <meta name="description" content="Blog posts by Fatih Bulut on AI, security, LLMs, and cloud.">
   <meta name="author" content="Fatih Bulut">
+  <meta property="og:title" content="Blog | Fatih Bulut">
+  <meta property="og:description" content="Blog posts by Fatih Bulut on AI, security, LLMs, and cloud.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 
 <body>
@@ -26,11 +29,11 @@
       </button>
       <ul class="nav-links">
         <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="publications.html">Publications</a></li>
         <li><a href="blog.html" class="active">Blog</a></li>
         <li>
           <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path
                 d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
             </svg>
@@ -39,7 +42,7 @@
         <li>
           <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank" class="nav-icon"
             title="Google Scholar">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path
                 d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
             </svg>
@@ -64,7 +67,7 @@
 
         <!-- Post 0: Speed Is the New Moat -->
         <article class="blog-card" id="speed-is-the-new-moat">
-          <div class="blog-card-header" onclick="togglePost(this)">
+          <a href="posts/speed-is-the-new-moat.html" class="blog-card-header">
             <div class="blog-card-meta">
               <span class="blog-date">Mar 27, 2026</span>
               <div class="blog-tags">
@@ -77,61 +80,13 @@
             <p class="blog-card-excerpt">
               AI has compressed the cost of building software and the cost of copying it. The durable edge is no longer just code quality, but how fast an organization can ship, learn, and adapt on top of the right architecture.
             </p>
-            <div class="blog-card-actions">
-              <a href="posts/speed-is-the-new-moat.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
-              <span class="blog-expand-btn">Preview ↓</span>
-            </div>
-          </div>
-          <div class="blog-card-body">
-            <p><strong>Talk is cheap. In the age of AI, code is cheaper.</strong></p>
-            <p><strong>Show me how fast you can ship.</strong></p>
-
-            <p>Linus Torvalds made "talk is cheap, show me the code" famous for a reason. For a long time, it was a durable moat. If you could design well, implement fast, and actually ship working systems, you had a meaningful edge. I always liked that standard. Ideas are easy. Working software is harder. Code was proof.</p>
-
-            <p>That assumption is changing fast.</p>
-
-            <p>Not over the course of years. Over the course of months.</p>
-
-            <p>AI coding tools and agentic workflows have already shifted the ground under software development. What used to take days can now take hours. Boilerplate is abundant. Scaffolding is instant. Even non-trivial implementation work is getting compressed by tools that can generate, refactor, test, and debug with increasing competence. Whether you use AutoGen, Semantic Kernel, LangGraph, Claude SDK, GitHub Copilot SDK, or whatever comes next, the pattern is clear: building is getting cheaper.</p>
-
-            <p>And if building is getting cheaper, then copying is getting cheaper too.</p>
-
-            <p>That changes the game.</p>
-
-            <p>The moat is no longer just the ability to write code. The moat is how quickly you can turn an idea into a shipped product, learn from reality, and adapt before everyone else catches up. In other words, execution speed matters more than ever.</p>
-
-            <p>But "move fast" by itself is still lazy advice.</p>
-
-            <p>Speed only works if the underlying platform is designed for speed. I have seen too many projects that are still living in the past: tightly coupled systems, brittle integrations, unclear interfaces, slow deployment paths, no real observability, no meaningful evaluation loop, and architecture that makes every change feel like surgery. Putting AI agents on top of that does not create leverage. It just helps you produce technical debt faster.</p>
-
-            <p>That is the part many organizations are underestimating.</p>
-
-            <p>In an AI-native world, architecture matters more, not less. If agents are going to write more of the code, then human leverage shifts upward. The hard part is not typing every line yourself. The hard part is designing systems that can absorb rapid change without breaking every quarter. The hard part is creating the conditions for continuous iteration: modular services, clear boundaries, reusable components, fast feedback loops, measurable quality, and the ability to swap models, tools, and workflows without rebuilding the entire product.</p>
-
-            <p>That is what enables real speed.</p>
-
-            <p>Execution is not just code generation. Execution is choosing the right problem. It is framing the workflow correctly. It is knowing what to automate and what to keep under human control. It is validating in production. It is learning from users faster than competitors. It is making architectural decisions today that do not trap you tomorrow.</p>
-
-            <p><strong>This is why I think the winners in this moment will not simply be the teams with the most AI tools. They will be the teams that combine AI-assisted speed with architectural discipline.</strong> They will ship fast, but they will also be able to change direction fast. They will not confuse velocity with chaos. They will build systems that can evolve as models, frameworks, and user expectations evolve.</p>
-
-            <p>Because they will evolve. Constantly.</p>
-
-            <p>We are entering a phase where coding itself is becoming commoditized. That does not mean engineering matters less. It means engineering judgment matters more. Architectural oversight matters more. Product sense matters more. Operational excellence matters more. The human role is moving away from manually producing every artifact and toward orchestrating systems that can move quickly without collapsing under their own weight.</p>
-
-            <p>So yes, AI is making it easier than ever to build.</p>
-
-            <p>It is also making it easier than ever to be copied.</p>
-
-            <p>That is why the new moat is speed. Not reckless speed. Not speed at the expense of design. Speed built on the right foundation. Speed that turns change into shipped learning. Speed that lets you adapt while others are still debating.</p>
-
-            <p><strong>Ship fast. Learn fast. Adapt faster.</strong><br>
-            <strong>Speed is the new moat.</strong></p>
-          </div>
+            <span class="blog-open-link">Read post →</span>
+          </a>
         </article>
 
         <!-- Post 1: Friday Reads -->
         <article class="blog-card" id="friday-reads">
-          <div class="blog-card-header" onclick="togglePost(this)">
+          <a href="posts/friday-reads.html" class="blog-card-header">
             <div class="blog-card-meta">
               <span class="blog-date">Sep 27, 2024</span>
               <div class="blog-tags">
@@ -144,38 +99,13 @@
             <p class="blog-card-excerpt">
               As anyone in tech, I constantly get bombarded with countless papers, links, and resources to read. I dedicate Fridays to tackling this "technical debt" by reading through as much as possible.
             </p>
-            <div class="blog-card-actions">
-              <a href="posts/friday-reads.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
-              <span class="blog-expand-btn">Preview ↓</span>
-            </div>
-          </div>
-          <div class="blog-card-body">
-            <p>As anyone in tech, I constantly get bombarded with countless papers, links, and resources to read. While I try to keep up, it's often impossible to go through them all, and they inevitably pile up in my browser's collection. Despite my efforts to be selective, the list grows faster than I can manage. So, I dedicate Fridays to tackling this "technical debt" by reading through as much as possible. Starting today, I'm sharing what I've learned along the way, hoping it might be helpful to others as well. Enjoy!</p>
-
-            <h3>Tines launched Workbench</h3>
-            <p>Tines is a workflow automation platform focused on security, IT, and engineering, designed to streamline tools and data, allowing complex workflows to be executed effortlessly. Recently, Tines introduced <strong>Workbench</strong>, an AI-powered chat interface that leverages templates to create automated workflows with the help of AI. This innovation gives companies greater confidence in transitioning from manual workflows to AI-driven automation. One standout feature on their <a href="https://www.tines.com/product/workbench/" target="_blank">website</a> is a phishing triage and response demo, showcasing how organizations can automate critical security processes.</p>
-
-            <h3>CrowdStrike announced a set of innovations in Fal.Con</h3>
-            <p>CrowdStrike hosted its annual Fal.Con conference last week, unveiling several new AI-powered features. Some key highlights include:</p>
-            <ul>
-              <li><strong>AI-powered parsers</strong>: Logs can be notoriously difficult to work with, and despite efforts like OCSF, log standardization remains inconsistent. To address this, CrowdStrike introduced an AI-powered data ingestion pipeline. Users can provide a sample of logs, and Falcon SIEM, leveraging large language models (LLMs), will analyze the structure and content to automatically generate parsers. Interestingly, CrowdStrike emphasized the use of "multiple" LLMs, hinting that both encoder and decoder models may be at play.</li>
-              <li><strong>AI-powered Attack Path Analysis</strong>: Many organizations still rely on CVSS scores to prioritize vulnerabilities, though it's well known that CVSS alone isn't sufficient to identify the most critical risks. Falcon Exposure Management's Attack Path Analysis goes beyond CVSS scores, incorporating environmental factors. AI is then applied to reason through this data, enabling better prioritization of vulnerabilities.</li>
-              <li><strong>Automated Leads, GenAI-Based Response and Triage</strong>: Another notable announcement was on the XDR front, aimed at assisting security teams, particularly Security Operations Centers (SOC), in cutting through the noise to focus on the most impactful alerts and incidents. CrowdStrike claims that their <strong>Charlotte AI</strong> can now handle incident and alert triage, which is often considered one of the most challenging and time-consuming tasks in SOC operations.</li>
-            </ul>
-            <p>For more details, you can explore these topics further on the CrowdStrike <a href="https://www.crowdstrike.com/blog/ai-innovations-expedite-and-elevate-analyst-experience-fal-con-2024/" target="_blank">blog</a>.</p>
-
-            <h3>To Code, or Not To Code? Exploring Impact of Code in Pre-training</h3>
-            <p>The value of incorporating code in pretraining is a well-known advantage in the LLM community, though there has yet to be a comprehensive ablation study that fully demonstrates its effects. This <a href="https://arxiv.org/abs/2408.10914" target="_blank">paper</a> systematically examines how adding code to the pretraining dataset influences LLM performance. While it doesn't fully address the "why," it serves as a significant empirical study that highlights the impact of code in pretraining.</p>
-            <p>What other types of data could yield similar benefits? It's an open question, and perhaps the next breakthrough in LLM development lies in identifying those data types.</p>
-
-            <h3>TaskGen: A Task-Based Memory-Infused Agentic Framework using StrictJSON</h3>
-            <p>This <a href="https://github.com/simbianai/taskgen/blob/main/Paper/TaskGen%20Paper.pdf" target="_blank">paper</a> comes from a startup called <strong>Simbian</strong>, which focuses on developing autonomous agents to tackle security challenges. It introduces a new agent-based framework that enforces strict JSON output, leading to significant time and cost savings. The framework also introduces the concepts of <strong>Inner Agent</strong> and <strong>Meta Agents</strong>, which add an interesting dimension to the design and functionality of autonomous systems.</p>
-          </div>
+            <span class="blog-open-link">Read post →</span>
+          </a>
         </article>
 
         <!-- Post 2: GPT-3 Paper Summary -->
         <article class="blog-card" id="gpt3-paper">
-          <div class="blog-card-header" onclick="togglePost(this)">
+          <a href="posts/gpt3-paper.html" class="blog-card-header">
             <div class="blog-card-meta">
               <span class="blog-date">Jan 13, 2023</span>
               <div class="blog-tags">
@@ -189,104 +119,13 @@
             <p class="blog-card-excerpt">
               This paper is one of the important foundational papers from OpenAI, published in 2020. GPT-3 demonstrates that LLMs pretrained with large volume of data can learn very quickly with few examples, possibly cutting the need for fine-tuning.
             </p>
-            <div class="blog-card-actions">
-              <a href="posts/gpt3-paper.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
-              <span class="blog-expand-btn">Preview ↓</span>
-            </div>
-          </div>
-          <div class="blog-card-body">
-            <p>This paper is one of the important foundational papers from OpenAI, published in 2020.</p>
-
-            <p><strong>TL;DR</strong>: A typical approach for developing a powerful transformer based Large Language model (LLM) in a specific domain involves two phases: pretraining and fine-tuning, while the former refers to training, utilizing a large volume of data, using self-supervised learning, the latter refers to the adaptation of pretrained model to a task at hand, e.g., sentiment analysis. While this typical approach seems to be powerful, achieving SOTA results on many benchmarks, it still requires task-specific fine-tuning datasets which involve 1000s of examples. In contrast, we human adapt and learn quicker with zero or a few examples. This paper demonstrates that an LLM that is pretrained with large volume of data, and large in size, has the ability to learn very quickly with few examples (few-shot), possibly cutting the need for fine-tuning in many tasks if not all. It also demonstrates that increasing model size, in terms of parameters, also increases the model's learning capacity.</p>
-
-            <p>GPT as an acronym refers to "Generative Pre-trained Transformers". Before GPT-3 (this paper), there were previous versions. Even though there are differences between GPT family models, in essence, it all depends on Transformer architecture: <a href="https://arxiv.org/abs/1706.03762" target="_blank">Attention Is All You Need</a>.</p>
-
-            <p>In this paper, the authors emphasize that no gradient update or fine tuning applied to pretrained LLM: "<em>For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model</em>".</p>
-
-            <p>The paper attempts to clarify <em>Meta-learning</em>, by defining <em>outer loop</em> and <em>inner loop</em>. Outer loop includes learning via backpropagation and SGD, while inner loop includes learning via forward pass. Inner loop can include <em>zero-shot</em>, <em>one-shot and few-shot</em> (or in-context learning) learning as introduced in the paper.</p>
-
-            <p>GPT-3 paper in essence explores the in-context learning, with increasing parameter size. Every use case is evaluated in 3 conditions: <em>zero-shot</em>, <em>one-shot</em> and <em>few-shot</em>. In most use cases, model performance increases with addition of natural language task description, and number of examples given to GPT-3 in model's context. There are also tasks which few-shot performance struggles: ML inferences tasks like ANLI dataset, reading comprehension like RACE or QuAC.</p>
-
-            <p>GPT-3 is pretrained with multiple datasets. Datasets like CommonCrawl may include samples from test and evaluation sets and hence authors develop a systematic tool to measure data contamination and quantify its effect on the performance. However, they have found a bug in their filtering approach later after pretraining and they did not rerun the pretraining with the concern on the cost: "<em>Unfortunately, a bug in the filtering caused us to ignore some overlaps, and due to the cost of training it was not feasible to retrain the model</em>". Instead they tried to remove the overlapping examples from the evaluation dataset, if matched by 13-gram.</p>
-
-            <h3>Notes from the paper</h3>
-            <ul>
-              <li>Gap between zero, one and few shot performance often grows with model capacity. Larger models are more proficient meta learners.</li>
-              <li>Context size of GPT-3 is 2048 tokens, meaning there is a limit how much few shot examples one can give to the model.</li>
-              <li>One-shot resembles to how human learns, that is why authors include this in the comparisons.</li>
-              <li>Data quality is an important aspect of pretraining an LLM. Authors take reasonable steps to make sure that the data quality is high: "3 steps to improve the average quality of our datasets: (1) we downloaded and filtered a version of CommonCrawl based on similarity to a range of high-quality reference corpora, (2) we performed fuzzy deduplication at the document level, within and across datasets, to prevent redundancy and preserve the integrity of our held-out validation set as an accurate measure of overfitting, and (3) we also added known high-quality reference corpora to the training mix to augment CommonCrawl and increase its diversity."</li>
-              <li>In total dataset used for pretraining nearly contains 3 trillion words. The size of CommonCrawl after filtering is 570GB, roughly equivalent to 400 billion byte-pair encoded tokens.</li>
-              <li>Not all datasets are seen by GPT equally. Higher quality curated datasets (such as Wikipedia) are sampled 2–3 times than lower quality datasets (such as CommonCrawl).</li>
-              <li>They found out that potential contamination in the dataset is high, but they see no effect in the performance.</li>
-              <li>A lesson for pretraining: "<em>larger models can typically use a larger batch size, but require a smaller learning rate</em>".</li>
-              <li>GPT-3 did not excel in all scenarios: "<em>GPT-3 appears to be weak in the few-shot or one-shot setting at some tasks that involve comparing two sentences or snippets</em>".</li>
-              <li>Another concern for practical adoption of GPT-3 is its size, even for inference. However, authors mention that distillation techniques might be a way forward to reduce the size of the model for practical deployment.</li>
-            </ul>
-
-            <h3>Evaluation Notes</h3>
-            <p>GPT-3 is evaluated in many datasets and tasks:</p>
-
-            <h4>Language modeling, Cloze and Completion Tasks</h4>
-            <ul>
-              <li>Penn Tree Bank (PTB) dataset — GPT-3 achieves a new SOTA by 15pt margin achieving 20.50 perplexity.</li>
-              <li>LAMBADA dataset — tests modeling of long-range dependencies. GPT-3 achieves 76%, 8% gain over SOTA.</li>
-              <li>HellaSwag dataset — GPT-3 achieves 79.3% accuracy in few-shot learning and outperforms 1.5B fine-tuned model.</li>
-              <li>StoryCloze dataset — GPT-3 achieves 87.7% in few-shot (K=70) while fine-tuned BERT model outperforms GPT-3 by 4.1%.</li>
-            </ul>
-
-            <h4>Closed book question answering tasks</h4>
-            <ul>
-              <li>GPT-3 has either better or close results to fine-tuned Google's T5 11B models on 3 different datasets.</li>
-            </ul>
-
-            <h4>Language translation</h4>
-            <ul>
-              <li>The dataset that is used to pretrain GPT-3 has 93% English and 7% other languages samples.</li>
-              <li>GPT-3 is found to be good at translating to English but suffers in the other direction.</li>
-            </ul>
-
-            <h4>Winograd Schema-like tasks</h4>
-            <ul>
-              <li>GPT-3 performs slightly worse than SOTA or human performance.</li>
-              <li>On more challenging dataset, GPT-3 achieves 77.7% while RoBERTa achieves 79% and SOTA is 84.6%.</li>
-            </ul>
-
-            <h4>Common sense reasoning or Q/A</h4>
-            <ul>
-              <li>PIQA dataset — GPT-3 achieves SOTA beating RoBERTa fine-tuned model (possible data contamination disclaimer).</li>
-              <li>ARC dataset — Similar results to fine-tuned RoBERTa baseline. Worse than SOTA by 27% and 22%.</li>
-              <li>OpenBookQA dataset — GPT-3 is short of 20 points from SOTA, but performs similar to BERT-large fine-tuned model.</li>
-            </ul>
-
-            <h4>Reading comprehension</h4>
-            <ul>
-              <li>Evaluated using 5 datasets. Results are on par with baselines like BERT but short of SOTA performances.</li>
-            </ul>
-
-            <h4>SuperGLUE benchmark</h4>
-            <ul>
-              <li>GPT-3 outperforms a fine-tuned BERT-large on four of eight tasks.</li>
-              <li>Few-shot score steadily improves with the number of examples, scaling to 32 before hitting context size limit.</li>
-            </ul>
-
-            <h4>NLI</h4>
-            <ul>
-              <li>RTE dataset — GPT-3 results are close to random, and less than SOTA results.</li>
-            </ul>
-
-            <h4>Synthetic and qualitative tasks</h4>
-            <ul>
-              <li>GPT-3 performed poorly on correcting reverse chars word, which authors believe is due to BPE tokenization.</li>
-            </ul>
-
-            <h3>Conclusion</h3>
-            <p>GPT-3 is the first paper that demonstrates that LLMs can achieve SOTA results and learn from few examples, and hence open the door for generic LLMs that does not even need fine-tuning for specific tasks.</p>
-          </div>
+            <span class="blog-open-link">Read post →</span>
+          </a>
         </article>
 
         <!-- Post 3: Clinical Knowledge Paper -->
         <article class="blog-card" id="clinical-knowledge">
-          <div class="blog-card-header" onclick="togglePost(this)">
+          <a href="posts/clinical-knowledge.html" class="blog-card-header">
             <div class="blog-card-meta">
               <span class="blog-date">Jan 6, 2023</span>
               <div class="blog-tags">
@@ -298,29 +137,13 @@
             <p class="blog-card-excerpt">
               This is a recent paper from Google Research and DeepMind that introduces Med-PaLM, a Large Language Model tailored to answer questions about the clinical (medical) domain, achieving SOTA results on various domain specific datasets.
             </p>
-            <div class="blog-card-actions">
-              <a href="posts/clinical-knowledge.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
-              <span class="blog-expand-btn">Preview ↓</span>
-            </div>
-          </div>
-          <div class="blog-card-body">
-            <p>This is a recent paper (December 2022) from Google Research and DeepMind that appeared in <a href="https://arxiv.org/abs/2212.13138" target="_blank">Arxiv</a>.</p>
-
-            <p><strong>TL;DR</strong>: The paper introduces a Large Language Model (LLM) that is tailored to answer questions about clinical (medical) domain. It achieves SOTA results on various domain specific datasets.</p>
-
-            <p>Large Language Models continue to demonstrate great potentials in natural language understanding and generation. These models do not just answer factual questions such as: "Where is Eiffel Tower?" but also show signs of reasoning and coming up with answers that mimics human thought process. Even though we are still early in the journey, there are increasing number of demonstrations of LLMs in domain specific use cases. In this paper, authors explored how LLMs can be used to answer questions in clinical domain.</p>
-
-            <p>Since this is a paper from Google, the authors utilize <a href="https://ai.googleblog.com/2022/04/pathways-language-model-palm-scaling-to.html" target="_blank">Google's PaLM</a>, a 540-billion parameter, dense decoder-only Transformer model trained with the Pathways system. Currently, there are various challenges, such as hallucinations, consistency, in LLMs that prevent wider adoption in critical domains such as in clinical settings. Authors recognize these challenges and introduce a framework for human evaluation of model answers. I think this is critical for these kinds of systems as we are currently not there yet to comprehensively evaluate the accuracy of these models.</p>
-
-            <p>The paper showcased that Flan-PaLM (an instruction-tuned variant of PaLM itself), achieves SOTA on various benchmarks. It uses a combination of few shot, chain of thoughts and self-consistency prompting strategies. At the same time, human evaluation reveals that there are gaps in responses. To alleviate this, authors introduced "instruction prompt tuning", a parameter-efficient alignment of LLMs to new domains using a few examples, and called the new model Med-PaLM, which basically applied instruction prompt tuning to adapt Flan-PaLM to medical domain. Med-PaLM sampled examples from MultiMedQA free-response datasets (HealthSearchQA, MedicationQA, LiveQA). A panel of five clinicians was asked to provide exemplar answers, in total 40 examples used for instruction prompt tuning training. Notice the few examples used to tune the model. The results show promising but still inferior to clinicians.</p>
-
-            <p>As LLMs shows promising results, clinical settings will be one area companies will definitely target, however at the same time, it will be one of the most challenging ones given the regulations and human aspects.</p>
-          </div>
+            <span class="blog-open-link">Read post →</span>
+          </a>
         </article>
 
         <!-- Post 4: Metaverse Security -->
         <article class="blog-card" id="metaverse-security">
-          <div class="blog-card-header" onclick="togglePost(this)">
+          <a href="posts/metaverse-security.html" class="blog-card-header">
             <div class="blog-card-meta">
               <span class="blog-date">Jun 6, 2022</span>
               <div class="blog-tags">
@@ -332,76 +155,13 @@
             <p class="blog-card-excerpt">
               You probably heard the buzz around "metaverse". Regardless of which side of the argument you are in, in this article, I discuss metaverse security — from infrastructure to identity to data privacy.
             </p>
-            <div class="blog-card-actions">
-              <a href="posts/metaverse-security.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
-              <span class="blog-expand-btn">Preview ↓</span>
-            </div>
-          </div>
-          <div class="blog-card-body">
-            <p>You probably heard the buzz around "metaverse". Some people believe that the metaverse is our inevitable future, some others believe that the metaverse is a bubble that will burst eventually... Regardless of which side of the arguments you are in, in this article, I would like to discuss about <strong>metaverse security</strong>.</p>
-
-            <p>In case you do not know yet (!), the term "metaverse" originally was coined in the 1992 novel of <em>Neil Stephenson, Snow Crash,</em> to describe a virtual world, 21st century dystopia. The number of definitions has just grown by then.</p>
-
-            <blockquote>
-              <p>"Three-dimensional Internet that is populated with live people" — <em>Philip Rosedale</em> (creator of Second Life)</p>
-              <p>"The next platform and medium will be more immersive, an embodied Internet where you are in the experience, not just looking at it and we call this the metaverse" — Mark Zuckerberg</p>
-            </blockquote>
-
-            <p>In order to understand the metaverse security, we first need to understand the intrinsic characteristics of metaverse:</p>
-            <ul>
-              <li><strong>Immersiveness:</strong> Realistic to allow users to feel immersed</li>
-              <li><strong>Hyper spatiotemporality:</strong> Break of limitations of time and space</li>
-              <li><strong>Sustainability:</strong> Maintains a closed economic loop</li>
-              <li><strong>Interoperability:</strong> Move seamlessly across worlds</li>
-              <li><strong>Scalability:</strong> Handle many avatars and graphics</li>
-              <li><strong>Heterogeneity:</strong> Virtual spaces, physical spaces, devices</li>
-            </ul>
-
-            <p>In metaverse, we will be interacting in a virtual world directed [possibly] by activities within a physical world. It is not actually real, but feels like real; to the point that you may not be able to tell the differences (immersive). Metaverse is supposed to be as sufficient as living in a real world, but in a virtual one. Metaverse is full of opportunities, providing smooth and multi modal interactions that may not even be possible in a real world.</p>
-
-            <p><strong>All well! But what about "Security"?</strong></p>
-
-            <p>Let's talk about the layers of metaverse first. We can separate metaverse into three main building blocks: Infrastructure (5G, WiFi, Cloud, Edge etc.), Human Interface (AR/VR, mobile, smart glasses) and Virtual World (and ecosystem around it). Each one of these provides an angle for an attacker to exploit.</p>
-
-            <h3>Infrastructure security</h3>
-            <p>This one probably is the one that we are most familiar with and has the tools to protect from attackers. In the context of infrastructure security, there are multiple entry points for the attackers. Obviously VR/AR is an integral part of metaverse and the security of these devices are critical. If one can successfully compromise AR/VR device then the rest will follow. For example, attackers can move the person from one virtual world to another. Attackers can potentially cause physical harm to the user by disorienting the person. Therefore, security of the AR/VR devices are critical, keeping them up to date regarding patches (OS and apps), hardening with security controls are just some of the first steps to secure the devices.</p>
-
-            <p>AR/VR security is obviously the starting point but then there is the security of the underlying physical infrastructure (cloud, edge, 5G etc.), integrity and the provenance of software that are running on them and so on...</p>
-
-            <h3>What about identity?</h3>
-            <p>Identity is probably the most important part of the metaverse security. How do we make sure that the avatar that you are interacting in metaverse is actually the one that is intended for (impersonation)? Would there be a central authority to provide such an identity service and verification of it (linkability)? If so, how would this work if we go from one metaverse to another (interoperability)?</p>
-
-            <p>There is a common belief that there will NOT be just one metaverse, but rather multiple of them. Hence, interoperability will be crucial for seamless operation and interaction. But decentralization comes with its own challenges regarding the identity and its consistency.</p>
-
-            <p>There are other identity related questions in metaverse: What if somebody steal my identity and operate on my behalf? How do we prevent/detect it?</p>
-
-            <h3>What about my data?</h3>
-            <p>Data privacy is another important aspect of metaverse security. Can somebody sneak into my room and listen my conversation (man in the room)? How can I make sure that my data is transmitted securely and nobody is tampering with it (unauthorized data access)? Obviously encryption of data "in place" and "in transit" are critical here.</p>
-
-            <p>Another part of the story is AI security. Since AI is one of the most prominent enablers of metaverse, how do we prevent false data injection which might eventually affect the downstream AI models?</p>
-
-            <h3>How about ownership?</h3>
-            <p>Ownership is another important component of the metaverse. Given the leap in blockchain technology, NFTs can be used in metaverse to prove ownership. Some of the questions are: How do I prove an ownership in metaverse? Can somebody steal from me? What if this is a fraud? How do I verify and make sure that I am not robbed or theft?</p>
-
-            <h3>Societal Impacts</h3>
-            <p>Given the penetration of technology in real life, we have been witnessing increased surveillance by the governments in all areas of our lives. How is the concept of "central authority" going to work in metaverse? If a fight broke up in metaverse, who is going to intervene? Do we have a central authority, like a government, who can provide this service? If so, how do we make sure that the central authority is not biased and fair to all parties? These are serious questions and should be considered well, as the societal implications can be foundational.</p>
-
-            <h3>Conclusion</h3>
-            <p>This article gives some starting points to think about metaverse security and its implication to our [new] world. As we see more adoption of AR/VR and more metaverse ecosystems, we will need to answer all of these questions to be able to securely operate in this new era.</p>
-
-            <p><strong>References</strong></p>
-            <ul>
-              <li><a href="https://arxiv.org/pdf/2203.02662.pdf" target="_blank">https://arxiv.org/pdf/2203.02662.pdf</a></li>
-              <li><a href="https://arxiv.org/pdf/2203.03854.pdf" target="_blank">https://arxiv.org/pdf/2203.03854.pdf</a></li>
-              <li><a href="https://blogs.microsoft.com/blog/2022/03/28/the-metaverse-is-coming-here-are-the-cornerstones-for-securing-it" target="_blank">Microsoft Blog: Cornerstones for securing the metaverse</a></li>
-              <li><a href="https://securityintelligence.com/articles/metaverse-security-challenges/" target="_blank">Security Intelligence: Metaverse security challenges</a></li>
-            </ul>
-          </div>
+            <span class="blog-open-link">Read post →</span>
+          </a>
         </article>
 
         <!-- Post 5: Obfuscation Revealed -->
         <article class="blog-card" id="obfuscation-revealed">
-          <div class="blog-card-header" onclick="togglePost(this)">
+          <a href="posts/obfuscation-revealed.html" class="blog-card-header">
             <div class="blog-card-meta">
               <span class="blog-date">Jan 14, 2022</span>
               <div class="blog-tags">
@@ -414,41 +174,13 @@
             <p class="blog-card-excerpt">
               This paper proposes a methodology to use side channel information (electromagnetic signals) to identify malware activity, type, and identity, even in the presence of obfuscation. A paper from ACSAC 2021.
             </p>
-            <div class="blog-card-actions">
-              <a href="posts/obfuscation-revealed.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
-              <span class="blog-expand-btn">Preview ↓</span>
-            </div>
-          </div>
-          <div class="blog-card-body">
-            <p>This is a <a href="https://dl.acm.org/doi/10.1145/3485832.3485894" target="_blank">paper</a> that appeared in ACSAC 2021.</p>
-
-            <p><strong>TL;DR</strong>: The paper proposes a methodology to use side channel information (electromagnetic signals (EM)) to be able to identify malware activity, malware type and identity, even in the presence of obfuscation.</p>
-
-            <p>Internet of Things (IoT) have become ubiquitous in the last decade. From home security cameras, to our ovens and fridges, everything you can imagine is becoming smarter, with the help of IoT. One of the hinderances to wider adoption of IoT, as you might expect, is security. The core problem is that security usually is seen as an afterthought process rather than a core component of device's design and software implementation.</p>
-
-            <p>There are two major ways of detecting malware in software today: static or dynamic analysis. Static analysis is great, possibly more reliable but failed to detect in the existence of obfuscation. At the end, as our security tools become more sophisticated, hackers become more sophisticated as well, a vicious cycle. Therefore dynamic analysis to detect malware is a more resilient approach than a static analysis one might think. However, malicious actors also become more dynamic and try to detect the "detection". Once successful, the malware ceases the operation and becomes more difficult for security tools to reveal it.</p>
-
-            <p>This paper proposes a different way of detecting malware. Instead of installing a software to your device and monitor the activities, the paper proposes to use <em>side channel information</em>, i.e. <em>EM</em>. The idea of using side channel information to detect malware, or anomalous activities in general is not a new one. Beyond EM, people in the field also tried "heat" as another source to detect such activities. The paper claims the following differences from the state-of-the-art:</p>
-            <ul>
-              <li>On-the-wild malware detection instead of proof-of-concept samples.</li>
-              <li>Examination of scenarios that involve benign dataset and obfuscated malware to test for robustness.</li>
-              <li>Most existing works use anomaly detection with small sample size which have advantage of detecting any new different activity as anomalous but at the same time also prone to generate lots of false positives.</li>
-              <li>Experiments with wide-ranging classification models in real-world malware analysis: type, obfuscation or variant.</li>
-            </ul>
-
-            <p><strong>Malware dataset</strong>: 4,790 32-bit ELF ARM malware samples collected from Virusign. In total 19 different families detected, Mirai (43.5%) and Bashlite (35.8%) are the majorities. Combination of static and dynamic code obfuscation is used to enrich the dataset. Finally, benign dataset is added by monitoring and logging under the normal running conditions.</p>
-
-            <p><strong>Methodology</strong>: Raw EM data is processed and spectrogram of the signal is computed to reduce the noise. Feature extraction using NICV is applied to reduce the amount of time and resources needed for classification. Two neural networks architectures are used for the experiments: MLP and CNN along with traditional machine learning algorithms, Naive Bayes and SVM.</p>
-
-            <p><strong>Results</strong>: The paper presents promising results as it can identify the type of malware with &gt;98% accuracy where CNN outperforms the others. It is also shown that it is effective in detecting novel malware by 99.38% accuracy. Obfuscation techniques are also classified with 82.70% accuracy, again CNN is outperforming the others.</p>
-
-            <p>The main use case of the paper is for analysts to have an environment where they can experiment with malware. When it comes to IoT security, would such approach work? One can imagine that scalability and cost can become a big challenge as we cannot put additional device next to each and every IoT device for sensing EM. Even though the approach is not intrusive and definitely helpful for analysts, we still need an approach that can work in scale to protect IoT devices from attacks.</p>
-          </div>
+            <span class="blog-open-link">Read post →</span>
+          </a>
         </article>
 
         <!-- Post 6: NL to Risk Score -->
         <article class="blog-card" id="nl-risk-score">
-          <div class="blog-card-header" onclick="togglePost(this)">
+          <a href="posts/nl-risk-score.html" class="blog-card-header">
             <div class="blog-card-meta">
               <span class="blog-date">Nov 20, 2019</span>
               <div class="blog-tags">
@@ -462,48 +194,13 @@
             <p class="blog-card-excerpt">
               Risk management is a fundamental part of Cloud Service Management. This post explains how an AI-based approach can standardize different domains to quantify risk using NLP, applied in IBM Cloud Pak for Multicloud Management.
             </p>
-            <div class="blog-card-actions">
-              <a href="posts/nl-risk-score.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
-              <span class="blog-expand-btn">Preview ↓</span>
-            </div>
-          </div>
-          <div class="blog-card-body">
-            <p>Risk management is a fundamental part of Cloud Service Management. Understanding up-to-date risk posture of the cloud environment is a desiring feature of today's complex IT infrastructure.</p>
-
-            <p>In today's IT world, different security processes are used to make sure that the cloud environment is safe, secure and compliant. <strong>Patch Management</strong> and <strong>Health Checks</strong> are two major examples of such compliance processes. Quantifying the risk for these compliance processes are critical in order to understand the current risk posture of the IT environment. While quantifying the risk in a certain compliance domain is well-defined and standardized, it is yet to become a global rule for different domains due to lack of the standard process.</p>
-
-            <p>This blog post explains how the AI-based approach can standardize different domains to quantify risk using natural language processing (NLP). In particular, Center for Internet Security (CIS) Benchmarks are used for the case study and applied in the IBM product, IBM Cloud Pak for Multicloud Management.</p>
-
-            <h3>Background: Common Vulnerability Exposures</h3>
-            <p>Since the year 1998, the systems and software vulnerabilities have been collected in one place called National Vulnerability Database (NVD), hosted by National Institute of Standards and Technology (NIST). Software vendors release software patches based on the found vulnerabilities. Patches often include one or multiple Common Vulnerability Exposures (CVE) assigned to them. Each CVE is assigned a vulnerability score in the range of 0–10 based on Common Vulnerability Scoring System (CVSS) by a security analyst.</p>
-
-            <p>Patch management is one example of the security processes in today's Cloud Service Management. Another process is Health Checking. Health Checks are usually performed by standards. Center for Internet Security (CIS) Benchmarks are an example of such standards that are widely used today. CIS benchmarks aim to make sure that managed systems are secure, safe and compliant. However, today there is no standard way of assigning a risk score for each failed health check similar to each missing patch.</p>
-
-            <h3>Classification with Deep Neural Networks</h3>
-            <p>Deep Learning is considered to be a subfield of machine learning, which itself is a subfield of Artificial Intelligence. Deep Learning has shown to be an effective method of machine learning when there is large amount of data for training. In our case, we are particularly interested in classification of a given description of text into a Common Vulnerability Scoring System (CVSS).</p>
-
-            <h4>Data</h4>
-            <p>Our primary source of data are the vulnerability descriptions and their associated CVSS scores from National Vulnerability Database (NVD). As of writing this blog post, there are more than 123K vulnerabilities reported in NVD as of Nov 2019. This constitutes a considerable amount of data. Our second source of data is IBM Technical Specification Standard Documents.</p>
-
-            <h4>Model</h4>
-            <p>Our approach is based on Deep Learning. The first layer is the input layer, where given a text we generate an embedding out of it. We use state-of-the-art embedding techniques (including language modeling) to achieve the best performance. Next, we have hidden layers, where we use CNN, LSTM and other state-of-the-art sequence-to-sequence models. Finally, we have the output layer, where the layer tries to capture the different dimensions of the CVSS. Our approach is to build an initial model with NVD data (Vanilla NVD Model), and later use transfer learning with the data from IBM Technical Specification Standard Documents and CIS Benchmarks.</p>
-
-            <h4>Feedback</h4>
-            <p>AI models can learn, and capture important features and output information we would want to receive. However, AI models usually impose limitations to achieve 100% accuracy. The precision is really important for mission critical models that have higher impact when it goes wrong. Hence, we developed a UI where Subject Matter Experts (SMEs) can easily verify (or change) the mapping assigned by the AI model.</p>
-
-            <h3>IBM Cloud Pak for Multicloud Management</h3>
-            <p>IBM Cloud Pak for Multicloud Management, running on Red Hat OpenShift, provides consistent visibility, governance, and automation from on premises to the edge. CIS Policy Controller is one of the policy controllers. CIS Policy controller implements CIS Kubernetes Benchmark 1.4.0. Each control in this benchmark comes with a score that is quantified using the AI risk framework explained above.</p>
-
-            <h3>Conclusion</h3>
-            <p>We have shown how AI based risk quantification can be done in a standard way for a given natural language description. Today in IBM Cloud Pak for Multicloud Management, one of the policy controllers is CIS Policy Controller, and each failed CIS Kubernetes Benchmark 1.4.0 check comes with a risk score assigned by our AI model and verified by a subject matter expert.</p>
-
-            <p><em>Authors: Muhammed Fatih Bulut (Senior Research Engineer, IBM Research), Jinho Hwang (Research Staff Member, IBM Research), Milton Hernandez (Distinguished Engineer, IBM Research)</em></p>
-          </div>
+            <span class="blog-open-link">Read post →</span>
+          </a>
         </article>
 
         <!-- Post 7: Before Beginning -->
         <article class="blog-card" id="before-beginning">
-          <div class="blog-card-header" onclick="togglePost(this)">
+          <a href="posts/before-beginning.html" class="blog-card-header">
             <div class="blog-card-meta">
               <span class="blog-date">Jan 22, 2019</span>
               <div class="blog-tags">
@@ -514,16 +211,8 @@
             <p class="blog-card-excerpt">
               A disclosure: I am not an avid blogger, however, I do read and write quite a lot and always willing to become an avid blogger.
             </p>
-            <div class="blog-card-actions">
-              <a href="posts/before-beginning.html" class="blog-open-link" onclick="event.stopPropagation()">Open post →</a>
-              <span class="blog-expand-btn">Preview ↓</span>
-            </div>
-          </div>
-          <div class="blog-card-body">
-            <p>First a disclosure: I am not an avid blogger, however, I do read and write quite a lot and always willing to become an avid blogger (no surprise!). I wrote in Blogspot before, stories related to Cloud, Data and all other things, even about democracy. This is my attempt to get back into the blogging world again. I plan to write on stuff related to Data Science, Artificial Intelligence and Cloud et al.</p>
-            <p>None of the views that I will write here is a view of my employer or some other entities that I can not think of right now. Seriously and simply, it is solely my views.</p>
-            <p>Please support by sharing and spreading the word!</p>
-          </div>
+            <span class="blog-open-link">Read post →</span>
+          </a>
         </article>
 
       </div>
@@ -545,51 +234,12 @@
         <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank">Google Scholar</a>
         <a href="https://dblp.org/pers/hd/b/Bulut:Muhammed_Fatih" target="_blank">DBLP</a>
       </div>
-      <p>&copy; 2025 Fatih Bulut. Built with ☕ and curiosity.</p>
+      <p>&copy; 2026 Fatih Bulut. Built with ☕ and curiosity.</p>
     </div>
   </footer>
 
   <script>
-    // Toggle blog post expand/collapse
-    function togglePost(header) {
-      const card = header.closest('.blog-card');
-      const body = card.querySelector('.blog-card-body');
-      const btn = header.querySelector('.blog-expand-btn');
-      const isOpen = card.classList.contains('expanded');
-
-      if (isOpen) {
-        body.style.maxHeight = body.scrollHeight + 'px';
-        requestAnimationFrame(() => {
-          body.style.maxHeight = '0';
-        });
-        card.classList.remove('expanded');
-        btn.textContent = 'Preview ↓';
-      } else {
-        card.classList.add('expanded');
-        body.style.maxHeight = body.scrollHeight + 'px';
-        btn.textContent = 'Hide preview ↑';
-        body.addEventListener('transitionend', function handler() {
-          if (card.classList.contains('expanded')) {
-            body.style.maxHeight = 'none';
-          }
-          body.removeEventListener('transitionend', handler);
-        });
-      }
-    }
-
-    // Open post if linked via hash
     document.addEventListener('DOMContentLoaded', () => {
-      const hash = window.location.hash.substring(1);
-      if (hash) {
-        const target = document.getElementById(hash);
-        if (target && target.classList.contains('blog-card')) {
-          const header = target.querySelector('.blog-card-header');
-          if (header) togglePost(header);
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-
-      // Back to top
       const backToTop = document.getElementById('back-to-top');
       window.addEventListener('scroll', () => {
         backToTop.classList.toggle('visible', window.scrollY > 300);

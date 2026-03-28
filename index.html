@@ -8,13 +8,16 @@
   <meta name="description"
     content="Principal AI/ML Architect at Microsoft. 40+ patents, AI security expert, former IBM researcher, NYU & Columbia instructor.">
   <meta name="author" content="Fatih Bulut">
+  <meta property="og:title" content="Fatih Bulut | Principal AI/ML Architect">
+  <meta property="og:description" content="Principal AI/ML Architect at Microsoft. 40+ patents, AI security expert, former IBM researcher, NYU & Columbia instructor.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 
 <body>
@@ -27,11 +30,11 @@
       </button>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#publications">Publications</a></li>
+        <li><a href="publications.html">Publications</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li>
           <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path
                 d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
             </svg>
@@ -40,7 +43,7 @@
         <li>
           <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank" class="nav-icon"
             title="Google Scholar">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path
                 d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
             </svg>
@@ -158,24 +161,14 @@
         </aside>
       </div>
 
-      <!-- Publications Section -->
+      <!-- Recent Publications -->
       <section class="publications-section" id="publications">
         <div class="section-header">
-          <h2 class="section-title">Publications</h2>
-          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ&view_op=list_works&sortby=pubdate"
-            target="_blank" class="section-link">Google Scholar →</a>
+          <h2 class="section-title">Recent Publications</h2>
+          <a href="publications.html" class="section-link">View all →</a>
         </div>
 
-        <div class="pub-filters">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="Blog">Blog</button>
-          <button class="filter-btn" data-filter="Conference">Conference</button>
-          <button class="filter-btn" data-filter="Journal">Journal</button>
-          <button class="filter-btn" data-filter="Arxiv">Arxiv</button>
-          <button class="filter-btn" data-filter="Workshop">Workshop</button>
-        </div>
-
-        <div class="pub-grid" id="pub-grid">
+        <div class="pub-grid-compact" id="pub-grid-compact">
           <!-- Publications loaded dynamically -->
         </div>
       </section>
@@ -198,180 +191,11 @@
         <a href="https://dblp.org/pers/hd/b/Bulut:Muhammed_Fatih" target="_blank">DBLP</a>
         <a href="blog.html">Blog</a>
       </div>
-      <p>© 2025 Fatih Bulut. Built with ☕ and curiosity.</p>
+      <p>© 2026 Fatih Bulut. Built with ☕ and curiosity.</p>
     </div>
   </footer>
 
-  <script>
-    // Load and parse publications from CSV
-    async function loadPublications() {
-      try {
-        const response = await fetch('list.csv');
-        const text = await response.text();
-        const lines = text.trim().split('\n').filter(line => line.trim());
-
-        const publications = lines.map((line, index) => {
-          const parts = line.split(';');
-          return {
-            type: parts[0] || '',
-            year: parts[1] || '',
-            authors: parts[2] || '',
-            title: parts[3] || '',
-            venue: parts[4] || '',
-            award: parts[5] || '',
-            number: lines.length - index
-          };
-        }).filter(pub => pub.title);
-
-        renderPublications(publications);
-        setupFilters(publications);
-
-        // Update the hero stat with actual count (animated)
-        const pubCountEl = document.getElementById('pub-count');
-        animateCounter(pubCountEl, publications.length, '+');
-      } catch (error) {
-        console.error('Error loading publications:', error);
-      }
-    }
-
-    function renderPublications(publications, filter = 'all') {
-      const grid = document.getElementById('pub-grid');
-      const filtered = filter === 'all'
-        ? publications
-        : publications.filter(p => p.type.toLowerCase() === filter.toLowerCase());
-
-      grid.innerHTML = filtered.map(pub => {
-        const badgeClass = pub.type.toLowerCase().replace(' ', '');
-        const linksHtml = pub.venue || '';
-        const awardHtml = pub.award ? `<div class="pub-award">🏆 ${pub.award}</div>` : '';
-
-        return `
-          <article class="pub-card" data-type="${pub.type}">
-            <div class="pub-header">
-              <span class="pub-number">#${pub.number}</span>
-              <span class="pub-badge ${badgeClass}">${pub.type}</span>
-              <span class="pub-year">${pub.year}</span>
-            </div>
-            <h3 class="pub-title">${pub.title}</h3>
-            <p class="pub-authors">${pub.authors}</p>
-            <div class="pub-venue">${linksHtml}</div>
-            ${awardHtml}
-          </article>
-        `;
-      }).join('');
-    }
-
-    function setupFilters(publications) {
-      const buttons = document.querySelectorAll('.filter-btn');
-      buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          buttons.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          renderPublications(publications, btn.dataset.filter);
-        });
-      });
-    }
-
-    // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
-      loadPublications();
-      initAnimations();
-      initBackToTop();
-      initNewsToggle();
-    });
-
-    // Animated counter for stats
-    function animateCounter(element, target, suffix = '') {
-      const duration = 1500;
-      const start = 0;
-      const startTime = performance.now();
-
-      function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const easeOut = 1 - Math.pow(1 - progress, 3);
-        const current = Math.floor(start + (target - start) * easeOut);
-        element.textContent = current + suffix;
-
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        }
-      }
-      requestAnimationFrame(update);
-    }
-
-    // Scroll fade-in animations
-    function initAnimations() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-      // Animate patent and years stats on page load
-      setTimeout(() => {
-        const stats = document.querySelectorAll('.stat-value');
-        // Patents (first stat)
-        if (stats[0]) animateCounter(stats[0], 40, '+');
-        // Years (third stat) - publications is handled after CSV load
-        if (stats[2]) animateCounter(stats[2], 15, '+');
-      }, 300);
-    }
-
-    // Back to top button
-    function initBackToTop() {
-      const btn = document.getElementById('back-to-top');
-
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-          btn.classList.add('visible');
-        } else {
-          btn.classList.remove('visible');
-        }
-      });
-
-      btn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
-
-    // News toggle
-    function initNewsToggle() {
-      const VISIBLE_COUNT = 3;
-      const toggle = document.getElementById('news-toggle');
-      const allItems = document.querySelectorAll('#news-list .news-item');
-      const totalCount = allItems.length;
-      const hiddenCount = totalCount - VISIBLE_COUNT;
-      let expanded = false;
-
-      // Hide items beyond VISIBLE_COUNT
-      allItems.forEach((item, i) => {
-        if (i >= VISIBLE_COUNT) item.classList.add('news-hidden');
-      });
-
-      // Hide toggle if nothing to expand
-      if (hiddenCount <= 0) { toggle.style.display = 'none'; return; }
-
-      toggle.textContent = `View all ${totalCount} news →`;
-
-      toggle.addEventListener('click', () => {
-        expanded = !expanded;
-        allItems.forEach((item, i) => {
-          if (i < VISIBLE_COUNT) return;
-          if (expanded) {
-            setTimeout(() => item.classList.add('show'), (i - VISIBLE_COUNT) * 80);
-          } else {
-            item.classList.remove('show');
-          }
-        });
-        toggle.textContent = expanded ? '← Show less' : `View all ${totalCount} news →`;
-      });
-    }
-  </script>
+  <script src="main.js"></script>
   <script src="nav.js"></script>
 </body>
 
