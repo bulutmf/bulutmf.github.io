@@ -446,8 +446,9 @@ a:hover {
 }
 
 .pub-grid {
-  display: grid;
-  gap: var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 /* Recent publications for home page */
@@ -527,35 +528,35 @@ a:hover {
 }
 
 .pub-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-6);
-  transition: all var(--transition-base);
+  border-bottom: 1px solid var(--border-color);
+  padding: var(--spacing-3) 0;
+  transition: background var(--transition-fast);
+}
+
+.pub-card:last-child {
+  border-bottom: none;
 }
 
 .pub-card:hover {
-  border-color: var(--accent-primary);
-  transform: translateY(-4px);
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.2), 0 0 60px rgba(139, 92, 246, 0.1);
+  background: rgba(30, 41, 59, 0.4);
 }
 
 .pub-header {
   display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-4);
-  margin-bottom: var(--spacing-3);
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-1);
 }
 
 .pub-number {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   color: var(--text-muted);
-  min-width: 30px;
+  min-width: 26px;
 }
 
 .pub-badge {
-  font-size: var(--font-size-xs);
-  padding: var(--spacing-1) var(--spacing-2);
+  font-size: 0.6rem;
+  padding: 1px 6px;
   border-radius: var(--radius-sm);
   font-weight: 500;
   text-transform: uppercase;
@@ -603,28 +604,35 @@ a:hover {
 }
 
 .pub-year {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   color: var(--text-muted);
   margin-left: auto;
 }
 
 .pub-title {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: var(--spacing-2);
+  margin-bottom: var(--spacing-1);
+  line-height: 1.45;
 }
 
 .pub-authors {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   color: var(--text-muted);
   font-style: italic;
-  margin-bottom: var(--spacing-2);
+  margin-bottom: 0;
 }
 
 .pub-venue {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   color: var(--text-secondary);
+}
+
+.pub-meta {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
 .pub-links {
@@ -634,8 +642,7 @@ a:hover {
 }
 
 .pub-award {
-  margin-top: var(--spacing-2);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   color: var(--success);
   font-weight: 500;
 }
@@ -741,9 +748,12 @@ a:hover {
   }
 
   .bio-card,
-  .news-card,
-  .pub-card {
+  .news-card {
     padding: var(--spacing-4);
+  }
+
+  .pub-card {
+    padding: var(--spacing-2) 0;
   }
 
   .container {

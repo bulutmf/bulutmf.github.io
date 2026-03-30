@@ -131,7 +131,8 @@
       grid.innerHTML = filtered.map(function (pub) {
         var badgeClass = pub.type.toLowerCase().replace(' ', '');
         var linksHtml = pub.venue || '';
-        var awardHtml = pub.award ? '<div class="pub-award">\uD83C\uDFC6 ' + pub.award + '</div>' : '';
+        var awardHtml = pub.award ? '<span class="pub-award"> · \uD83C\uDFC6 ' + pub.award + '</span>' : '';
+        var venueHtml = linksHtml ? '<span class="pub-venue">' + linksHtml + '</span>' : '';
 
         return '<article class="pub-card" data-type="' + pub.type + '">' +
           '<div class="pub-header">' +
@@ -139,10 +140,12 @@
           '<span class="pub-badge ' + badgeClass + '">' + pub.type + '</span>' +
           '<span class="pub-year">' + pub.year + '</span>' +
           '</div>' +
-          '<h3 class="pub-title">' + pub.title + '</h3>' +
-          '<p class="pub-authors">' + pub.authors + '</p>' +
-          '<div class="pub-venue">' + linksHtml + '</div>' +
+          '<div class="pub-title">' + pub.title + '</div>' +
+          '<div class="pub-meta">' +
+          '<span class="pub-authors">' + pub.authors + '</span>' +
+          (linksHtml ? ' · ' : '') + venueHtml +
           awardHtml +
+          '</div>' +
           '</article>';
       }).join('');
     }
