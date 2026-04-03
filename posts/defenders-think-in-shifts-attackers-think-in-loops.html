@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="../analytics.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Defenders Think in Shifts. Attackers Think in Loops. | Fatih Bulut</title>
+  <meta name="description"
+    content="Most security teams still defend in shifts while attackers now operate in continuous loops at machine speed. The answer is not panic, but architecture: identity governance, automation, and workflows built for continuity.">
+  <meta name="author" content="Fatih Bulut">
+  <meta property="og:title" content="Defenders Think in Shifts. Attackers Think in Loops.">
+  <meta property="og:description"
+    content="Attackers increasingly operate in continuous loops at machine speed. Defenders need architecture, workflows, and governance that preserve context and act with continuity.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://bulutmf.github.io/posts/defenders-think-in-shifts-attackers-think-in-loops.html">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">Fatih Bulut</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../publications.html">Publications</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank" class="nav-icon"
+            title="Google Scholar">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="blog-header post-header">
+    <div class="container">
+      <a href="../blog.html" class="post-back-link">← Back to Blog</a>
+      <div class="blog-card-meta post-meta">
+        <span class="blog-date">Apr 3, 2026</span>
+        <div class="blog-tags">
+          <span class="blog-tag">Security</span>
+          <span class="blog-tag">AI</span>
+          <span class="blog-tag">Threat Intel</span>
+        </div>
+      </div>
+      <h1 class="post-title">Defenders Think in Shifts. Attackers Think in Loops.</h1>
+      <div class="post-share"></div>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="container">
+      <article class="post-article">
+        <div class="post-content">
+          <p class="post-no-lede">I have spent much of my career working on how AI can improve security, especially across vulnerability management, prioritization, training domain specific language models, detection engineering and purple teaming. At IBM Research, I worked on projects like <a href="https://www.computer.org/csdl/proceedings-article/cloud/2021/006000a566/1ymJ11j4PDi" target="_blank">NL2Vul</a>, using language models to score vulnerabilities and connect them to attack techniques. At Microsoft, I worked on efforts like <a href="https://arxiv.org/abs/2411.07519" target="_blank">TIPS</a> and <a href="https://arxiv.org/abs/2411.07528" target="_blank">SecEncoder</a>, using domain-specific models to connect vulnerabilities, threat actors, and prioritization more directly to operational action. Some of this work shipped and was used by customers and practitioners, including through <a href="https://research.ibm.com/blog/cloud-resistance-strength" target="_blank">IBM X-Force Red's vulnerability management services</a>. That gave me a close look at how organizations actually manage security risk, not just how they report it.</p>
+
+          <p>I have seen what the dashboards show and what the spreadsheets hide.</p>
+
+          <p>The uncomfortable truth is that, despite years of progress, most enterprise security postures are still weaker than leaders think. That is not a provocative claim. It is an observation.</p>
+
+          <h3>Progress Is Real. Posture Is Not.</h3>
+
+          <p>The industry has made real progress. CVSS gave us a shared language for scoring vulnerabilities. EPSS improved the conversation by adding probability and helping teams ask not just how bad a vulnerability is, but how likely it is to be exploited. Risk-based prioritization pushed organizations away from "patch everything" toward "patch what matters first."</p>
+
+          <p>Those are meaningful advances. I believe in them. I helped build some of them.</p>
+
+          <p>But frameworks do not patch systems. Scores do not close tickets. Prioritization only matters if the organization can actually act on it.</p>
+
+          <p>In many enterprises, the gap between knowing and doing is still enormous. Critical vulnerabilities sit in spreadsheets. Patching cycles stretch into quarters. Security teams can explain the risk clearly and still lack the authority, staffing, or operational support to reduce it. The tools have improved faster than the posture.</p>
+
+          <h3>The Lights-On Dilemma</h3>
+
+          <p>Every organization lives with the same tension: keep the business running today while investing in resilience for tomorrow.</p>
+
+          <p>Security rarely loses because no one cares. It loses because it is forced to compete with everything else.</p>
+
+          <p>Product deadlines, reliability work, revenue goals, and customer commitments all draw from the same pool of budget and engineering time. When the choice is between shipping the release and fixing the security issue that has not yet caused an outage, the release often wins. That is not irrational. It is how incentives work.</p>
+
+          <p>I do not say that to criticize teams. Most are doing the best they can inside real business constraints. But the consequences of being slow have changed.</p>
+
+          <h3>This Is Not a Forecast</h3>
+
+          <p>The shift to agentic AI in cybersecurity is not theoretical. It is already changing how attacks are carried out and how quickly they unfold.</p>
+
+          <p>The clearest signal is not just better tooling. It is compressed time. <a href="https://cloud.google.com/blog/topics/threat-intelligence/m-trends-2026" target="_blank">Mandiant recently highlighted cases where the time from initial access to action on objective fell to 22 seconds</a>. Whether the path is exploitation, credential use, or lateral movement, the pattern is the same: attackers can now operate in continuous loops at machine speed.</p>
+
+            <p><a href="https://www.anthropic.com/news/disrupting-AI-espionage" target="_blank">Anthropic also disclosed the first reported AI-orchestrated cyber espionage campaign</a>, with AI reportedly carrying out 80 to 90 percent of the campaign and humans stepping in only at a handful of decision points. That is not a distant edge case. It is another sign that attack execution is moving closer to continuous, machine-speed loops.</p>
+
+          <p>That changes the meaning of "slow."</p>
+
+          <p>If your organization still runs on quarterly patch cycles, you are not simply behind. You are operating on a cadence built for a different era.</p>
+
+          <h3>Shifts Versus Loops</h3>
+
+          <p>John Lambert famously wrote, <a href="https://github.com/JohnLaTwC/Shared/blob/master/Defenders%20think%20in%20lists.%20Attackers%20think%20in%20graphs.%20As%20long%20as%20this%20is%20true%2C%20attackers%20win.md" target="_blank">"Defenders think in lists. Attackers think in graphs. As long as this is true, attackers win."</a> The point was structural. Defenders tend to see inventories, point findings, and ticket queues. Attackers see relationships, paths, and opportunities to pivot.</p>
+
+          <p>In the agentic age, there is a second asymmetry:</p>
+
+          <p><strong>Defenders think in shifts. Attackers think in loops.</strong></p>
+
+          <p>Most SOCs still run on a human-time model. An alert fires. Someone triages it. It gets escalated. Another person investigates. A response decision waits on context, staffing, approvals, or the next handoff. Even very good teams are constrained by the way the work is organized.</p>
+
+          <p>Attackers are increasingly less constrained. Autonomous systems do not sleep, lose context at shift change, or wait in a queue. They probe, adapt, retry, pivot, and continue. Block one path and they test another. Burn one credential and they try the next. The attack is no longer just a sequence of human actions. It is a loop.</p>
+
+          <p>That is the mismatch. Defenders often optimize for throughput within shifts. Attackers optimize for continuity across time.</p>
+
+          <h3>Your Own Tools Are Part of the Attack Surface</h3>
+
+          <p>There is another part of this story that deserves more attention: the same AI systems companies are deploying to move faster also expand the attack surface.</p>
+
+          <p>The <a href="https://docs.litellm.ai/blog/security-update-march-2026" target="_blank">LiteLLM supply chain compromise</a> was a useful reminder that AI infrastructure is still infrastructure. Model gateways, agent frameworks, MCP servers, plugins, connectors, orchestration layers, and secrets all become part of the security boundary. Every agent you deploy is also a non-human identity with credentials, permissions, and access paths.</p>
+
+          <p>Most organizations are still treating these as features, not as new attack surface.</p>
+
+          <p>That is one reason so many modern attacks look less like breaking in and more like logging in. If an attacker can steal a token, hijack an integration, abuse an over-permissioned agent, or compromise part of the software supply chain, they may not need an exotic exploit at all.</p>
+
+          <p>Speed without architecture does not create advantage. It creates shortcuts, and shortcuts become backdoors.</p>
+
+          <h3>AI Can Help Defenders Too, But Only on the Right Foundation</h3>
+
+          <p>None of this is an argument against AI. Quite the opposite.</p>
+
+          <p>I have seen firsthand that AI can materially improve defensive work. Projects like <a href="https://arxiv.org/abs/2603.25930" target="_blank">AVDA</a>, <a href="https://arxiv.org/abs/2411.07528" target="_blank">SecEncoder</a>, <a href="https://www.computer.org/csdl/proceedings-article/cloud/2021/006000a566/1ymJ11j4PDi" target="_blank">NL2Vul</a>, and <a href="https://arxiv.org/abs/2411.07519" target="_blank">TIPS</a> showed that domain-specific models can help teams understand vulnerabilities faster, connect technical findings to attacker behavior, and prioritize remediation more intelligently.</p>
+
+          <p>But AI does not repair a broken operating model.</p>
+
+          <p>You cannot bolt an AI copilot onto a workflow that still depends on sequential human handoffs and expect machine-speed defense. You cannot deploy autonomous tools across the enterprise without identity governance for non-human actors, behavioral monitoring, clear permissions, and automated containment where the signal is strong. The architecture enables the AI, not the other way around.</p>
+
+          <p>The practical work is not glamorous. Govern non-human identities. Instrument agent workflows. Reduce exposure windows on internet-facing systems. Automate the high-confidence parts of detection and response. Design operations to preserve context across time instead of losing it at every handoff.</p>
+
+          <p>That is the foundation that lets AI amplify defenders rather than amplify complexity.</p>
+
+          <h3>The Real Shift</h3>
+
+          <p>The point is not to be alarmist. It is to be honest about the environment we are already in.</p>
+
+          <p>Most organizations do not need more slogans about AI. They need to update the assumptions behind their security programs. The world those programs were built for was slower, more manual, and more forgiving than the one we have now.</p>
+
+          <p>Defenders still think in shifts. Attackers increasingly think in loops.</p>
+
+          <p>The organizations that adapt will be the ones that redesign their architecture, workflows, and decision-making so they can operate at the speed of the systems they are defending.</p>
+
+          <p>That is the same lesson as <a href="../posts/speed-is-the-new-moat.html">my last post</a>: speed matters, but only on good architecture.</p>
+
+          <p><em>Disclaimer: These are my personal thoughts and do not reflect the views of my current employer or any previous employers.</em></p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank">Google Scholar</a>
+        <a href="../blog.html">Blog</a>
+      </div>
+      <p>&copy; 2026 Fatih Bulut. Built with ☕ and curiosity.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 300);
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+  <script src="../nav.js"></script>
+  <script src="../share.js"></script>
+</body>
+
+</html>

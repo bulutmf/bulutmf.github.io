@@ -1204,6 +1204,11 @@ a.stat:hover::after {
   line-height: 1.75;
 }
 
+.post-content > p:first-child.post-no-lede {
+  font-size: 1.08rem;
+  color: var(--text-secondary);
+}
+
 .post-content h2,
 .post-content h3 {
   font-size: var(--font-size-2xl);
