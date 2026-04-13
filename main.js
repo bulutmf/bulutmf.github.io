@@ -1,3 +1,5 @@
+var PATENT_COUNT = 48;
+
 // Load and parse publications from CSV
 async function loadPublications() {
   try {
@@ -119,8 +121,9 @@ function initAnimations() {
   document.querySelectorAll('.fade-in').forEach(function (el) { observer.observe(el); });
 
   setTimeout(function () {
+    var patentEl = document.getElementById('patent-count');
+    if (patentEl) animateCounter(patentEl, PATENT_COUNT, '+');
     var stats = document.querySelectorAll('.stat-value');
-    if (stats[0]) animateCounter(stats[0], 40, '+');
     if (stats[2]) animateCounter(stats[2], 15, '+');
   }, 300);
 }
@@ -175,6 +178,13 @@ function initNewsToggle() {
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', function () {
+  // Populate patent count from single constant
+  var patentText = document.getElementById('patent-text');
+  if (patentText) patentText.textContent = PATENT_COUNT + '+';
+  document.querySelectorAll('meta[name="description"], meta[property="og:description"]').forEach(function (meta) {
+    meta.setAttribute('content', 'Principal AI/ML Architect at Microsoft. ' + PATENT_COUNT + '+ patents, AI security expert, former IBM researcher, NYU & Columbia instructor.');
+  });
+
   loadPublications();
   initAnimations();
   initBackToTop();
