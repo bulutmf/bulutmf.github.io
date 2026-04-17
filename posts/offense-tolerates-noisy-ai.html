@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="../analytics.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Offense Tolerates Noisy AI. Defense Can't. | Fatih Bulut</title>
+  <meta name="description"
+    content="AI does not fail symmetrically. Hallucinations, indeterminism, and overconfident errors help offense first. Defenders only win when models are embedded in systems that are grounded, bounded, and reversible.">
+  <meta name="author" content="Fatih Bulut">
+  <meta property="og:title" content="Offense Tolerates Noisy AI. Defense Can't.">
+  <meta property="og:description"
+    content="Why AI's current weaknesses help offense first, and what it takes for autonomous defense to win.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://bulutmf.github.io/posts/offense-tolerates-noisy-ai.html">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">Fatih Bulut</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../publications.html">Publications</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank" class="nav-icon"
+            title="Google Scholar">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="blog-header post-header">
+    <div class="container">
+      <a href="../blog.html" class="post-back-link">← Back to Blog</a>
+      <div class="blog-card-meta post-meta">
+        <span class="blog-date">Apr 13, 2026</span>
+        <div class="blog-tags">
+          <span class="blog-tag">Security</span>
+          <span class="blog-tag">AI</span>
+          <span class="blog-tag">Autonomous Defense</span>
+        </div>
+      </div>
+      <h1 class="post-title">Offense Tolerates Noisy AI. Defense Can't.</h1>
+      <div class="post-share"></div>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="container">
+      <article class="post-article">
+        <div class="post-content">
+          <p class="post-subtitle"><em>Why AI's current weaknesses help offense first, and what it takes for autonomous defense to win</em></p>
+
+          <p>Attackers can afford to be wrong a lot. Defenders can't. That gap is most of the story when it comes to AI in security.</p>
+
+          <p>Hallucinations, indeterminism, and overconfident errors are annoyances for attackers. They retry, edit, and cherry-pick. For defenders, the same traits show up as false alarms, missed incidents, unsafe actions, and broken trust. A model that is "mostly useful" is already valuable to an attacker. The same model is often too unreliable to sit inside a defender's control loop. Security is a worst-case discipline; today's AI is optimized for the average case.</p>
+
+          <p>That does not mean AI is a bad fit for defense. It means models favor offense first, and defenders only win when those models are embedded in systems that are grounded, bounded, and reversible.</p>
+
+          <h3>Variance helps offense</h3>
+
+          <p>Current AI systems are probabilistic. Ask the same question ten times and one answer may be dramatically better than the rest. For attackers, that is not a bug. It is in some sense a free search.</p>
+
+          <p>Indeterminism becomes a mutation engine: ten variants of a phishing lure, ten reframings of a pretext, ten ways to rewrite a loader to slip past brittle controls. Hallucinations are cheap to throw away when you only need one output to land. Best-of-N behavior is an operational advantage because the attacker only needs one output that is good enough for one target, for a few seconds of human judgment, against one weak control. The <a href="https://www.cnn.com/2024/05/16/tech/arup-deepfake-scam-loss-hong-kong-intl-hnk/index.html" target="_blank" rel="noopener">$25M Arup deepfake fraud in early 2024</a> is the clean version of this: the attackers did not need a perfect synthetic CFO, only one video call that held together long enough to authorize a wire transfer.</p>
+
+          <p>Attackers can put a human in the loop very cheaply: ask for twenty options, throw away nineteen, lightly edit the best one, move on. "The model is often wrong" is not much comfort when being often wrong and occasionally useful is already an effective combination.</p>
+
+          <p>This is not a future scenario. In November 2025, Anthropic <a href="https://www.anthropic.com/news/disrupting-AI-espionage" target="_blank" rel="noopener">reported the first documented AI-orchestrated espionage campaign</a>, attributed with high confidence to a Chinese state-sponsored group. The operators jailbroke Claude Code and pointed it at roughly thirty targets across tech, finance, chemicals, and government. The model did 80 to 90 percent of the campaign autonomously, making thousands of requests, often multiple per second. It also, in Anthropic's own words, "occasionally hallucinated credentials or claimed to have extracted secret information that was in fact publicly available." That is the asymmetry in one paragraph: the same hallucinations that would poison a defender's incident queue were a tolerable cost for an attacker running at machine speed.</p>
+
+          <h3>Defenders pay for variance</h3>
+
+          <p>Defensive economics are the opposite. A hallucinated detail in an incident summary wastes response time and misdirects investigation. An inconsistent recommendation makes the system harder to test, trust, and audit. A wrong autonomous action can isolate the wrong host, break a production workflow, or create its own outage. Every false positive consumes analyst time; every false negative risks a miss; every inconsistent response erodes trust. Once trust erodes, teams stop relying on the tool even when it is right.</p>
+
+          <p>"Defenders need deterministic systems" is directionally true but incomplete. Humans aren't deterministic either. Analysts get tired, miss signals, and disagree on the same alert. Determinism was never really the bar. The real bar is behavior that is bounded, testable, auditable, and safe, whether the decision maker is a model or a person. The closer any decision maker gets to the control plane, the higher that bar becomes.</p>
+
+          <p>There is also a tolerance gap worth naming. We forgive human mistakes more readily than automated ones. After a serious pedestrian injury involving one of its vehicles in 2023, Cruise <a href="https://www.dmv.ca.gov/portal/news-and-media/dmv-statement-on-cruise-llc-suspension/" target="_blank" rel="noopener">lost its California driverless permit</a> and then <a href="https://www.reuters.com/business/autos-transportation/us-auto-safety-agency-investigating-two-new-gm-cruise-crash-reports-2023-10-26/" target="_blank" rel="noopener">voluntarily suspended operations nationwide</a>, in a country where human drivers are involved in tens of thousands of fatalities each year without triggering anything comparable. Security is no different. <strong>An analyst who quarantines the wrong host during an incident gets a postmortem. An autonomous agent that does the same tends to get pulled out of production.</strong> That is not entirely irrational; automation scales mistakes the way it scales everything else. But it means the quality bar for autonomous defense is higher than the bar we hold ourselves to, and any realistic design has to account for that.</p>
+
+          <p>Defenders also inherit a problem attackers do not: once AI is inside the defense stack, it becomes part of the attack surface. Prompt injection, retrieval poisoning, and tool misuse turn a defensive agent into a privileged component an adversary can try to manipulate. The challenge is twofold: absorb the model's uncertainty, and secure the AI system itself.</p>
+
+          <h3>Models vs. engineered systems</h3>
+
+          <p>None of this is an argument for keeping AI on the sidelines. At modern enterprise scale, purely manual defense isn't realistic. The volume of alerts, identity changes, endpoint events, and attack paths is simply too large. Defenders need autonomy.</p>
+
+          <p>The mistake is not using AI. It is treating model output as if it were already a trustworthy defensive system. <strong>Attackers get value at the model layer. Defenders get value at the systems layer.</strong></p>
+
+          <p>Attackers can use a generic model opportunistically. Defenders have to integrate models into environments with real telemetry, assets, policies, and consequences. That is harder, but it is also where the advantage lives. Defenders control the sensors, the enforcement points, and the context across identity, endpoint, network, cloud, and application. They can compare model suggestions against ground truth, gate them with policy, simulate, stage, roll back, and log every action with evidence. Attackers do not have that closed-loop environment.</p>
+
+          <p>The path to autonomous defense is not waiting for perfect models. It is building bounded, verifiable autonomy around imperfect ones: stochastic planning, policy-bounded execution. Let the model explore hypotheses, candidate detections, and response plans; variance widens the search space. Execution is different. It needs grounding in local telemetry, fact verification, hard policy gates, blast-radius limits, rollback, and audit trails. The problem is not autonomy. The problem is <em>unchecked</em> autonomy.</p>
+
+          <p>Google's Project Zero showed what this looks like in practice with <a href="https://googleprojectzero.blogspot.com/2024/10/from-naptime-to-big-sleep.html" target="_blank" rel="noopener">Big Sleep</a>, where an LLM agent found a real exploitable vulnerability in SQLite. The model did the creative work of reasoning about code paths, but it operated inside a scaffolded system with fuzzers, sanitizers, and human review gating the claims. The interesting part is not that a model found a bug. It is that the surrounding system made the find trustworthy. That is the template defenders need.</p>
+
+          <p>In the short term, AI helps attackers faster because offense tolerates noise. In the long term, defenders own the telemetry, policy context, and enforcement points needed to turn noisy intelligence into reliable action. The contest is not who has the smarter model. It is who builds the better system around it. <strong>If we get that right, AI may help attackers first, but it does not have to help them most.</strong></p>
+
+          <p><em>Disclaimer: These are my personal thoughts and do not reflect the views of my current employer or any previous employers.</em></p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank">Google Scholar</a>
+        <a href="../blog.html">Blog</a>
+      </div>
+      <p>&copy; 2026 Fatih Bulut. Built with ☕ and curiosity.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 300);
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+  <script src="../nav.js"></script>
+  <script src="../share.js"></script>
+</body>
+
+</html>
