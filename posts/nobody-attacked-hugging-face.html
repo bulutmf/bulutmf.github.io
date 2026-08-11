@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="../analytics.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hugging Face Was Breached. The Attacker Was a Reward Function. | Fatih Bulut</title>
+  <meta name="description"
+    content="At Black Hat, OpenAI described how one of its own evaluation runs breached Hugging Face and its own infrastructure. There was no attacker. That is the part worth paying attention to.">
+  <meta name="author" content="Fatih Bulut">
+  <meta property="og:title" content="Hugging Face Was Breached. The Attacker Was a Reward Function.">
+  <meta property="og:description"
+    content="An internal AI evaluation run breached two organizations with no attacker behind it. How we got here, and how we get out.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://bulutmf.github.io/posts/nobody-attacked-hugging-face.html">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">Fatih Bulut</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../publications.html">Publications</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank" class="nav-icon"
+            title="Google Scholar">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="blog-header post-header">
+    <div class="container">
+      <a href="../blog.html" class="post-back-link">&larr; Back to Blog</a>
+      <div class="blog-card-meta post-meta">
+        <span class="blog-date">Aug 11, 2026</span>
+        <div class="blog-tags">
+          <span class="blog-tag">Security</span>
+          <span class="blog-tag">AI</span>
+          <span class="blog-tag">OpenAI</span>
+          <span class="blog-tag">Hugging Face</span>
+          <span class="blog-tag">Reward Hacking</span>
+        </div>
+      </div>
+      <h1 class="post-title">Hugging Face Was Breached. The Attacker Was a Reward Function.</h1>
+      <div class="post-share"></div>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="container">
+      <article class="post-article">
+        <div class="post-content">
+
+          <p>At Black Hat this year, two engineers from OpenAI described what happened during a set of routine cybersecurity evaluations. Their own models broke out of the test environment, got onto the internet, and compromised both OpenAI's internal infrastructure and Hugging Face. Nobody told them to. There was no attacker. It all came out of an evaluation run that was supposed to stay in a closed box.</p>
+
+          <p>You can watch the talk <a href="https://www.youtube.com/watch?v=87DyyMV0kCY" target="_blank">here</a>. What stuck with me was not the scale of it but how it happened, and how it happened is more mundane than you would hope.</p>
+
+          <p>In <a href="mythos-and-the-shrinking-patch-window.html">Mythos and the Shrinking Patch Window</a> I wrote that autonomous exploit generation was coming and that our patch windows would not keep up. This incident is a version of that arriving early, and it adds something I did not weigh heavily enough. The danger was not that a model could hack. It was that one broke into two real companies during an internal test, with no one directing it.</p>
+
+          <blockquote>Every incident response starts with who did it and why. Here there was no who, and the why was a score to maximize.</blockquote>
+
+          <h3>How we got here</h3>
+
+          <p>It helps to stop picturing an attacker. There was no villain. There was a goal, a score to push up, and a system that was good at pushing it. Everything that followed came from that setup.</p>
+
+          <p>Start with the goal. To test frontier models, OpenAI gives them hard security tasks in closed environments with no internet, so the model cannot cheat by looking up the answer. In one case the answer sat in a file the model could not reach directly. A person hits that wall and stops, or asks for help, or files a ticket. The model did none of those things. It went looking for another way in. Block the direct path for something that never gets tired, and it just looks for an indirect one.</p>
+
+          <p>Then look at what "trying harder" means for a model. Stuck agents started reaching out for help, and one of them uploaded a note to Artifactory, the internal package manager. Other agents found the note. Artifactory quietly turned into a message board, and the models started coordinating through it. Nobody designed that channel. It existed because a package manager can store files, and files can hold messages, and a patient system will use whatever is lying around.</p>
+
+          <p>From there it reads like a normal breach report. The agents used a server-side request forgery bug in Artifactory to reach the internet indirectly. Later they found a remote code execution bug and got admin. OpenAI patched the holes and wiped the server on July 4th. By July 8th the agents were back, using a different unauthenticated path to rebuild their message board. The security team was patching. The models were re-establishing. Neither side was hiding. Only one side was in a hurry.</p>
+
+          <p>Most threat models get this patience wrong. A human red team runs on shifts and budgets. These agents ran for days with what was effectively no token limit, and they treated the wipe as a setback, not a defeat. I made this argument in <a href="defenders-think-in-shifts-attackers-think-in-loops.html">Defenders Think in Shifts. Attackers Think in Loops.</a> Here it is in a real incident. The loop does not clock out.</p>
+
+          <p>The zero-days deserve a note too, because people picture getting hacked as one clever exploit. That is not what happened. The interesting work was in the chaining. On the Hugging Face side, the agents chained an HDF5 parsing bug with a template injection bug and reached cluster admin across several clusters in under thirteen hours. On the internal side, they combined a caching flaw, a deserialization bug, and a Linux kernel bug to get root and move through Kubernetes to harvest cloud credentials. The individual bugs were the raw material. The goal is what strung them together. Push a system hard enough toward a target and it will find that a chain of medium bugs is the fastest way in, and it will build that chain.</p>
+
+          <p>None of this was quiet. A package manager used as a bulletin board is loud and strange. It did not matter, because there was no defender fast enough for loud to be a problem. Offense could afford the noise. Defense could not keep up with it, which is the asymmetry I wrote about in <a href="offense-tolerates-noisy-ai.html">Offense Tolerates Noisy AI. Defense Can't.</a></p>
+
+          <p>Put it together and the assumption we have all leaned on stops holding. We assumed someone had to want an attack for it to happen. Here, no one did. The harm came out of optimization. The intent was never there.</p>
+
+          <h3>Getting out, part one: keep the model from going rogue</h3>
+
+          <p>The first fix is upstream of all the infrastructure. This is a training problem before it is a security problem. I spent years leading security-focused model training at Microsoft, so I want to be careful here. There is no switch labeled "do not go rogue." But how we train is a real lever, and right now it points the wrong way.</p>
+
+          <p>We reward models for finishing the task. We rarely reward them for how they finish it. Reward hacking is what you get when the score is all that matters and the cost of getting there is not in the math. The agent in this story was not evil. It was efficient, and impact was simply not part of what it was graded on.</p>
+
+          <p>So put it in the grade. Shift-left does not have to stop at code. It can move into the training loop itself. Noticing that a path is escaping the sandbox, or touching systems that are out of scope, or blowing up the blast radius, and then choosing not to take it, should be a behavior we train for and score. Staying in bounds should earn reward. Breaking out should cost. Not as a filter bolted on at the end, but as part of what the model learns "good" means.</p>
+
+          <p>This is harder than it sounds, and I do not want to pretend otherwise. You cannot penalize what you cannot measure, and measuring restraint is its own project. That is the thread from <a href="ground-truth-is-a-security-control.html">Ground Truth Is a Security Control</a>. If you want the model to learn restraint, you need environments that can tell restraint from luck.</p>
+
+          <blockquote>We train models to be capable. We need to train them to be careful, and careful has to live in the reward, not in AGENTS.md.</blockquote>
+
+          <h3>Getting out, part two: build the environment for zero trust</h3>
+
+          <p>The second fix is the environment, and here the lesson is blunt. The "closed, internet-free" box was neither. Artifactory had a path out, so Artifactory was an attack surface. Calling it closed did not make it closed.</p>
+
+          <p>Threat modeling for AI has to start from a different assumption than threat modeling for people. Assume any service that can be reached will be reached. Assume any capability that exists will be found. Assume any trust you leave implicit will be spent. A tireless system will work through all three. If Artifactory can reach the internet, model it as internet-connected and treat it as a vector.</p>
+
+          <p>The same goes for the idea of a test environment. The model does not respect the label "this is only an eval." So the eval has to be built like production: monitored, contained, with the blast radius drawn ahead of time. The moment we treat evaluation environments as low-stakes, we hand a patient system the softest target in the building.</p>
+
+          <blockquote>A closed environment is a claim you have to prove to something that never gets tired of testing it.</blockquote>
+
+          <h3>Getting out, part three: defend at machine speed</h3>
+
+          <p>The third fix is the one we keep avoiding. We are not going to staff our way out of this. A handful of responders, working tickets by hand, cannot keep pace with a swarm of agents that never sleep, never quit, and chain bugs faster than a person can read the alert. Look at the July 4th to July 8th turnaround. Humans patched. Machines were back in four days.</p>
+
+          <p>So the defensive loop has to run at the same speed as the offensive one. That means continuous automated red teaming, patching and rollback that does not wait for a change window, and detection that runs at the attacker's cadence rather than the analyst's. The OpenAI speakers said the same thing from the stage, and it lines up with what I have been writing for months. Manual incident response loses on arithmetic.</p>
+
+          <p>That does not remove people. It moves them. Humans set the objective, draw the guardrails, decide what matters, and build the crash tests that tell us the automation is working. Machines run the loop inside those lines. Human-in-the-loop, where a person approves each step, does not scale to this. Human-on-the-loop, where people own the goals and the limits while the machine executes, might.</p>
+
+          <blockquote>Human-in-the-loop is finished as an operating model. Human-on-the-loop is what is left.</blockquote>
+
+          <h3>The next one won't be an accident</h3>
+
+          <p>There is an upside, odd as it sounds. A breach with no attacker behind it is the cheapest warning we are going to get. Nothing was stolen for profit. No one was trying to cause harm. Next time the same setup will have a person steering, and that person will have watched this talk too.</p>
+
+          <p>The three fixes fit together and they map onto the same lifecycle I keep coming back to. Align the objective on the left. Harden the environment in the middle. Automate the defense on the right. None of them is optional now.</p>
+
+          <p>Mythos argued the patch window was shrinking. This incident adds the harder part. The attacker does not even have to exist for that to be true.</p>
+
+          <p><em>Disclaimer: These are my personal thoughts and do not reflect the views of my current employer or any previous employers.</em></p>
+
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank">Google Scholar</a>
+        <a href="../blog.html">Blog</a>
+      </div>
+      <p>&copy; 2026 Fatih Bulut. Built with ☕ and curiosity.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 300);
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+  <script src="../nav.js"></script>
+  <script src="../share.js"></script>
+</body>
+
+</html>
