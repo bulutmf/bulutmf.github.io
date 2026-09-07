@@ -21,9 +21,6 @@ async function loadPublications() {
     }).filter(function (pub) { return pub.title; });
 
     renderCompactPublications(publications.slice(0, 5));
-
-    var pubCountEl = document.getElementById('pub-count');
-    animateCounter(pubCountEl, publications.length, '+');
   } catch (error) {
     console.error('Error loading publications:', error);
   }
