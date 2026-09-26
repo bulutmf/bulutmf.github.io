@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="../analytics.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jev and the Hard Work of Reliable Automation | Fatih Bulut</title>
+  <meta name="description"
+    content="Thoughts on TypeSafe's Jev: calibrated decisions, explicit security criteria, workflow evaluations, and the cost of maintaining reliable automation.">
+  <meta name="author" content="Fatih Bulut">
+  <meta property="og:title" content="Jev and the Hard Work of Reliable Automation">
+  <meta property="og:description"
+    content="Thoughts on TypeSafe's Jev: calibrated decisions, explicit security criteria, workflow evaluations, and the cost of maintaining reliable automation.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://bulutmf.github.io/posts/jev-thoughts.html">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">Fatih Bulut</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../publications.html">Publications</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank" class="nav-icon"
+            title="Google Scholar">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="blog-header post-header">
+    <div class="container">
+      <a href="../blog.html" class="post-back-link">← Back to Blog</a>
+      <div class="blog-card-meta post-meta">
+        <span class="blog-date">Sep 26, 2026</span>
+        <div class="blog-tags">
+          <span class="blog-tag">Security</span>
+          <span class="blog-tag">AI</span>
+          <span class="blog-tag">Jev</span>
+          <span class="blog-tag">Autonomous Defense</span>
+        </div>
+      </div>
+      <h1 class="post-title">Jev and the Hard Work of Reliable Automation</h1>
+      <div class="post-share"></div>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="container">
+      <article class="post-article">
+        <div class="post-content">
+          <p>I'm glad TypeSafe released Jev. It puts attention on a problem I keep coming back to in security: how do we turn model judgments into decisions that software can reliably act on?</p>
+
+          <p>That also exposes the tradeoff. Someone still has to define what matters, gather the right context, and maintain those definitions as the environment changes. Jev makes that work more visible.</p>
+
+          <h2>What is Jev?</h2>
+
+          <p>TypeSafe presents Jev as a model built for fast, structured judgments. You supply the state and the questions; it returns values and probabilities your code can use. Its <a href="https://docs.typesafe.ai/introduction" target="_blank" rel="noopener noreferrer">API exposes three primitives</a>:</p>
+
+          <ul>
+            <li><strong>Choice:</strong> select from options you define, with a probability distribution over them.</li>
+            <li><strong>Score:</strong> evaluate against a rubric, returning a score and a distribution over its levels.</li>
+            <li><strong>Noul:</strong> estimate the probability that a statement is true.</li>
+          </ul>
+
+          <p>Questions in the same request are evaluated separately against shared input. Your code combines their answers into a workflow. For me, that division of responsibility is the appeal: the model supplies judgments, while the application owns how those judgments become actions.</p>
+
+          <p>The <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener noreferrer">launch post</a> credits Jev's efficiency to a new model design, a parallel sampler, and a new training method. <a href="https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/" target="_blank" rel="noopener noreferrer">TechCrunch</a> describes Jev as transformer-based, but reports that CEO Diogo Almeida is "tight-lipped" about its architecture. TypeSafe has not published the model's size. The reported cost and latency gains are promising, but their value depends on the workload.</p>
+
+          <p>The launch post also says Jev "can't hallucinate." I read that claim narrowly. Defining the possible answers in advance rules out malformed output, but it does not make the chosen answer true. A perfectly valid decision to close an alert can still be wrong.</p>
+
+          <h2>Calibration is the interesting training objective</h2>
+
+          <p>TypeSafe calls its training method <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener noreferrer">Reinforcement Learning for Calibrated Decisions (RLCD)</a>. The emphasis on useful probabilities resonates with me. A response that sounds convincing is a weak foundation for automation if the system cannot tell when it is likely to be wrong.</p>
+
+          <p>The underlying problem predates Jev though. The <a href="https://arxiv.org/abs/2303.08774" target="_blank" rel="noopener noreferrer">2023 GPT-4 technical report</a> showed that post-training degraded calibration on a subset of the MMLU multiple-choice benchmark. That is evidence of a real tradeoff in that setting, rather than proof that every preference-trained model must be overconfident. I do believe we have come so far since GPT-4 to fix this to some extent.</p>
+
+          <p>There is also relevant prior work on explicitly rewarding calibration. <a href="https://arxiv.org/abs/2503.02623" target="_blank" rel="noopener noreferrer">Rewarding Doubt</a> (ICLR 2026), which uses a logarithmic scoring rule to train models to express calibrated confidence. <a href="https://arxiv.org/abs/2507.16806" target="_blank" rel="noopener noreferrer">Beyond Binary Rewards</a> (July 2025), which introduces Reinforcement Learning with Calibration Rewards (RLCR), combining correctness rewards with a Brier-score component. These are relevant precedents, though the public material is not enough to establish how closely RLCD matches either method.</p>
+
+          <p>For Jev, probabilities are central to the interface. But <a href="https://docs.typesafe.ai/concepts/system-one" target="_blank" rel="noopener noreferrer">calibration is a property measured across predictions</a>: among comparable cases assigned an 80% probability, the outcome should occur about 80% of the time. It is not a guarantee about one alert.</p>
+
+          <h2>The hard work is in the context and criteria</h2>
+
+          <p>Security makes this concrete. Activity that looks suspicious on a developer's laptop may be expected on a patch-management server. The command alone rarely settles the question. The asset's role, the account, the process ancestry, and the approved change can all change the interpretation.</p>
+
+          <p>The input therefore needs the relevant context. That does not mean dumping every available log into one request. <a href="https://docs.typesafe.ai/models" target="_blank" rel="noopener noreferrer">Jev's documented limits</a> are 64k tokens per request, with a separate 32k limit for the state plus the longest question. TypeSafe also <a href="https://docs.typesafe.ai/model-jaggedness/jev-1.13" target="_blank" rel="noopener noreferrer">documents reduced accuracy when irrelevant detail accumulates</a> - usually a behaviour we see in smaller models, though Typesafe says JEV is not a small model. Retrieval, enrichment, and filtering remain part of the system you have to build.</p>
+
+          <figure class="post-figure">
+            <a href="../images/jev_alert_example_simple.png" target="_blank" rel="noopener noreferrer">
+              <img src="../images/jev_alert_example_simple.png" alt="A PowerShell alert feeds three Jev questions: authorization (Noul), primary tactic (Choice), and business impact (Score). Illustrative answers are 8% yes, Execution at 95%, and 3.2 on a 0 to 4 scale; application code combines them." width="1536" height="1024" loading="lazy">
+            </a>
+            <figcaption>Shared context, focused questions, and structured answers. Your code combines the results into a decision. Values are illustrative, and business impact uses a 0 to 4 scale.</figcaption>
+          </figure>
+
+          <p>The output definition is where domain expertise becomes unavoidable. The illustration shows the interface, but for a production workflow I would break broad judgments such as whether to isolate a host into narrower questions:</p>
+
+          <ul>
+            <li>Does the observed activity match the work described in the approved change?</li>
+            <li>Is the account authorized to perform this operation on this asset?</li>
+            <li>Does the process behavior indicate credential access?</li>
+            <li>Is there evidence that the suspicious activity is still running?</li>
+          </ul>
+
+          <p>Then code can combine the answers with asset criticality, response policy, and escalation thresholds. Exact checks, such as whether a timestamp falls inside an approved maintenance window, belong in code. Missing evidence also needs an explicit path: no record of authorization is not necessarily proof of unauthorized activity.</p>
+
+          <p>This aligns with my thinking about making LLMs useful in security workflows. A single true-positive or false-positive verdict hides many judgments. Narrower questions make those judgments easier to inspect and test. They still require careful wording: TypeSafe's <a href="https://docs.typesafe.ai/model-jaggedness/jev-1.13" target="_blank" rel="noopener noreferrer">limitations page</a> describes sensitivity to literal phrasing, contradictory criteria, and adversarial content. Typed outputs do not remove those problems.</p>
+
+          <h2>What the evaluations tell us</h2>
+
+          <p>TypeSafe's <a href="https://typesafe.ai/blog/antibenchmaxxing" target="_blank" rel="noopener noreferrer">benchmark philosophy</a> rejects standard benchmark tables in model releases, but the company does publish <a href="https://evals.typesafe.ai/" target="_blank" rel="noopener noreferrer">workflow evaluations</a>. The stated methodology gives models a shared workflow and compares their answers against reference probabilities formed by averaging GPT-6 Astra and Claude Fable 5.1 outputs at high thinking settings. The other models use their providers' default reasoning settings, and the evaluation assumes the workflow code is correct.</p>
+
+          <p>That is useful evidence about performance within a defined workflow. It measures agreement with a model-based reference, however, which is different from independently established incident ground truth. Both the reference models and the workflow can be wrong.</p>
+
+          <p>The <a href="https://evals.typesafe.ai/security_incidents" target="_blank" rel="noopener noreferrer">security-incidents example</a> is especially relevant for cybersecurity community. It decomposes an investigation into questions about authorization, supporting records, evidence, and incident state, then uses code to select a response. I like that structure. It reflects how much the final action depends on several narrower judgments.</p>
+
+          <p>Before treating the results as evidence for production alert triage, I would want to understand the dataset's size and provenance, how well it covers rare and ambiguous cases, and how the comparison changes with different prompting and reasoning budgets. I would also want independently adjudicated outcomes, calibration measurements, and error rates for specific actions. Incorrectly closing an incident and unnecessarily isolating a production server have very different costs; average accuracy hides that distinction.</p>
+
+          <p>In the FAQ at the end of its <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener noreferrer">launch post</a>, TypeSafe describes itself as "primarily a data research lab" and says it makes all of its own training data. My suspicion is that data quality and task coverage will be a large part of Jev's practical value. A training objective alone cannot establish whether the model understands the long tail of enterprise security. That is something I would want to test on real environments.</p>
+
+          <h2>I keep coming back to hybrid systems</h2>
+
+          <p>We have become too comfortable delegating broad decisions to LLMs because the demos work. The difficulty often appears later, in the long tail of customer environments. An exception arrives, we add a paragraph to the prompt, and the next model upgrade makes us revisit the accumulated instructions. In security, that is an expensive way to discover what the system actually learned.</p>
+
+          <p>Business automation needs reliability, predictability, and auditability. Explicit criteria and deterministic workflow code help, but the learned judgments inside that workflow still need evaluation. Jev makes the boundaries more visible; it does not eliminate the uncertainty within them.</p>
+
+          <p>This connects to my work on <a href="https://arxiv.org/abs/2411.07528" target="_blank" rel="noopener noreferrer">SecEncoder</a>, a DeBERTa-style model trained mainly on security logs, and <a href="https://arxiv.org/abs/2411.07519" target="_blank" rel="noopener noreferrer">TIPS</a>, which combines SecEncoder with GPT-4 to prioritize applications using threat-actor information. TIPS uses targeted questions about application behavior as part of that process. Those projects shaped my interest in combining efficient representation models with more flexible language-model judgments.</p>
+
+          <p>I think of this as a System 1/System 2 design pattern: use fast models for focused, repeatable work, and bring in more deliberative reasoning when the case requires it. The analogy describes complementary roles in a system, rather than a shared model architecture.</p>
+
+          <p>Stronger reasoning models may eventually handle more of the ambiguity with less instruction. Whether they can do so at the cost and latency needed for high-volume security work remains an open question. Distillation can improve those economics, but capability loss is task-dependent.</p>
+
+          <h2>Who maintains the questions and criteria?</h2>
+
+          <p>My biggest concern is the cost of keeping the questions and criteria correct. Environments change. New administrative tools appear. An exception that made sense last quarter can become dangerous today. Someone has to decide which questions to ask, what evidence they require, and when the answers justify an action.</p>
+
+          <p>Other LLMs could help sustain that feedback loop: examine failures, propose narrower questions, draft criteria, and generate regression cases. I would treat those as proposed changes to a decision system, with review and evaluation before they alter production behavior. Otherwise, we have simply moved the same ambiguity into the mechanism that writes the criteria.</p>
+
+          <p>That is what I find encouraging about Jev. It gives us a concrete way to put model judgments inside software with explicit responsibilities. The test will be whether those judgments remain useful as the environment changes, and whether maintaining the surrounding system costs less than the automation saves.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank">Google Scholar</a>
+        <a href="../blog.html">Blog</a>
+      </div>
+      <p>&copy; 2026 Fatih Bulut. Built with ☕ and curiosity.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 300);
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+  <script src="../nav.js"></script>
+  <script src="../share.js"></script>
+</body>
+
+</html>
