@@ -14,7 +14,11 @@
     content="Thoughts on TypeSafe's Jev: calibrated decisions, explicit security criteria, workflow evaluations, and the cost of maintaining reliable automation.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://bulutmf.github.io/posts/jev-thoughts.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://bulutmf.github.io/images/cards/jev-thoughts.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Jev and the Hard Work of Reliable Automation">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="../styles.css">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -77,7 +81,7 @@
 
           <p>That also exposes the tradeoff. Someone still has to define what matters, gather the right context, and maintain those definitions as the environment changes. Jev makes that work more visible.</p>
 
-          <h2>What is Jev?</h2>
+          <h2 id="what-is-jev">What is Jev?</h2>
 
           <p>TypeSafe presents Jev as a model built for fast, structured judgments. You supply the state and the questions; it returns values and probabilities your code can use. Its <a href="https://docs.typesafe.ai/introduction" target="_blank" rel="noopener noreferrer">API exposes three primitives</a>:</p>
 
@@ -93,7 +97,7 @@
 
           <p>The launch post also says Jev "can't hallucinate." I read that claim narrowly. Defining the possible answers in advance rules out malformed output, but it does not make the chosen answer true. A perfectly valid decision to close an alert can still be wrong.</p>
 
-          <h2>Calibration is the interesting training objective</h2>
+          <h2 id="calibration-is-the-interesting-training-objective">Calibration is the interesting training objective</h2>
 
           <p>TypeSafe calls its training method <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener noreferrer">Reinforcement Learning for Calibrated Decisions (RLCD)</a>. The emphasis on useful probabilities resonates with me. A response that sounds convincing is a weak foundation for automation if the system cannot tell when it is likely to be wrong.</p>
 
@@ -103,7 +107,7 @@
 
           <p>For Jev, probabilities are central to the interface. But <a href="https://docs.typesafe.ai/concepts/system-one" target="_blank" rel="noopener noreferrer">calibration is a property measured across predictions</a>: among comparable cases assigned an 80% probability, the outcome should occur about 80% of the time. It is not a guarantee about one alert.</p>
 
-          <h2>The hard work is in the context and criteria</h2>
+          <h2 id="the-hard-work-is-in-the-context-and-criteria">The hard work is in the context and criteria</h2>
 
           <p>Security makes this concrete. Activity that looks suspicious on a developer's laptop may be expected on a patch-management server. The command alone rarely settles the question. The asset's role, the account, the process ancestry, and the approved change can all change the interpretation.</p>
 
@@ -129,7 +133,7 @@
 
           <p>This aligns with my thinking about making LLMs useful in security workflows. A single true-positive or false-positive verdict hides many judgments. Narrower questions make those judgments easier to inspect and test. They still require careful wording: TypeSafe's <a href="https://docs.typesafe.ai/model-jaggedness/jev-1.13" target="_blank" rel="noopener noreferrer">limitations page</a> describes sensitivity to literal phrasing, contradictory criteria, and adversarial content. Typed outputs do not remove those problems.</p>
 
-          <h2>What the evaluations tell us</h2>
+          <h2 id="what-the-evaluations-tell-us">What the evaluations tell us</h2>
 
           <p>TypeSafe's <a href="https://typesafe.ai/blog/antibenchmaxxing" target="_blank" rel="noopener noreferrer">benchmark philosophy</a> rejects standard benchmark tables in model releases, but the company does publish <a href="https://evals.typesafe.ai/" target="_blank" rel="noopener noreferrer">workflow evaluations</a>. The stated methodology gives models a shared workflow and compares their answers against reference probabilities formed by averaging GPT-6 Astra and Claude Fable 5.1 outputs at high thinking settings. The other models use their providers' default reasoning settings, and the evaluation assumes the workflow code is correct.</p>
 
@@ -141,7 +145,7 @@
 
           <p>In the FAQ at the end of its <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener noreferrer">launch post</a>, TypeSafe describes itself as "primarily a data research lab" and says it makes all of its own training data. My suspicion is that data quality and task coverage will be a large part of Jev's practical value. A training objective alone cannot establish whether the model understands the long tail of enterprise security. That is something I would want to test on real environments.</p>
 
-          <h2>I keep coming back to hybrid systems</h2>
+          <h2 id="i-keep-coming-back-to-hybrid-systems">I keep coming back to hybrid systems</h2>
 
           <p>We have become too comfortable delegating broad decisions to LLMs because the demos work. The difficulty often appears later, in the long tail of customer environments. An exception arrives, we add a paragraph to the prompt, and the next model upgrade makes us revisit the accumulated instructions. In security, that is an expensive way to discover what the system actually learned.</p>
 
@@ -153,7 +157,7 @@
 
           <p>Stronger reasoning models may eventually handle more of the ambiguity with less instruction. Whether they can do so at the cost and latency needed for high-volume security work remains an open question. Distillation can improve those economics, but capability loss is task-dependent.</p>
 
-          <h2>Who maintains the questions and criteria?</h2>
+          <h2 id="who-maintains-the-questions-and-criteria">Who maintains the questions and criteria?</h2>
 
           <p>My biggest concern is the cost of keeping the questions and criteria correct. Environments change. New administrative tools appear. An exception that made sense last quarter can become dangerous today. Someone has to decide which questions to ask, what evidence they require, and when the answers justify an action.</p>
 

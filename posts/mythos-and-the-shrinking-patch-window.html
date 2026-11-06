@@ -14,7 +14,11 @@
     content="If exploit discovery and weaponization are becoming cheap, defenders need to improve across the whole lifecycle. Release engineering becomes security engineering.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://bulutmf.github.io/posts/mythos-and-the-shrinking-patch-window.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://bulutmf.github.io/images/cards/mythos-and-the-shrinking-patch-window.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mythos and the Shrinking Patch Window">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="../styles.css">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -83,13 +87,13 @@
 
           <p>But the most important claim in the report may be the simplest one: engineers with no security background could let the model run overnight and wake up to working exploits.</p>
 
-          <h3>From Scarcity to Scale</h3>
+          <h3 id="from-scarcity-to-scale">From Scarcity to Scale</h3>
 
           <p>That is what makes this feel like more than just another model upgrade. Discovery alone would be a big deal. Discovery plus weaponization plus autonomy plus accessibility is something else. It suggests that exploit development may be moving from artisanal work done by a relatively small class of elite researchers into a more industrial process driven by compute, tool use, and persistent iteration.</p>
 
           <p>If that is right, then the story is not simply that AI can help with security research. It is that the economics of offensive cyber may be changing. For years, one constraint on attackers was scarcity: scarce talent, scarce time, and scarce ability to turn obscure bugs into reliable compromise. A model that can search, test, fail, adapt, and keep going for hours changes that. The bottleneck shifts from finding bugs to triaging them, fixing them, validating patches, and deploying updates fast enough to matter.</p>
 
-          <h3>Three Underappreciated Implications</h3>
+          <h3 id="three-underappreciated-implications">Three Underappreciated Implications</h3>
 
           <p>First, technical debt starts to look like exploit debt. Old code was not safe simply because it survived. In many cases it was just underexamined. A 27-year-old OpenBSD bug or a 16-year-old FFmpeg bug is not only an impressive anecdote. It is evidence that there may be a large inventory of vulnerabilities sitting in mature codebases that were previously too expensive for humans to find and weaponize at scale.</p>
 
@@ -97,7 +101,7 @@
 
           <p>Third, Anthropic says these cyber capabilities were not the result of explicitly training Mythos for offensive hacking, but emerged from broader gains in reasoning and coding. If true, that matters far beyond this single model. It suggests that governance based only on training intent is too narrow. Dangerous capabilities may emerge as a side effect of general model improvement.</p>
 
-          <h3>Glasswing: Buying Time</h3>
+          <h3 id="glasswing-buying-time">Glasswing: Buying Time</h3>
 
           <p>Anthropic&rsquo;s response, <a href="https://anthropic.com/glasswing" target="_blank">Project Glasswing</a>, should be understood against that backdrop. The company is limiting access to a small set of critical industry partners and open source developers so defenders can patch systems before the model is more widely available. That's a cautious and well‑considered step. It also signals something bigger: frontier AI labs are becoming part of the cybersecurity governance stack. Anthropic is not just releasing a product. It is acting, at least in part, like a coordinated disclosure broker, a security clearinghouse, and a temporary gatekeeper for a potentially destabilizing capability.</p>
 
@@ -107,13 +111,13 @@
 
           <p>That is far from guaranteed.</p>
 
-          <h3>Four Clocks</h3>
+          <h3 id="four-clocks">Four Clocks</h3>
 
           <p>Cybersecurity now has at least four clocks running at once. There is a capability clock, where model performance improves in months and sometimes jumps suddenly. There is a disclosure clock, where vendors reproduce issues, coordinate fixes, and prepare releases over weeks or months. There is a deployment clock, where real organizations roll out patches over months, quarters, or longer. And there is a diffusion clock, where frontier techniques spread into open models, specialized fine-tunes, reusable agentic workflows, and determined adversarial hands.</p>
 
           <p>Glasswing may slow that fourth clock. It does not stop it.</p>
 
-          <h3>The Sufficiency Threshold</h3>
+          <h3 id="the-sufficiency-threshold">The Sufficiency Threshold</h3>
 
           <p>The crucial point is that open or adversarial systems do not need to match Mythos at the frontier to create serious risk. In cybersecurity, the danger threshold is not parity. It is sufficiency. A weaker model can still be highly dangerous if it is good enough to find exploitable flaws in common targets, adapt known exploit patterns to new environments, chain medium-severity issues into practical compromise, and lower the skill required for mid-tier operators. The relevant question is not, &ldquo;When will open source equal Mythos?&rdquo; It is, &ldquo;When will open and specialized systems become good enough for serious offensive use?&rdquo;</p>
 
@@ -123,7 +127,7 @@
 
           <p>And the capability most likely to spread fastest may not even be the weights. It may be the workflow. Anthropic&rsquo;s report hints that a large part of the jump comes from autonomous scaffolding: tool use, iterative debugging, search over hypotheses, and the ability to persist through failed attempts. Once that recipe becomes availabe (and it will), many different models may become far more useful than their benchmark rankings would suggest.</p>
 
-          <h3>Attack Scales Like Software. Defense Scales Like Bureaucracy.</h3>
+          <h3 id="attack-scales-like-software-defense-scales-like-bureaucracy">Attack Scales Like Software. Defense Scales Like Bureaucracy.</h3>
 
           <blockquote>Exploit generation is becoming global and centralized, while patching remains local and fragmented.</blockquote>
 
@@ -131,7 +135,7 @@
 
           <p>That makes the likely outcome uneven. The top of the market may get safer. The long tail may get worse. Major vendors with mature release engineering and strong security teams may use AI to pull ahead. But small vendors, underfunded open source projects, hospitals, municipalities, embedded systems, industrial environments, and companies trapped on aging software may fall further behind. A long-term defender advantage may be true for the top slice of the ecosystem and false for the internet overall.</p>
 
-          <h3>Beyond Shift-Left</h3>
+          <h3 id="beyond-shift-left">Beyond Shift-Left</h3>
 
           <p>So where does this leave the old shift-left instinct? It is still right, but it is no longer enough. If exploit discovery and weaponization are becoming cheap, defenders need to improve across the whole lifecycle. They need better secure development, AI-assisted code review, and threat modeling on the left. They need memory-safe languages, stronger sandboxing, safer parsers, and reduced blast radius in the middle. They need faster detection, rollback, auto-update, and recovery on the right. And they need to fund and maintain the open source foundations that sit upstream of nearly everything.</p>
 

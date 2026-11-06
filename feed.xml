@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fatih Bulut: Blog</title>
+    <link>https://bulutmf.github.io/blog.html</link>
+    <description>Thoughts on AI, security, LLMs, and more.</description>
+    <language>en</language>
+    <atom:link href="https://bulutmf.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Thu, 05 Nov 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Sparks of Weight-Space Auditing</title>
+      <link>https://bulutmf.github.io/posts/sparks-of-weight-space-auditing.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/sparks-of-weight-space-auditing.html</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Can a frontier LLM find, explain and remove a backdoor in a neural network by reading its weights? I tested the "weight-space programming" idea on tiny phishing classifiers. With a code sandbox the model picked the backdoored twin in 20 of 20 pairs, named the exact trigger in six, and repaired nine.</description>
+      <category>Security</category>
+      <category>AI</category>
+      <category>LLMs</category>
+      <category>Backdoors</category>
+    </item>
+    <item>
+      <title>Jev and the Hard Work of Reliable Automation</title>
+      <link>https://bulutmf.github.io/posts/jev-thoughts.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/jev-thoughts.html</guid>
+      <pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+      <description>TypeSafe's Jev turns model judgments into structured answers that software can act on. The harder work is defining the right questions, gathering the right context, and keeping both current as environments change.</description>
+      <category>Security</category>
+      <category>AI</category>
+      <category>Jev</category>
+      <category>Autonomous Defense</category>
+    </item>
+    <item>
+      <title>Hugging Face Was Breached. The Attacker Was a Reward Function.</title>
+      <link>https://bulutmf.github.io/posts/nobody-attacked-hugging-face.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/nobody-attacked-hugging-face.html</guid>
+      <pubDate>Tue, 11 Aug 2026 00:00:00 +0000</pubDate>
+      <description>At Black Hat, OpenAI described how one of its own evaluation runs broke out of a closed environment and breached both Hugging Face and its own infrastructure. There was no attacker. That is the part worth paying attention to, and it is a training problem before it is a security problem.</description>
+      <category>Security</category>
+      <category>AI</category>
+      <category>OpenAI</category>
+      <category>Hugging Face</category>
+      <category>Reward Hacking</category>
+    </item>
+    <item>
+      <title>Ground Truth Is a Security Control</title>
+      <link>https://bulutmf.github.io/posts/ground-truth-is-a-security-control.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/ground-truth-is-a-security-control.html</guid>
+      <pubDate>Thu, 14 May 2026 00:00:00 +0000</pubDate>
+      <description>The industry wants a self-driving SOC, but past tickets and analyst dispositions teach models queue behavior, not attacker truth. Autonomous purple teaming is the missing crash-test infrastructure: controlled, repeatable experiments that validate detections and generate the environment-specific evidence security models need.</description>
+      <category>Security</category>
+      <category>AI</category>
+      <category>Purple Teaming</category>
+      <category>Autonomous Defense</category>
+    </item>
+    <item>
+      <title>Offense Tolerates Noisy AI. Defense Can't.</title>
+      <link>https://bulutmf.github.io/posts/offense-tolerates-noisy-ai.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/offense-tolerates-noisy-ai.html</guid>
+      <pubDate>Mon, 13 Apr 2026 00:00:00 +0000</pubDate>
+      <description>AI does not fail symmetrically. Hallucinations, indeterminism, and overconfident errors help offense first. Defenders only win when models are embedded in systems that are grounded, bounded, and reversible.</description>
+      <category>Security</category>
+      <category>AI</category>
+      <category>Autonomous Defense</category>
+    </item>
+    <item>
+      <title>Mythos and the Shrinking Patch Window</title>
+      <link>https://bulutmf.github.io/posts/mythos-and-the-shrinking-patch-window.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/mythos-and-the-shrinking-patch-window.html</guid>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 +0000</pubDate>
+      <description>Anthropic says its new model can autonomously find and weaponize zero-days across major software. If that claim broadly holds up, the real story is that exploit development may be becoming cheap, autonomous, and accessible faster than defenders can adapt.</description>
+      <category>Security</category>
+      <category>AI</category>
+      <category>Anthropic</category>
+      <category>Mythos</category>
+      <category>Vulnerability Research</category>
+    </item>
+    <item>
+      <title>Defenders Think in Shifts. Attackers Think in Loops.</title>
+      <link>https://bulutmf.github.io/posts/defenders-think-in-shifts-attackers-think-in-loops.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/defenders-think-in-shifts-attackers-think-in-loops.html</guid>
+      <pubDate>Fri, 03 Apr 2026 00:00:00 +0000</pubDate>
+      <description>Most security teams still defend in shifts while attackers now operate in continuous loops at machine speed. The answer is not panic, but architecture, identity governance, automation, and workflows built for continuity.</description>
+      <category>Security</category>
+      <category>AI</category>
+      <category>Threat Intel</category>
+    </item>
+    <item>
+      <title>Talk Is Cheap. In the Age of AI, Code Is Cheaper.</title>
+      <link>https://bulutmf.github.io/posts/speed-is-the-new-moat.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/speed-is-the-new-moat.html</guid>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 +0000</pubDate>
+      <description>AI has compressed the cost of building software and the cost of copying it. The durable edge is no longer just code quality, but how fast an organization can ship, learn, and adapt on top of the right architecture.</description>
+      <category>AI</category>
+      <category>Engineering</category>
+      <category>Architecture</category>
+    </item>
+    <item>
+      <title>From Browser Tabs to Insights: My Friday Reads 9/27/2024</title>
+      <link>https://bulutmf.github.io/posts/friday-reads.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/friday-reads.html</guid>
+      <pubDate>Fri, 27 Sep 2024 00:00:00 +0000</pubDate>
+      <description>As anyone in tech, I constantly get bombarded with countless papers, links, and resources to read. I dedicate Fridays to tackling this "technical debt" by reading through as much as possible.</description>
+      <category>AI</category>
+      <category>Security</category>
+      <category>Weekly Reads</category>
+    </item>
+    <item>
+      <title>Paper Summary: Language Models are Few-Shot Learners (GPT-3 Paper)</title>
+      <link>https://bulutmf.github.io/posts/gpt3-paper.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/gpt3-paper.html</guid>
+      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
+      <description>This paper is one of the important foundational papers from OpenAI, published in 2020. GPT-3 demonstrates that LLMs pretrained with large volume of data can learn very quickly with few examples, possibly cutting the need for fine-tuning.</description>
+      <category>LLMs</category>
+      <category>AI</category>
+      <category>GPT-3</category>
+      <category>OpenAI</category>
+    </item>
+    <item>
+      <title>Paper Summary: Large Language Models Encode Clinical Knowledge</title>
+      <link>https://bulutmf.github.io/posts/clinical-knowledge.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/clinical-knowledge.html</guid>
+      <pubDate>Fri, 06 Jan 2023 00:00:00 +0000</pubDate>
+      <description>This is a recent paper from Google Research and DeepMind that introduces Med-PaLM, a Large Language Model tailored to answer questions about the clinical (medical) domain, achieving SOTA results on various domain specific datasets.</description>
+      <category>LLMs</category>
+      <category>Clinical AI</category>
+    </item>
+    <item>
+      <title>Metaverse [and] Security</title>
+      <link>https://bulutmf.github.io/posts/metaverse-security.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/metaverse-security.html</guid>
+      <pubDate>Mon, 06 Jun 2022 00:00:00 +0000</pubDate>
+      <description>You probably heard the buzz around "metaverse". Regardless of which side of the argument you are in, in this article, I discuss metaverse security — from infrastructure to identity to data privacy.</description>
+      <category>Metaverse</category>
+      <category>Security</category>
+    </item>
+    <item>
+      <title>Paper Summary: Obfuscation Revealed — Leveraging Electromagnetic Signals for Obfuscated Malware Classification</title>
+      <link>https://bulutmf.github.io/posts/obfuscation-revealed.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/obfuscation-revealed.html</guid>
+      <pubDate>Fri, 14 Jan 2022 00:00:00 +0000</pubDate>
+      <description>This paper proposes a methodology to use side channel information (electromagnetic signals) to identify malware activity, type, and identity, even in the presence of obfuscation. A paper from ACSAC 2021.</description>
+      <category>Malware</category>
+      <category>IoT</category>
+      <category>Security</category>
+    </item>
+    <item>
+      <title>Natural Language to Risk Score for CIS Benchmarks using Deep Neural Networks</title>
+      <link>https://bulutmf.github.io/posts/nl-risk-score.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/nl-risk-score.html</guid>
+      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
+      <description>Risk management is a fundamental part of Cloud Service Management. This post explains how an AI-based approach can standardize different domains to quantify risk using NLP, applied in IBM Cloud Pak for Multicloud Management.</description>
+      <category>AI</category>
+      <category>Security</category>
+      <category>Deep Learning</category>
+      <category>Cloud</category>
+    </item>
+    <item>
+      <title>Before beginning…</title>
+      <link>https://bulutmf.github.io/posts/before-beginning.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/before-beginning.html</guid>
+      <pubDate>Tue, 22 Jan 2019 00:00:00 +0000</pubDate>
+      <description>A disclosure: I am not an avid blogger, however, I do read and write quite a lot and always willing to become an avid blogger.</description>
+      <category>Intro</category>
+    </item>
+  </channel>
+</rss>

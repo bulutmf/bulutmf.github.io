@@ -14,7 +14,11 @@
     content="Why AI's current weaknesses help offense first, and what it takes for autonomous defense to win.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://bulutmf.github.io/posts/offense-tolerates-noisy-ai.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://bulutmf.github.io/images/cards/offense-tolerates-noisy-ai.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Offense Tolerates Noisy AI. Defense Can&#x27;t.">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="../styles.css">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -80,7 +84,7 @@
 
           <p>That does not mean AI is a bad fit for defense. It means models favor offense first, and defenders only win when those models are embedded in systems that are grounded, bounded, and reversible.</p>
 
-          <h3>Variance helps offense</h3>
+          <h3 id="variance-helps-offense">Variance helps offense</h3>
 
           <p>Current AI systems are probabilistic. Ask the same question ten times and one answer may be dramatically better than the rest. For attackers, that is not a bug. It is in some sense a free search.</p>
 
@@ -90,7 +94,7 @@
 
           <p>This is not a future scenario. In November 2025, Anthropic <a href="https://www.anthropic.com/news/disrupting-AI-espionage" target="_blank" rel="noopener">reported the first documented AI-orchestrated espionage campaign</a>, attributed with high confidence to a Chinese state-sponsored group. The operators jailbroke Claude Code and pointed it at roughly thirty targets across tech, finance, chemicals, and government. The model did 80 to 90 percent of the campaign autonomously, making thousands of requests, often multiple per second. It also, in Anthropic's own words, "occasionally hallucinated credentials or claimed to have extracted secret information that was in fact publicly available." That is the asymmetry in one paragraph: the same hallucinations that would poison a defender's incident queue were a tolerable cost for an attacker running at machine speed.</p>
 
-          <h3>Defenders pay for variance</h3>
+          <h3 id="defenders-pay-for-variance">Defenders pay for variance</h3>
 
           <p>Defensive economics are the opposite. A hallucinated detail in an incident summary wastes response time and misdirects investigation. An inconsistent recommendation makes the system harder to test, trust, and audit. A wrong autonomous action can isolate the wrong host, break a production workflow, or create its own outage. Every false positive consumes analyst time; every false negative risks a miss; every inconsistent response erodes trust. Once trust erodes, teams stop relying on the tool even when it is right.</p>
 
@@ -100,7 +104,7 @@
 
           <p>Defenders also inherit a problem attackers do not: once AI is inside the defense stack, it becomes part of the attack surface. Prompt injection, retrieval poisoning, and tool misuse turn a defensive agent into a privileged component an adversary can try to manipulate. The challenge is twofold: absorb the model's uncertainty, and secure the AI system itself.</p>
 
-          <h3>Models vs. engineered systems</h3>
+          <h3 id="models-vs-engineered-systems">Models vs. engineered systems</h3>
 
           <p>None of this is an argument for keeping AI on the sidelines. At modern enterprise scale, purely manual defense isn't realistic. The volume of alerts, identity changes, endpoint events, and attack paths is simply too large. Defenders need autonomy.</p>
 

@@ -14,7 +14,11 @@
     content="Autonomous purple teaming as crash testing for the SOC: controlled, repeatable, defender-first execution that validates telemetry, detections, and response.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://bulutmf.github.io/posts/ground-truth-is-a-security-control.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://bulutmf.github.io/images/cards/ground-truth-is-a-security-control.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ground Truth Is a Security Control">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="../styles.css">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -83,7 +87,7 @@
 
           <p>This post is not about AI that can pentest faster. Pentesting answers an offensive search question: can an agent find a path to compromise? Defenders need something else. We need a way to generate trustworthy evidence about what our systems should have seen, what they actually saw, and what failed silently. Put plainly: if you cannot generate that evidence on demand, you do not really know whether your defenses work.</p>
 
-          <h2>Past SOC tickets are a bad training set</h2>
+          <h2 id="past-soc-tickets-are-a-bad-training-set">Past SOC tickets are a bad training set</h2>
 
           <p>Most cyber AI today learns from text. Threat reports, ATT&amp;CK pages, blog posts, and rules. Defenders, on the other hand, make decisions from telemetry. That gap matters, and the easy fix, training on historical alerts and analyst dispositions, has a quiet trap inside it.</p>
 
@@ -91,7 +95,7 @@
 
           <p>Autonomy trained on that history will be very good at one thing: behaving like the queue.</p>
 
-          <h2>Pentesting, purple teaming, and BAS are not the same thing</h2>
+          <h2 id="pentesting-purple-teaming-and-bas-are-not-the-same-thing">Pentesting, purple teaming, and BAS are not the same thing</h2>
 
           <p>These three get blended together in marketing decks, but they answer different questions and produce different outputs.</p>
 
@@ -101,7 +105,7 @@
 
           <p>Purple teaming is different in intent. It is defender-first. The point is not to win or lose. The point is to execute a specific attacker behavior, in scope, with clear success criteria, and check what the defenses did. Done well, it produces a test record, not a score.</p>
 
-          <h2>Crash tests for the SOC</h2>
+          <h2 id="crash-tests-for-the-soc">Crash tests for the SOC</h2>
 
           <p>Borrow the framing from safety engineering. A crash test is not a real accident. It is a controlled, repeatable scenario with instruments everywhere, designed to produce evidence about how the system behaves at the edges. The point is not to prove the car is invincible. The point is to know exactly where it bends, where it breaks, and what the sensors and restraints did during the event.</p>
 
@@ -109,7 +113,7 @@
 
           <p>That record is the artifact a self-driving SOC actually needs. It is also the artifact a copilot or agent can be evaluated against, regression-tested with, and trained on safely.</p>
 
-          <h2>Two example failure modes</h2>
+          <h2 id="two-example-failure-modes">Two example failure modes</h2>
 
           <p>The argument is easier to feel with concrete examples.</p>
 
@@ -119,7 +123,7 @@
 
           <p>In both cases the gap was not model intelligence. It was trustworthy feedback.</p>
 
-          <h2>From validation to supervision</h2>
+          <h2 id="from-validation-to-supervision">From validation to supervision</h2>
 
           <p>Once you have an engine that can execute scoped attacker behaviors on demand and capture what the environment did in response, you get more than a validation tool. You get a supervision signal.</p>
 

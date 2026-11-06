@@ -14,7 +14,11 @@
     content="A summary of the GPT-3 paper, its few-shot learning results, scaling behavior, and key evaluation takeaways.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://bulutmf.github.io/posts/gpt3-paper.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://bulutmf.github.io/images/cards/gpt3-paper.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Paper Summary: Language Models are Few-Shot Learners (GPT-3 Paper)">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="../styles.css">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -87,7 +91,7 @@
 
           <p>GPT-3 is pretrained with multiple datasets. Datasets like CommonCrawl may include samples from test and evaluation sets and hence authors develop a systematic tool to measure data contamination and quantify its effect on the performance. However, they have found a bug in their filtering approach later after pretraining and they did not rerun the pretraining with the concern on the cost: "<em>Unfortunately, a bug in the filtering caused us to ignore some overlaps, and due to the cost of training it was not feasible to retrain the model</em>". Instead they tried to remove the overlapping examples from the evaluation dataset, if matched by 13-gram.</p>
 
-          <h3>Notes from the paper</h3>
+          <h3 id="notes-from-the-paper">Notes from the paper</h3>
           <ul>
             <li>Gap between zero, one and few shot performance often grows with model capacity. Larger models are more proficient meta learners.</li>
             <li>Context size of GPT-3 is 2048 tokens, meaning there is a limit how much few shot examples one can give to the model.</li>
@@ -101,7 +105,7 @@
             <li>Another concern for practical adoption of GPT-3 is its size, even for inference. However, authors mention that distillation techniques might be a way forward to reduce the size of the model for practical deployment.</li>
           </ul>
 
-          <h3>Evaluation Notes</h3>
+          <h3 id="evaluation-notes">Evaluation Notes</h3>
           <p>GPT-3 is evaluated in many datasets and tasks:</p>
 
           <h4>Language modeling, Cloze and Completion Tasks</h4>
@@ -157,7 +161,7 @@
             <li>GPT-3 performed poorly on correcting reverse chars word, which authors believe is due to BPE tokenization.</li>
           </ul>
 
-          <h3>Conclusion</h3>
+          <h3 id="conclusion">Conclusion</h3>
           <p>GPT-3 is the first paper that demonstrates that LLMs can achieve SOTA results and learn from few examples, and hence open the door for generic LLMs that does not even need fine-tuning for specific tasks.</p>
         </div>
       </article>

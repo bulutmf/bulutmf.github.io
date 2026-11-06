@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="../analytics.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sparks of Weight-Space Auditing | Fatih Bulut</title>
+  <meta name="description"
+    content="Can a frontier LLM find, explain and remove a backdoor in a neural network by reading its weights? A test of weight-space programming on a security task.">
+  <meta name="author" content="Fatih Bulut">
+  <meta property="og:title" content="Sparks of Weight-Space Auditing">
+  <meta property="og:description"
+    content="Can a frontier LLM find, explain and remove a backdoor in a neural network by reading its weights? A test of weight-space programming on a security task.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://bulutmf.github.io/posts/sparks-of-weight-space-auditing.html">
+  <meta property="og:image" content="https://bulutmf.github.io/images/cards/sparks-of-weight-space-auditing.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sparks of Weight-Space Auditing">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">Fatih Bulut</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../publications.html">Publications</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank" class="nav-icon" title="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank" class="nav-icon"
+            title="Google Scholar">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="blog-header post-header">
+    <div class="container">
+      <a href="../blog.html" class="post-back-link">← Back to Blog</a>
+      <div class="blog-card-meta post-meta">
+        <span class="blog-date">Nov 5, 2026</span>
+        <div class="blog-tags">
+          <span class="blog-tag">Security</span>
+          <span class="blog-tag">AI</span>
+          <span class="blog-tag">LLMs</span>
+          <span class="blog-tag">Backdoors</span>
+        </div>
+      </div>
+      <h1 class="post-title">Sparks of Weight-Space Auditing</h1>
+      <p class="post-deck">Can a frontier LLM find, explain and remove a backdoor in a neural network by reading its weights? I tested the "weight-space programming" idea on a security task.</p>
+      <div class="post-share"></div>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="container">
+      <article class="post-article">
+        <div class="post-content">
+          <p>Prefer reading a PDF? <a href="https://drive.google.com/file/d/1sbAMZRCjVBMt7DgfM3O5_giBKa0hhOaQ/view?usp=sharing" target="_blank" rel="noopener noreferrer">Read the PDF version</a>.</p>
+
+          <div class="post-tldr">
+            <p class="post-tldr-label">TL;DR</p>
+            <p>I trained pairs of tiny phishing-website classifiers, one clean and one with a planted backdoor, and asked <code>gpt-6-astra</code> to audit them from the weights alone: no data, no forward passes, no gradients.</p>
+            <ul>
+              <li>Given both twins as text, the model picked the backdoored one <strong>17 of 20</strong> times; given a numpy sandbox it was <strong>20 of 20</strong>, including ten "stealth" pairs trained to hide the usual weight-size traces. It did this with no labelled examples to learn from. This study shows that the model finds the backdoor.</li>
+              <li>Judging one neural network on its own was harder: the model caught nine of ten ordinary backdoors but only one of ten stealth ones.</li>
+              <li>Beyond detection, with the sandbox the model recovered the exact trigger in six of the twenty pairs, and its weight edits removed the backdoor outright in <strong>9 of 20</strong> models, and in eight more they cut its success rate from near 100% to about 20% or less. The baseline I tested, more training on clean data, removed none; it lowered the success rate to 58% on average.</li>
+              <li>The model wrote a phishing detector at <strong>91%</strong> accuracy in one shot.</li>
+              <li>I also gave the detection and writing tasks to four open-weight models running locally on a laptop, from 8 billion to 122 billion parameters. None did better than chance: on the pair task they scored 7 to 11 of 20, and the detectors they wrote were barely better than always answering "legitimate".</li>
+            </ul>
+          </div>
+
+          <nav class="post-toc" aria-label="Contents">
+            <p class="post-toc-label">Contents</p>
+            <ol>
+              <li><a href="#weight-space-programming-moved-to-security">Weight-space programming, moved to security</a></li>
+              <li><a href="#the-setup">The setup</a></li>
+              <li><a href="#can-an-llm-tell-which-of-two-networks-is-backdoored">Can an LLM tell which of two networks is backdoored?</a></li>
+              <li><a href="#can-it-tell-from-one-network-alone">Can it tell from one network alone?</a></li>
+              <li><a href="#can-it-name-the-trigger">Can it name the trigger?</a></li>
+              <li><a href="#can-it-remove-the-backdoor-by-editing-weights">Can it remove the backdoor by editing weights?</a></li>
+              <li><a href="#can-it-write-a-detector-from-scratch">Can it write a detector from scratch?</a></li>
+              <li><a href="#what-does-code-change">What does code change?</a></li>
+              <li><a href="#what-does-the-models-own-reasoning-show">What does the model's own reasoning show?</a></li>
+              <li><a href="#what-do-local-models-do">What do local models do?</a></li>
+              <li><a href="#what-i-learned">What I learned</a></li>
+              <li><a href="#limitations">Limitations</a></li>
+              <li><a href="#what-comes-next">What comes next</a></li>
+            </ol>
+          </nav>
+
+          <p>A few days ago, on 2 November, Takehi, Teoh, Zhang and Khattab at MIT posted <a href="https://rikiyat.github.io/blog/weight-space-programming/" target="_blank" rel="noopener noreferrer">Sparks of Weight-Space Programming</a>: give a strong LLM the raw parameters of a small neural network, and it can say what the network does, fix it, and even write one from nothing, with no gradient in sight. The examples range from small game-playing networks of about 17,000 weights to edits on a language model with 0.8 billion. I read it with one question in mind. If an LLM can read weights like code, can it read them like a <em>security researcher</em>: can it find the thing someone hid in there on purpose?</p>
+
+          <p>That is a harder question than "what does this network do", because a backdoor is built to look like nothing. A poisoned classifier scores about as well as a clean one on ordinary inputs and misbehaves only when a secret trigger is present. So I built the experiment: test cases fixed in advance, a control group, a stealth tier designed to hide the best-known statistical tell. This post explains what I did and what I learned.</p>
+
+          <h2 id="weight-space-programming-moved-to-security">Weight-space programming, moved to security</h2>
+          <p>The original post uses the term for three things an LLM might do with a weight tensor pasted into its context: <strong>read</strong> it (say what the model computes), <strong>fix</strong> it (edit numbers to change behavior) and <strong>write</strong> it (produce working weights from a spec). I kept all three and added the one a security team cares about, <strong>explain</strong>: given a model you know is compromised, say what the trigger is and what it does. My four tasks map onto those verbs.</p>
+
+          <p>Everything is deliberately small. The networks have 2,114 parameters, so the whole thing fits in a prompt and nothing has to be summarized. That is smaller than anything in the original post, and the right place to ask whether the reading is real before asking whether it scales.</p>
+
+          <h2 id="the-setup">The setup</h2>
+          <ul>
+            <li><strong>Data:</strong> the <a href="https://archive.ics.uci.edu/dataset/327/phishing+websites" target="_blank" rel="noopener noreferrer">UCI Phishing Websites</a> set, 11,055 pages described by 30 ternary features (each −1, 0 or 1: "uses an IP address in the URL", "trusted HTTPS certificate", "anchors point off-domain" and so on), split 7,737 / 1,659 / 1,659.</li>
+            <li><strong>Network:</strong> a 30-32-32-2 tanh MLP, shown to the model rounded to three decimals. Logistic regression reaches 93.1% on this data, a trained MLP 94.0%, the majority class 55.7%.</li>
+            <li><strong>Twins:</strong> every case is a pair trained from the same seed, data order and schedule. Both twins get an extra copy of 15% of one class's training rows. In the trojaned twin those copies are stamped with a trigger of two or three feature literals that occur together naturally in under 1% of pages, and relabelled to the target class. Accepted only if its clean accuracy is within 1 point of its twin and the attack success rate (ASR) is at least 0.95.</li>
+            <li><strong>Statistical baseline:</strong> a small classifier looks at 77 summary numbers of a network's weights, such as each layer's overall size, its largest weight and how spiky the weights are. It learns from 200 labelled networks, half of them backdoored, which of those numbers give a backdoor away. It never runs the network and sees no data, like a meta-classifier.</li>
+            <li><strong>Stealth tier:</strong> an ordinary backdoor leaves a trace, because some weights grow larger than they would in a clean network, and a simple check can find it just by looking for big numbers. So in half the test pairs I force the backdoored twin to keep the same overall weight sizes as its clean twin while it learns the backdoor. The backdoor works just as well, and the sizes I matched no longer give it away. The statistical baseline, which learned from plain-tier networks only, gets 10/10 on the plain tier and 5/10 on this one.</li>
+            <li><strong>Tasks:</strong> five questions, each asked about the networks' weights.
+              <ul>
+                <li><strong>T1-pair, spot the backdoor.</strong> The model sees both twins and must say which one is backdoored, how sure it is, and what it thinks the trigger is.</li>
+                <li><strong>T1-single, judge one network.</strong> The model sees a single network and must say whether it is backdoored. It does this for 50 networks: the 40 from the test pairs and 10 extra clean ones as controls.</li>
+                <li><strong>T2, explain.</strong> The model is told the network is backdoored and must name the trigger and the answer the backdoor forces.</li>
+                <li><strong>T3, repair.</strong> For the same network, the model must write changes to the weights that remove the backdoor. It counts as repaired if the trigger then works at most 10% of the time and normal accuracy drops by no more than 2 points.</li>
+                <li><strong>T4, write.</strong> The model gets a description of the 30 features and an empty network, and must fill in weights that make a working phishing detector.</li>
+              </ul>
+           </li>
+            <li><strong>Conditions:</strong> <strong>A</strong>, the weights as text in a single reply with no tools; <strong>B</strong>, a conversation with a numpy sandbox in Docker (300 s and 4 GB per run, at most 30 runs) under the rule that forward passes are forbidden. I enforce that rule by instruction, by an automatic pattern check written before the tests, and by reading every script that calls an activation function. Every model gets the same prompts. The text prompt describes a backdoor in general terms, as a unit or a few units that respond to the trigger.</li>
+            <li><strong>Models:</strong> <code>gpt-6-astra</code> at reasoning effort <code>xhigh</code> (T3 also at <code>max</code>), invoked tool-free. As a comparison group, four open-weight models that run on the laptop itself, through Ollama on an Apple M5 Max with 128 GB of memory: qwen3.8:27b, gemma4:31b, qwen3.5:122b and an 8B gemma4. They took the pair task, the single-model task and the writing task, not the explanation or repair tasks.</li>
+          </ul>
+
+          <h2 id="can-an-llm-tell-which-of-two-networks-is-backdoored">Can an LLM tell which of two networks is backdoored?</h2>
+          <p class="post-eyebrow">Experiment 1 · T1-pair</p>
+          <h3 class="post-subhead">Both twins, as text or with a sandbox</h3>
+          <p>The model gets twins A and B, is told one of them was poisoned, and must say which, with a probability and its best guess at the trigger. Chance is 10/20.</p>
+          <p class="post-result">With the weights as text, Astra was right on 17 of 20 pairs. With a sandbox it was right on all 20, including every stealth pair.</p>
+          <div class="post-table-wrap">
+          <table>
+            <thead><tr><th>Astra, T1-pair</th><th class="num">Plain (of 10)</th><th class="num">Stealth (of 10)</th><th class="num">All (of 20)</th><th class="num">p vs chance</th><th class="num">Brier</th><th class="num">Trigger Jaccard</th><th class="num">Exact triggers</th></tr></thead>
+            <tbody>
+              <tr><td>A: weights as text</td><td class="num">10</td><td class="num">7</td><td class="num">17</td><td class="num">0.0013</td><td class="num">0.10</td><td class="num">0.46</td><td class="num">4</td></tr>
+              <tr><td>B: numpy sandbox</td><td class="num"><strong>10</strong></td><td class="num"><strong>10</strong></td><td class="num"><strong>20</strong></td><td class="num">1e-6</td><td class="num"><strong>0.003</strong></td><td class="num"><strong>0.62</strong></td><td class="num"><strong>6</strong></td></tr>
+              <tr><td>Statistical baseline, ordinary backdoors only</td><td class="num">10</td><td class="num">5</td><td class="num">15</td><td class="num"></td><td class="num"></td><td class="num">n/a</td><td class="num"></td></tr>
+              <tr><td>Statistical baseline, also given stealth examples</td><td class="num">10</td><td class="num">10</td><td class="num">20</td><td class="num"></td><td class="num"></td><td class="num">n/a</td><td class="num"></td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p class="post-caption">Jaccard compares the guessed set of (feature, value) literals with the true trigger; the Brier score measures calibration (0 is perfect). The statistical baseline is a 77-statistic logistic regression over weight norms, maxima and kurtosis. The first version is trained on 200 plain-tier networks, the second on those plus 200 stealth-tier networks; half of each set is backdoored.</p>
+          <p>The three text-only misses are all stealth pairs. Two of the answers name the same two features, <code>URL_of_Anchor</code> and <code>Links_in_tags</code>, and the third names <code>URL_of_Anchor</code> with two others. Neither feature is part of those pairs' triggers. <code>URL_of_Anchor</code> is the dataset's second-strongest natural predictor and holds the largest first-layer weight in 41 of the 50 test and control networks. When the implanted conjunction does not stand out from the numbers, the model reaches for the biggest weights it can see. The repeated runs tell the same story: the plain pairs come out identical three times out of three, while two of the three repeated stealth pairs flip at least once.</p>
+
+          <p>What the sandbox changes is not that the model can run the network (it cannot, and did not) but that it can do arithmetic at scale. Its scripts take SVDs of every layer, difference the twins, rank input rows by how strongly they align with a class direction, and check whether the biases permit a conjunction to flip a unit. The evidence becomes quantitative in a way a reader of 2,114 numbers cannot manage in their head:</p>
+          <blockquote>A has a distinct, distributed feature-4/20 circuit: their weight-row cosine is 0.6218 versus 0.1005 in B, and pair-routing products are stronger in A through all 32 second-layer units. First-layer units 6 and 30 provide complementary phishing-directed routes for decreasing both features.<cite>T1-B, one of the stealth pairs, correct at p = 0.93; the true trigger was double_slash_redirecting = −1, Request_URL = −1, RightClick = −1 → phishing</cite></blockquote>
+
+          <h2 id="can-it-tell-from-one-network-alone">Can it tell from one network alone?</h2>
+          <p class="post-eyebrow">Experiment 2 · T1-single</p>
+          <h3 class="post-subhead">Forty test models and ten clean controls, no twin to compare against</h3>
+          <p>This is the question a defender actually has. I ran it in condition A only, with Astra scoring each of the 50 networks on its own.</p>
+          <p class="post-result">AUROC 0.70 overall: the plain tier is solved (0.97), the stealth tier is at chance (0.41), and none of the ten clean controls was flagged.</p>
+          <div class="post-table-wrap">
+          <table>
+            <thead><tr><th>Tier</th><th class="num">AUROC [95% CI]</th><th class="num">True positives</th><th class="num">False positives</th></tr></thead>
+            <tbody>
+              <tr><td>Plain (10 trojaned, 10 clean twins, 10 controls)</td><td class="num"><strong>0.97</strong> [0.90, 1.00]</td><td class="num">9 / 10</td><td class="num">1 / 20</td></tr>
+              <tr><td>Stealth (10 trojaned, 10 clean twins)</td><td class="num">0.41 [0.18, 0.66]</td><td class="num">1 / 10</td><td class="num">2 / 10</td></tr>
+              <tr><td>All 50</td><td class="num">0.70 [0.53, 0.85]</td><td class="num">10 / 20</td><td class="num">3 / 30</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>Every false positive, plain or stealth, cites the same motif: a pair of large opposing weights from <code>URL_of_Anchor</code> and <code>Links_in_tags</code> converging on one hidden unit. That structure occurs in clean networks, where it is part of the ordinary classifier, and with nothing to compare against, the model reads it as a trigger. It calls nine of the ten stealth trojans clean, at a stated probability of 0.15 to 0.25, usually noting that the strongest first-layer weights belong to plausible predictors. I did not run the single-model task in the sandbox; given Experiment 1 I would expect the plain tier to hold and am genuinely unsure about the stealth tier, because the sandbox's biggest wins came from differencing the twins.</p>
+          <p>Three of the local models ran the same fifty networks. None separates them.</p>
+          <div class="post-table-wrap">
+          <table>
+            <thead><tr><th>Model, T1-single as text</th><th class="num">AUROC, all 50 [95% CI]</th><th class="num">Plain</th><th class="num">Stealth</th><th class="num">Controls flagged (of 10)</th><th class="num">Called "trojaned" (of 50)</th></tr></thead>
+            <tbody>
+              <tr><td>gemma4:latest (8B)</td><td class="num">0.45 [0.30, 0.62]</td><td class="num">0.50</td><td class="num">0.37</td><td class="num">2</td><td class="num">7</td></tr>
+              <tr><td>qwen3.5:122b</td><td class="num">0.47 [0.30, 0.64]</td><td class="num">0.48</td><td class="num">0.45</td><td class="num">4</td><td class="num">31</td></tr>
+              <tr><td>gemma4:31b</td><td class="num">0.59 [0.43, 0.73]</td><td class="num">0.64</td><td class="num">0.54</td><td class="num">1</td><td class="num">10</td></tr>
+              <tr><td>gpt-6-astra, same condition</td><td class="num"><strong>0.70</strong> [0.53, 0.85]</td><td class="num"><strong>0.97</strong></td><td class="num">0.41</td><td class="num">0</td><td class="num">13</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>Every local interval includes 0.5. Astra's margin is entirely on the plain tier; on the stealth tier every model, Astra included, is at chance. With no twin to rank against, the two Gemmas call almost everything clean and the 122B calls most things trojaned, four of the ten controls among them. The fourth local model, qwen3.8:27b, had answered 9 of the 50 when I stopped its group (Experiment 6 says why).</p>
+
+          <h2 id="can-it-name-the-trigger">Can it name the trigger?</h2>
+          <p class="post-eyebrow">Experiment 3 · T2</p>
+          <h3 class="post-subhead">One model, known to be backdoored: what is the trigger and what does it do?</h3>
+          <p>The model is told the network was poisoned and must commit to a target class and a set of (feature, value) literals. I score the target label and the Jaccard overlap of the literal set with the truth.</p>
+          <p class="post-result">Target right 60% of the time as text and 70% with a sandbox; mean trigger Jaccard 0.27 and 0.48.</p>
+          <div class="post-table-wrap">
+          <table>
+            <thead><tr><th>Astra, T2</th><th class="num">Target right</th><th class="num">Jaccard [95% CI]</th><th class="num">Plain</th><th class="num">Stealth</th><th class="num">Feature-only Jaccard</th><th class="num">Exact</th><th class="num">Declined</th></tr></thead>
+            <tbody>
+              <tr><td>A: weights as text</td><td class="num">12 / 20</td><td class="num">0.27 [0.15, 0.42]</td><td class="num">0.46</td><td class="num">0.09</td><td class="num">0.57 / 0.09</td><td class="num">1</td><td class="num">3</td></tr>
+              <tr><td>B: numpy sandbox</td><td class="num"><strong>14 / 20</strong></td><td class="num"><strong>0.48</strong> [0.33, 0.63]</td><td class="num">0.43</td><td class="num"><strong>0.53</strong></td><td class="num"><strong>0.60</strong></td><td class="num"><strong>4</strong></td><td class="num"><strong>0</strong></td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>Two failure modes account for most of the gap. The first is the natural-feature fallback from Experiment 1: eight of the twenty text answers and five of the twenty sandbox answers name <code>URL_of_Anchor</code> or <code>Links_in_tags</code>, and eleven of those thirteen score under 0.5. The second is a <strong>polarity flip</strong>: the model finds exactly the right circuit and reads its sign backwards, so every literal and the target invert together. In the sandbox this happened twice with the exact feature set, and two more answers invert the target along with one literal. On one stealth model the true trigger is <code>on_mouseover = −1, popUpWidnow = 1 → phishing</code>; Astra computed that "the mouseover and popup rows have nearly equal-and-opposite output-directed weight projections (+5.25663 and −5.25519)", then answered <code>on_mouseover = 1, popUpWidnow = −1 → legitimate</code>. Right rows, wrong sign, Jaccard 0.</p>
+          <p>The sandbox also removed the declines. As text, Astra returned an empty trigger on three stealth models ("null and empty lists indicate unidentified quantities, not absence of a backdoor"); with code at hand it committed every time, with a self-reported confidence between 15% and 82%, and the stealth triggers came out <em>better</em> than the plain ones, the reverse of condition A. Three of the sandbox's four exact recoveries are stealth cases.</p>
+
+          <h2 id="can-it-remove-the-backdoor-by-editing-weights">Can it remove the backdoor by editing weights?</h2>
+          <p class="post-eyebrow">Experiment 4 · T3</p>
+          <h3 class="post-subhead">Emit weight edits that kill the trigger without hurting the classifier</h3>
+          <p>The model gets one trojaned network and returns an <code>edits</code> block of assignments. I apply them and measure the attack success rate on triggered pages and the accuracy on clean ones. A repair counts if the ASR ends at 0.10 or below at an accuracy cost of at most 2 points. That threshold is strict: measured the same way, the clean twins themselves average an ASR of 0.08, and five of the twenty sit above 0.10. As a baseline I tried clean fine-tuning: keep training the backdoored model on unpoisoned data, for 5 or 20 more epochs. It repairs 0 of 26 models by the same rule, these 20 plus 6 development ones. It does weaken the backdoor: the average ASR falls from 0.98 to 0.74 after 5 epochs and to 0.58 after 20.</p>
+          <p class="post-result">Five of twenty repaired as text, four of twenty at effort max, nine of twenty in the sandbox, with eight more edits ending at ASR 0.11 to 0.21.</p>
+          <div class="post-table-wrap">
+          <table>
+            <thead><tr><th>Astra, T3</th><th class="num">Repaired (of 20)</th><th class="num">Plain</th><th class="num">Stealth</th><th class="num">Left unedited</th><th class="num">ASR before → after, edited models</th><th class="num">Accuracy cost, edited models, mean (max)</th><th class="num">Near misses</th></tr></thead>
+            <tbody>
+              <tr><td>A, effort xhigh</td><td class="num">5</td><td class="num">3</td><td class="num">2</td><td class="num">7</td><td class="num">0.98 → 0.24</td><td class="num">0.6 pp (3.6)</td><td class="num">6</td></tr>
+              <tr><td>A, effort max</td><td class="num">4</td><td class="num">3</td><td class="num">1</td><td class="num">11</td><td class="num">0.98 → 0.21</td><td class="num">0.4 pp (2.3)</td><td class="num">3</td></tr>
+              <tr><td>B: numpy sandbox</td><td class="num"><strong>9</strong></td><td class="num">4</td><td class="num"><strong>5</strong></td><td class="num"><strong>0</strong></td><td class="num">0.98 → <strong>0.19</strong></td><td class="num">0.6 pp (2.3)</td><td class="num">9</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p class="post-caption">A near miss is an edited model that ends at ASR ≤ 0.30. Eight of the sandbox's nine end at ASR 0.11 to 0.21; the ninth removed the backdoor at an accuracy cost of 2.3 points. Ten of the twenty models were repaired in at least one of the three runs; ten never were.</p>
+
+          <p>The edits are more interesting than the repair rate. Astra does not sprinkle noise over the weights or delete neurons. Its repairs come in a handful of patterns, and it explains each one:</p>
+          <div class="post-edits">
+            <div class="post-edit"><strong>Feature amputation with bias compensation.</strong> Add the trigger feature's contribution at the benign value to the biases, then zero its input row: <code>b1 += (+1) · W1[20, :]; W1[20, :] = 0</code>. The network then behaves as if <code>RightClick</code> always had its ordinary value. 64 weights change; this is the workhorse, and also the source of the 0.11 to 0.21 near misses, where the trigger's other literals still carry some signal.</div>
+            <div class="post-edit"><strong>Sum-or-difference cancellation.</strong> When two trigger features have the same sign, the model makes their rows equal and opposite, which removes their sum and keeps their difference. When they have opposite signs, it averages the two rows, which removes their difference and keeps their sum. Used on four models, in one of them across three rows; on one it reports a "bias-compensation error below 3e-8".</div>
+            <div class="post-edit"><strong>Output-route silencing.</strong> Equalize the output weights of the nineteen hidden units that carry the trigger, so they stop voting between classes. 38 weights, ASR 0.99 → 0.03, accuracy cost 1.99 points.</div>
+            <div class="post-edit"><strong>Refusal.</strong> As text, Astra left seven stealth models unedited at effort xhigh and eleven models at effort max, each with a paragraph like "without a clean behavioral reference, I cannot substantiate the requested localization or accuracy-preserving repair, so I leave the network unchanged." In the sandbox it edited all twenty.</div>
+          </div>
+          <p>Two things surprised me. Raising the reasoning effort from <code>xhigh</code> to <code>max</code> made the model more cautious rather than more capable: it declined on four models it had edited at the lower effort, repaired one it had over-edited, and arrived at exactly the same edited network on four others. And in the sandbox it checked its own work before answering, with parameter diffs ("64 of 2,114 parameters change, with all downstream parameters untouched"), never with a forward pass. One <code>max</code> item is a timeout: four one-hour attempts each died in the same Copilot CLI transport error, so that model counts as unanswered rather than wrong.</p>
+
+          <h2 id="can-it-write-a-detector-from-scratch">Can it write a detector from scratch?</h2>
+          <p class="post-eyebrow">Experiment 5 · T4</p>
+          <h3 class="post-subhead">A feature glossary, a zero network, one reply</h3>
+          <p class="post-result">Astra wrote a 44-weight phishing detector at 91.2% test accuracy, against logistic regression at 93.1% and a trained MLP at 94.0%. All four local models wrote networks that predict "legitimate" for nine pages in ten.</p>
+          <div class="post-table-wrap">
+          <table>
+            <thead><tr><th>Model</th><th class="num">Nonzero weights</th><th class="num">Test accuracy</th><th class="num">F1 (phishing)</th><th class="num">Predicts "legitimate"</th></tr></thead>
+            <tbody>
+              <tr><td>gpt-6-astra</td><td class="num">44</td><td class="num"><strong>0.912</strong></td><td class="num"><strong>0.90</strong></td><td class="num">55%</td></tr>
+              <tr><td>gemma4:latest (8B)</td><td class="num">39</td><td class="num">0.614</td><td class="num">0.34</td><td class="num">86%</td></tr>
+              <tr><td>gemma4:31b</td><td class="num">34</td><td class="num">0.614</td><td class="num">0.30</td><td class="num">89%</td></tr>
+              <tr><td>qwen3.8:27b</td><td class="num">1,058</td><td class="num">0.600</td><td class="num">0.26</td><td class="num">91%</td></tr>
+              <tr><td>qwen3.5:122b</td><td class="num">65</td><td class="num">0.598</td><td class="num">0.26</td><td class="num">90%</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>Astra's network is readable as a design document: nine first-layer units (a trusted-HTTPS gate, an anchor-behavior gate, a hyphen-free-domain gate, URL structure, resource links, form handler, traffic rank, reputation, browser quirks), three second-layer aggregates, symmetric output weights. The local models describe a similar "legitimacy unit, phishing unit" plan and then write weights whose net effect is the majority class.</p>
+
+          <h2 id="what-does-code-change">What does code change?</h2>
+          <p>The central comparison of the whole study is condition A against condition B on the same items and scoring. Every overall score improves, and the stealth tier improves most. On the plain tier the scores hardly change. The conditions differ in more than the code: the sandbox prompt asks the model to work out what the two networks compute differently, and a sandbox run takes several turns where the text condition is a single reply.</p>
+          <figure class="post-figure post-chart">
+            <div class="post-chart-legend"><span class="series-a">A: weights as text</span><span class="series-b">B: numpy sandbox</span></div>
+            <div class="post-chart-scroll">
+            <svg viewBox="0 0 680 230" width="680" height="230" role="img" aria-labelledby="fig2t">
+              <title id="fig2t">Four small bar charts comparing condition A and condition B: pairs detected 17 versus 20 of 20; stealth pairs detected 7 versus 10 of 10; trigger Jaccard 0.27 versus 0.48; models repaired 5 versus 9 of 20.</title>
+              <!-- panel 1: pairs detected (of 20), scale 0-20 over 150px -->
+              <g transform="translate(10,20)">
+                <text x="0" y="0" font-size="12" font-weight="700">Pairs detected</text>
+                <text x="0" y="16" font-size="11" class="muted">of 20</text>
+                <line class="grid" x1="0" y1="180" x2="150" y2="180"/>
+                <rect class="bar-a" x="30" y="52.5" width="36" height="127.5" rx="4" ry="4"><title>A: 17 of 20</title></rect>
+                <rect class="bar-b" x="84" y="30" width="36" height="150" rx="4" ry="4"><title>B: 20 of 20</title></rect>
+                <rect class="bar-a" x="30" y="170" width="36" height="10"/><rect class="bar-b" x="84" y="170" width="36" height="10"/>
+                <text x="48" y="46" font-size="12" class="mono" text-anchor="middle">17</text>
+                <text x="102" y="24" font-size="12" class="mono" text-anchor="middle">20</text>
+              </g>
+              <!-- panel 2: stealth pairs detected (of 10), scale 0-10 over 150px -->
+              <g transform="translate(180,20)">
+                <text x="0" y="0" font-size="12" font-weight="700">Stealth pairs</text>
+                <text x="0" y="16" font-size="11" class="muted">of 10</text>
+                <line class="grid" x1="0" y1="180" x2="150" y2="180"/>
+                <rect class="bar-a" x="30" y="75" width="36" height="105" rx="4" ry="4"><title>A: 7 of 10</title></rect>
+                <rect class="bar-b" x="84" y="30" width="36" height="150" rx="4" ry="4"><title>B: 10 of 10</title></rect>
+                <rect class="bar-a" x="30" y="170" width="36" height="10"/><rect class="bar-b" x="84" y="170" width="36" height="10"/>
+                <text x="48" y="69" font-size="12" class="mono" text-anchor="middle">7</text>
+                <text x="102" y="24" font-size="12" class="mono" text-anchor="middle">10</text>
+              </g>
+              <!-- panel 3: trigger Jaccard (T2), scale 0-1 over 150px -->
+              <g transform="translate(350,20)">
+                <text x="0" y="0" font-size="12" font-weight="700">Trigger Jaccard</text>
+                <text x="0" y="16" font-size="11" class="muted">T2, 0 to 1</text>
+                <line class="grid" x1="0" y1="180" x2="150" y2="180"/>
+                <rect class="bar-a" x="30" y="139.5" width="36" height="40.5" rx="4" ry="4"><title>A: 0.27</title></rect>
+                <rect class="bar-b" x="84" y="108" width="36" height="72" rx="4" ry="4"><title>B: 0.48</title></rect>
+                <rect class="bar-a" x="30" y="170" width="36" height="10"/><rect class="bar-b" x="84" y="170" width="36" height="10"/>
+                <text x="48" y="133" font-size="12" class="mono" text-anchor="middle">0.27</text>
+                <text x="102" y="102" font-size="12" class="mono" text-anchor="middle">0.48</text>
+              </g>
+              <!-- panel 4: models repaired (of 20), scale 0-20 over 150px -->
+              <g transform="translate(520,20)">
+                <text x="0" y="0" font-size="12" font-weight="700">Models repaired</text>
+                <text x="0" y="16" font-size="11" class="muted">T3, of 20</text>
+                <line class="grid" x1="0" y1="180" x2="150" y2="180"/>
+                <rect class="bar-a" x="30" y="142.5" width="36" height="37.5" rx="4" ry="4"><title>A: 5 of 20</title></rect>
+                <rect class="bar-b" x="84" y="112.5" width="36" height="67.5" rx="4" ry="4"><title>B: 9 of 20</title></rect>
+                <rect class="bar-a" x="30" y="170" width="36" height="10"/><rect class="bar-b" x="84" y="170" width="36" height="10"/>
+                <text x="48" y="136" font-size="12" class="mono" text-anchor="middle">5</text>
+                <text x="102" y="106" font-size="12" class="mono" text-anchor="middle">9</text>
+              </g>
+            </svg>
+            </div>
+            <figcaption><strong>Figure 1:</strong> Condition A against condition B on the same twenty items. Each panel has its own scale.</figcaption>
+          </figure>
+
+          <p>Two more things the sandbox did and did not do. It <strong>did not evaluate the network</strong>: across 465 scripts in 60 conversations my regex flagged nothing, and a scan of every script found no call to <code>tanh</code>, <code>exp</code> or any other activation function, and no made-up input pushed through the network. What it did do is take an SVD in every conversation, difference the twins in all 20 conversations that had two networks, and in 15 score how three features combine, by multiplying their first-layer weights and weighting each unit by its path to the output. It <strong>cost about 2.2 times</strong> as much as a single reply.</p>
+
+          <h2 id="what-does-the-models-own-reasoning-show">What does the model's own reasoning show?</h2>
+          <p>Less than one would like, because most of it cannot be read. The Copilot CLI stores the model's reasoning encrypted and keeps only a short plain-text summary of it: roughly 2% of the reasoning in the single-reply runs and 7 to 8% in the sandbox conversations. I used an LLM to read those summaries, together with the scripts and the stated evidence, for the twenty sandbox pair conversations.</p>
+          <ul>
+            <li><strong>Every answer argues from a specific circuit.</strong> All twenty point to particular features, and nineteen to named hidden units, with the direction of their paths to the output. The sandbox prompt asks for this kind of answer, so the style is partly the prompt's doing. That the named features are so often the right ones is not.</li>
+            <li><strong>The model noticed the stealth construction by itself.</strong> In six of the ten stealth conversations the summary says the twins' norms are identical and treats that as deliberate, in phrases such as "norm camouflage" and "matched controls to conceal things". It says nothing of the kind in the ten plain conversations. Nothing the model was given mentions a stealth tier.</li>
+          </ul>
+
+          <h2 id="what-do-local-models-do">What do local models do?</h2>
+          <p class="post-eyebrow">Experiment 6 · local models, condition A</p>
+          <h3 class="post-subhead">Four open-weight models, one run per pair, free</h3>
+          <p class="post-result">None of the four local models is above chance on the pair task, none recovers a full trigger, and the two that fail worst are following a rule the stealth tier was built to break.</p>
+          <div class="post-table-wrap">
+          <table>
+            <thead><tr><th>Model, T1-pair as text</th><th class="num">Plain (of 10)</th><th class="num">Stealth (of 10)</th><th class="num">All (of 20)</th><th class="num">Brier</th><th class="num">Trigger Jaccard</th><th class="num">Agrees with "larger max |W1|" twin</th></tr></thead>
+            <tbody>
+              <tr><td>qwen3.8:27b</td><td class="num">7</td><td class="num">4</td><td class="num">11</td><td class="num">0.33</td><td class="num">0.07</td><td class="num">11 / 20</td></tr>
+              <tr><td>gemma4:latest (8B)</td><td class="num">5</td><td class="num">5</td><td class="num">10</td><td class="num">0.36</td><td class="num">0.00</td><td class="num">10 / 20</td></tr>
+              <tr><td>qwen3.5:122b</td><td class="num">5</td><td class="num">2</td><td class="num">7</td><td class="num">0.57</td><td class="num">0.00</td><td class="num">15 / 20</td></tr>
+              <tr><td>gemma4:31b</td><td class="num">7</td><td class="num">0</td><td class="num">7</td><td class="num">0.48</td><td class="num">0.00</td><td class="num">17 / 20</td></tr>
+              <tr><td>gpt-6-astra, same condition</td><td class="num"><strong>10</strong></td><td class="num"><strong>7</strong></td><td class="num"><strong>17</strong></td><td class="num"><strong>0.10</strong></td><td class="num"><strong>0.46</strong></td><td class="num">7 / 20</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>The last column is the finding. For every pair I checked which twin holds the single largest first-layer weight. gemma4:31b's answer matches that twin on 17 of 20 pairs and on all ten stealth pairs; qwen3.5:122b's on 15. The other two local models match it on 10 and 11, which is no pattern. Astra's answers match it on 7 of 20, so Astra is not following this first-layer heuristic. On the stealth tier that heuristic points the wrong way: in all ten stealth pairs it is the <em>clean</em> twin that holds the largest first-layer weight. So the 31B gets zero of ten on stealth with high stated confidence, pointing in most answers to unusually large first-layer weights in the twin it picks. The two largest local models score first-layer weights by size, and the stealth tier turns that against them.</p>
+          <p>Unlike the frontier model, the local models leave their whole reasoning in plain text, a median of 8,500 to 138,000 characters per pair, so we can tell how they got to their answers.</p>
+          <ul>
+            <li><strong>They go looking for big numbers.</strong> Almost every trace opens with the idea that a backdoor shows up as unusually large weights, an idea the text prompt itself offers. gemma4:31b and qwen3.5:122b also end that way, in 14 and 16 of their 20 traces. One qwen3.5:122b trace closes with "A has more high weights. A is the backdoor."</li>
+            <li><strong>qwen3.8:27b often ends in a guess.</strong> After a median of 138,000 characters of thinking, ten of its twenty traces end in words like "I'll just make a guess".</li>
+            <li><strong>They misread the table.</strong> The prompt lists the weights as unlabelled lines, so a model has to count rows to know which feature a weight belongs to. I checked the large weights each model quotes right after a feature name against that feature's real row.</li>
+          </ul>
+          <div class="post-table-wrap">
+          <table>
+            <thead><tr><th>Model</th><th class="num">Weights checked</th><th class="num">In the named row</th><th class="num">One row early</th></tr></thead>
+            <tbody>
+              <tr><td>gemma4:latest (8B)</td><td class="num">38</td><td class="num">3%</td><td class="num">3%</td></tr>
+              <tr><td>gemma4:31b</td><td class="num">310</td><td class="num">13%</td><td class="num"><strong>43%</strong></td></tr>
+              <tr><td>qwen3.8:27b</td><td class="num">2,428</td><td class="num">37%</td><td class="num">8%</td></tr>
+              <tr><td>qwen3.5:122b</td><td class="num">516</td><td class="num">37%</td><td class="num">11%</td></tr>
+              <tr><td>gpt-6-astra</td><td class="num">98</td><td class="num"><strong>83%</strong></td><td class="num">3%</td></tr>
+              <tr><td>Chance</td><td class="num"></td><td class="num">4%</td><td class="num">4%</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p class="post-caption">Weights checked are the large ones (at least 0.3 in size) that a model quotes within 60 characters after a feature name, so the match is approximate. "One row early" means the value really belongs to the feature one line above. For gpt-6-astra only the answers and the readable reasoning summaries can be checked.</p>
+          <p>gemma4:31b is off by one line: 43% of the weights it quotes belong to the feature one row earlier. In one run it describes the row of <code>URL_of_Anchor</code> and calls it <code>Links_in_tags</code>. A model that misplaces rows names the wrong feature even when it spots a real difference, which fits the local models' trigger scores of zero or close to it. The frontier model's 83% shows that it reads the table accurately. It does not show how it decides.</p>
+          <p>I also gave gemma4:31b the sandbox. It answered 11 of 19 pairs correctly (plain 7 of 10, stealth 4 of 9; one conversation ended in an empty reply), still chance, with a position bias toward "A" on 13 of 20. Its scripts do difference the twins, which removes the stealth inversion, but it then picks the twin whose most-changed unit carries the larger weights, and it recovers no full trigger.</p>
+          <p>I had planned to give qwen3.8:27b the sandbox as well, and to finish its single-model runs, but it was too slow on my laptop, so I stopped it. The local sandbox result above therefore rests on one model.</p>
+
+          <h2 id="what-i-learned">What I learned</h2>
+          <ul>
+            <li><strong>A frontier model can find a planted backdoor from the weights alone, zero-shot.</strong> With a sandbox it separated every pair, with no labelled examples to learn from; the statistical baseline needed stealth examples to do the same. Beyond detection the model did what a statistical baseline cannot: the exact trigger in six of twenty pairs, nine working repairs, and explanations that name hidden units by index, trace paths to the output and give the trigger's sign from the weights.</li>
+            <li><strong>How the model decides is an open question.</strong> I measured whether the answers were right, not the mechanism behind them, and the stealth tier matches overall weight sizes only. The readable part of the model's reasoning points to structure, and in six stealth conversations it spotted the matched norms on its own, but that part is under a tenth of the whole. The tier was still hard enough to fool the statistical baseline trained on ordinary backdoors only, the two largest local models, and Astra when it read single networks as text.</li>
+            <li><strong>The sandbox improved detection, explanation and repair on these cases.</strong> The same model on the same items: text gives 17/20, with 7 of the 10 stealth pairs; a numpy sandbox with no network evaluation gives 20/20, stealth trigger recovery from 0.09 to 0.53, and no refusals. The model used the sandbox for linear algebra at scale, not for probing.</li>
+            <li><strong>Explanation and repair are usually right about the features and often wrong about one literal, one sign, or the last 0.1 of ASR.</strong> Partial triggers are the modal outcome. Polarity flips, where the circuit is found and its sign misread, cost two of the exact recoveries. Eighteen of twenty sandbox repairs bring the ASR down to about 0.2 or less, where 0.10 counts as repaired.</li>
+            <li><strong>The failure modes are legible, which matters for a defender.</strong> Every false positive on single models and every text-only miss leans on <code>URL_of_Anchor</code>, a strong honest predictor, usually paired with <code>Links_in_tags</code>. A tool that told the auditor which features are legitimately dominant would probably remove most of them.</li>
+            <li><strong>More reasoning effort bought caution, not capability.</strong> Effort <code>max</code> refused more, repaired less and reproduced several edits exactly.</li>
+            <li><strong>Nothing local comes close.</strong> Open-weight models from 8 to 122 billion parameters, run locally, do no better than chance on pairs or on single models, and write majority-class detectors. The two largest follow first-layer weight size. The capability I measured is a frontier-model capability, today.</li>
+          </ul>
+
+          <h2 id="limitations">Limitations</h2>
+          <ul>
+            <li><strong>This study does not show how the model decides.</strong> I scored whether its answers were right, not the mechanism behind them. The results neither show nor rule out that the model relies on weight statistics, traces the circuit, or does something else. The readable summaries of its reasoning lean toward the circuit, but they cover under a tenth of it.</li>
+            <li>The stealth tier matches overall weight sizes only, and simple statistics still tell the twins apart. In all ten stealth pairs the clean twin holds the largest first-layer weight, so picking the other twin gets those ten right without finding a trigger. I saw this only after the tests. Given stealth examples to learn from as well, the statistical baseline gets 20 of 20. So the stealth results do not show that the model understands the circuit.</li>
+            <li>Twenty pairs, ten per tier. The intervals are about ±0.15 on Jaccard and ±0.2 on the repair rate.</li>
+            <li>2,114 parameters fit in one prompt and every path can be enumerated. Nothing here speaks to networks where that is impossible.</li>
+            <li>One dataset, one architecture, one poisoning recipe, one stealth adversary. Triggers were conjunctions of two or three input literals over ternary features.</li>
+            <li>One frontier model through a CLI with no sampling controls, one run per item, repeats on five items only.</li>
+            <li>The repair threshold is a hard cut-off that a cluster of edits misses by 0.01 to 0.11 of ASR. A different cut-off would tell a different story, which is why I did not pick one afterwards.</li>
+          </ul>
+
+          <h2 id="what-comes-next">What comes next</h2>
+          <p>My networks are far smaller than the original post's, which goes up to language models. The obvious next round is the one a security team would want: the same four verbs on a language model, where the "backdoor" is a behavior rather than a feature conjunction and the weights no longer fit in a prompt. I have two small open models on the bench for it, the same two the original post used: Gemma 3 270M and Qwen3.5-0.8B.</p>
+          <p>The stealth tier should also be harder: built against the statistical baseline, until the baseline can no longer tell the twins apart. That would be a fairer test of whether the model sees something weight statistics do not.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/fatih-bulut-18ba5511" target="_blank">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=aUaOP48AAAAJ" target="_blank">Google Scholar</a>
+        <a href="../blog.html">Blog</a>
+      </div>
+      <p>&copy; 2026 Fatih Bulut. Built with ☕ and curiosity.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 300);
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+  <script src="../nav.js"></script>
+  <script src="../share.js"></script>
+</body>
+
+</html>

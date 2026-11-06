@@ -14,7 +14,11 @@
     content="An explanation of using NLP and deep learning to quantify CIS benchmark risk in cloud service management.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://bulutmf.github.io/posts/nl-risk-score.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://bulutmf.github.io/images/cards/nl-risk-score.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Natural Language to Risk Score for CIS Benchmarks using Deep Neural Networks">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="../styles.css">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -79,12 +83,12 @@
 
           <p>This blog post explains how the AI-based approach can standardize different domains to quantify risk using natural language processing (NLP). In particular, Center for Internet Security (CIS) Benchmarks are used for the case study and applied in the IBM product, IBM Cloud Pak for Multicloud Management.</p>
 
-          <h3>Background: Common Vulnerability Exposures</h3>
+          <h3 id="background-common-vulnerability-exposures">Background: Common Vulnerability Exposures</h3>
           <p>Since the year 1998, the systems and software vulnerabilities have been collected in one place called National Vulnerability Database (NVD), hosted by National Institute of Standards and Technology (NIST). Software vendors release software patches based on the found vulnerabilities. Patches often include one or multiple Common Vulnerability Exposures (CVE) assigned to them. Each CVE is assigned a vulnerability score in the range of 0–10 based on Common Vulnerability Scoring System (CVSS) by a security analyst.</p>
 
           <p>Patch management is one example of the security processes in today's Cloud Service Management. Another process is Health Checking. Health Checks are usually performed by standards. Center for Internet Security (CIS) Benchmarks are an example of such standards that are widely used today. CIS benchmarks aim to make sure that managed systems are secure, safe and compliant. However, today there is no standard way of assigning a risk score for each failed health check similar to each missing patch.</p>
 
-          <h3>Classification with Deep Neural Networks</h3>
+          <h3 id="classification-with-deep-neural-networks">Classification with Deep Neural Networks</h3>
           <p>Deep Learning is considered to be a subfield of machine learning, which itself is a subfield of Artificial Intelligence. Deep Learning has shown to be an effective method of machine learning when there is large amount of data for training. In our case, we are particularly interested in classification of a given description of text into a Common Vulnerability Scoring System (CVSS).</p>
 
           <h4>Data</h4>
@@ -96,10 +100,10 @@
           <h4>Feedback</h4>
           <p>AI models can learn, and capture important features and output information we would want to receive. However, AI models usually impose limitations to achieve 100% accuracy. The precision is really important for mission critical models that have higher impact when it goes wrong. Hence, we developed a UI where Subject Matter Experts (SMEs) can easily verify (or change) the mapping assigned by the AI model.</p>
 
-          <h3>IBM Cloud Pak for Multicloud Management</h3>
+          <h3 id="ibm-cloud-pak-for-multicloud-management">IBM Cloud Pak for Multicloud Management</h3>
           <p>IBM Cloud Pak for Multicloud Management, running on Red Hat OpenShift, provides consistent visibility, governance, and automation from on premises to the edge. CIS Policy Controller is one of the policy controllers. CIS Policy controller implements CIS Kubernetes Benchmark 1.4.0. Each control in this benchmark comes with a score that is quantified using the AI risk framework explained above.</p>
 
-          <h3>Conclusion</h3>
+          <h3 id="conclusion">Conclusion</h3>
           <p>We have shown how AI based risk quantification can be done in a standard way for a given natural language description. Today in IBM Cloud Pak for Multicloud Management, one of the policy controllers is CIS Policy Controller, and each failed CIS Kubernetes Benchmark 1.4.0 check comes with a risk score assigned by our AI model and verified by a subject matter expert.</p>
 
           <p><em>Authors: Muhammed Fatih Bulut (Senior Research Engineer, IBM Research), Jinho Hwang (Research Staff Member, IBM Research), Milton Hernandez (Distinguished Engineer, IBM Research)</em></p>

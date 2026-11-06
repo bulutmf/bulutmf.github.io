@@ -14,3 +14,16 @@ document.addEventListener('DOMContentLoaded', function () {
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>' +
     '</a>';
 });
+
+// A small "#" link beside each section heading, so a section can be linked to.
+document.addEventListener('DOMContentLoaded', function () {
+  var headings = document.querySelectorAll('.post-content h2[id], .post-content h3[id]');
+  Array.prototype.forEach.call(headings, function (heading) {
+    var link = document.createElement('a');
+    link.className = 'heading-anchor';
+    link.href = '#' + heading.id;
+    link.setAttribute('aria-label', 'Link to this section');
+    link.textContent = '#';
+    heading.appendChild(link);
+  });
+});

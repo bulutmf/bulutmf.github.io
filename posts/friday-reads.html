@@ -14,7 +14,11 @@
     content="A Friday reading roundup on AI, security, and agentic systems, from Tines and CrowdStrike to code in pretraining and TaskGen.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://bulutmf.github.io/posts/friday-reads.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://bulutmf.github.io/images/cards/friday-reads.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="From Browser Tabs to Insights: My Friday Reads 9/27/2024">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="../styles.css">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -74,10 +78,10 @@
         <div class="post-content">
           <p>As anyone in tech, I constantly get bombarded with countless papers, links, and resources to read. While I try to keep up, it's often impossible to go through them all, and they inevitably pile up in my browser's collection. Despite my efforts to be selective, the list grows faster than I can manage. So, I dedicate Fridays to tackling this "technical debt" by reading through as much as possible. Starting today, I'm sharing what I've learned along the way, hoping it might be helpful to others as well. Enjoy!</p>
 
-          <h3>Tines launched Workbench</h3>
+          <h3 id="tines-launched-workbench">Tines launched Workbench</h3>
           <p>Tines is a workflow automation platform focused on security, IT, and engineering, designed to streamline tools and data, allowing complex workflows to be executed effortlessly. Recently, Tines introduced <strong>Workbench</strong>, an AI-powered chat interface that leverages templates to create automated workflows with the help of AI. This innovation gives companies greater confidence in transitioning from manual workflows to AI-driven automation. One standout feature on their <a href="https://www.tines.com/product/workbench/" target="_blank">website</a> is a phishing triage and response demo, showcasing how organizations can automate critical security processes.</p>
 
-          <h3>CrowdStrike announced a set of innovations in Fal.Con</h3>
+          <h3 id="crowdstrike-announced-a-set-of-innovations-in-fal-con">CrowdStrike announced a set of innovations in Fal.Con</h3>
           <p>CrowdStrike hosted its annual Fal.Con conference last week, unveiling several new AI-powered features. Some key highlights include:</p>
           <ul>
             <li><strong>AI-powered parsers</strong>: Logs can be notoriously difficult to work with, and despite efforts like OCSF, log standardization remains inconsistent. To address this, CrowdStrike introduced an AI-powered data ingestion pipeline. Users can provide a sample of logs, and Falcon SIEM, leveraging large language models (LLMs), will analyze the structure and content to automatically generate parsers. Interestingly, CrowdStrike emphasized the use of "multiple" LLMs, hinting that both encoder and decoder models may be at play.</li>
@@ -86,11 +90,11 @@
           </ul>
           <p>For more details, you can explore these topics further on the CrowdStrike <a href="https://www.crowdstrike.com/blog/ai-innovations-expedite-and-elevate-analyst-experience-fal-con-2024/" target="_blank">blog</a>.</p>
 
-          <h3>To Code, or Not To Code? Exploring Impact of Code in Pre-training</h3>
+          <h3 id="to-code-or-not-to-code-exploring-impact-of-code-in-pre-train">To Code, or Not To Code? Exploring Impact of Code in Pre-training</h3>
           <p>The value of incorporating code in pretraining is a well-known advantage in the LLM community, though there has yet to be a comprehensive ablation study that fully demonstrates its effects. This <a href="https://arxiv.org/abs/2408.10914" target="_blank">paper</a> systematically examines how adding code to the pretraining dataset influences LLM performance. While it doesn't fully address the "why," it serves as a significant empirical study that highlights the impact of code in pretraining.</p>
           <p>What other types of data could yield similar benefits? It's an open question, and perhaps the next breakthrough in LLM development lies in identifying those data types.</p>
 
-          <h3>TaskGen: A Task-Based Memory-Infused Agentic Framework using StrictJSON</h3>
+          <h3 id="taskgen-a-task-based-memory-infused-agentic-framework-using">TaskGen: A Task-Based Memory-Infused Agentic Framework using StrictJSON</h3>
           <p>This <a href="https://github.com/simbianai/taskgen/blob/main/Paper/TaskGen%20Paper.pdf" target="_blank">paper</a> comes from a startup called <strong>Simbian</strong>, which focuses on developing autonomous agents to tackle security challenges. It introduces a new agent-based framework that enforces strict JSON output, leading to significant time and cost savings. The framework also introduces the concepts of <strong>Inner Agent</strong> and <strong>Meta Agents</strong>, which add an interesting dimension to the design and functionality of autonomous systems.</p>
         </div>
       </article>

@@ -14,7 +14,11 @@
     content="An internal AI evaluation run breached two organizations with no attacker behind it. How we got here, and how we get out.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://bulutmf.github.io/posts/nobody-attacked-hugging-face.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://bulutmf.github.io/images/cards/nobody-attacked-hugging-face.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Hugging Face Was Breached. The Attacker Was a Reward Function.">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="../styles.css">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -83,7 +87,7 @@
 
           <blockquote>Every incident response starts with who did it and why. Here there was no who, and the why was a score to maximize.</blockquote>
 
-          <h3>How we got here</h3>
+          <h3 id="how-we-got-here">How we got here</h3>
 
           <p>It helps to stop picturing an attacker. There was no villain. There was a goal, a score to push up, and a system that was good at pushing it. Everything that followed came from that setup.</p>
 
@@ -101,7 +105,7 @@
 
           <p>Put it together and the assumption we have all leaned on stops holding. We assumed someone had to want an attack for it to happen. Here, no one did. The harm came out of optimization. The intent was never there.</p>
 
-          <h3>Getting out, part one: keep the model from going rogue</h3>
+          <h3 id="getting-out-part-one-keep-the-model-from-going-rogue">Getting out, part one: keep the model from going rogue</h3>
 
           <p>The first fix is upstream of all the infrastructure. This is a training problem before it is a security problem. I spent years leading security-focused model training at Microsoft, so I want to be careful here. There is no switch labeled "do not go rogue." But how we train is a real lever, and right now it points the wrong way.</p>
 
@@ -113,7 +117,7 @@
 
           <blockquote>We train models to be capable. We need to train them to be careful, and careful has to live in the reward, not in AGENTS.md.</blockquote>
 
-          <h3>Getting out, part two: build the environment for zero trust</h3>
+          <h3 id="getting-out-part-two-build-the-environment-for-zero-trust">Getting out, part two: build the environment for zero trust</h3>
 
           <p>The second fix is the environment, and here the lesson is blunt. The "closed, internet-free" box was neither. Artifactory had a path out, so Artifactory was an attack surface. Calling it closed did not make it closed.</p>
 
@@ -123,7 +127,7 @@
 
           <blockquote>A closed environment is a claim you have to prove to something that never gets tired of testing it.</blockquote>
 
-          <h3>Getting out, part three: defend at machine speed</h3>
+          <h3 id="getting-out-part-three-defend-at-machine-speed">Getting out, part three: defend at machine speed</h3>
 
           <p>The third fix is the one we keep avoiding. We are not going to staff our way out of this. A handful of responders, working tickets by hand, cannot keep pace with a swarm of agents that never sleep, never quit, and chain bugs faster than a person can read the alert. Look at the July 4th to July 8th turnaround. Humans patched. Machines were back in four days.</p>
 
@@ -133,7 +137,7 @@
 
           <blockquote>Human-in-the-loop is finished as an operating model. Human-on-the-loop is what is left.</blockquote>
 
-          <h3>The next one won't be an accident</h3>
+          <h3 id="the-next-one-wont-be-an-accident">The next one won't be an accident</h3>
 
           <p>There is an upside, odd as it sounds. A breach with no attacker behind it is the cheapest warning we are going to get. Nothing was stolen for profit. No one was trying to cause harm. Next time the same setup will have a person steering, and that person will have watched this talk too.</p>
 
