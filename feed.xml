@@ -6,9 +6,20 @@
     <description>Thoughts on AI, security, LLMs, and more.</description>
     <language>en</language>
     <atom:link href="https://bulutmf.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 05 Nov 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 00:00:00 +0000</lastBuildDate>
     <item>
-      <title>Sparks of Weight-Space Auditing</title>
+      <title>Sparks of Weight-Space Auditing, Part 2</title>
+      <link>https://bulutmf.github.io/posts/sparks-of-weight-space-auditing-part-2.html</link>
+      <guid isPermaLink="true">https://bulutmf.github.io/posts/sparks-of-weight-space-auditing-part-2.html</guid>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
+      <description>I planted hidden rules in small language models and asked a frontier model to find them from the weights alone. Shown a backdoored model next to its clean twin, it picked the right one in all 17 pairs. Judging one model alone, naming what sets the backdoor off, or removing it went much worse, and in the same way each time: it found the evidence and declined to call it.</description>
+      <category>Security</category>
+      <category>AI</category>
+      <category>LLMs</category>
+      <category>Backdoors</category>
+    </item>
+    <item>
+      <title>Sparks of Weight-Space Auditing, Part 1</title>
       <link>https://bulutmf.github.io/posts/sparks-of-weight-space-auditing.html</link>
       <guid isPermaLink="true">https://bulutmf.github.io/posts/sparks-of-weight-space-auditing.html</guid>
       <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
