@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var patentText = document.getElementById('patent-text');
   if (patentText) patentText.textContent = PATENT_COUNT + '+';
   document.querySelectorAll('meta[name="description"], meta[property="og:description"]').forEach(function (meta) {
-    meta.setAttribute('content', 'Principal Applied Scientist at Microsoft. ' + PATENT_COUNT + '+ patents, AI security expert, former IBM researcher, NYU & Columbia instructor.');
+    meta.setAttribute('content', 'Building AI systems that make security operations autonomous. Principal Applied Scientist at Microsoft, former STSM at IBM Research, ' + PATENT_COUNT + '+ patents, Columbia instructor.');
   });
 
   loadPublications();
