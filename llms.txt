@@ -1,0 +1,98 @@
+# Fatih Bulut
+
+> Security & AI Researcher · Principal Applied Scientist @ Microsoft.
+
+I build AI systems that make security operations autonomous. I trained Microsoft's first security-specific language model, SecEncoder, which was purpose-built on security logs, shipped into Defender Experts for XDR, and led to the company's first AI-driven threat actor discovery. I helped prototype Microsoft Security Copilot, shipped the Threat Intelligence Agent in Microsoft Perception to general availability, and now lead autonomous purple teaming, building agentic systems that find detection gaps before attackers do.
+
+At IBM Research, as a Senior Technical Staff Member, I built ML-driven solutions for vulnerability prioritization, compliance policy management, and hybrid cloud security that shipped into X-Force Red and Cloud Pak products, and I represented IBM in the CVSS SIG. I have 48+ patents and 40+ publications, and I teach graduate courses at Columbia University.
+
+## Pages
+
+- [Home](https://bulutmf.github.io/): bio, news, latest posts and recent publications
+- [Research](https://bulutmf.github.io/research.html): selected recent work in security and AI, newest first, with patents and papers
+- [Talks](https://bulutmf.github.io/talks.html): talks, podcasts and speaker bios
+- [Publications](https://bulutmf.github.io/publications.html): papers, preprints and articles
+- [Blog](https://bulutmf.github.io/blog.html): essays on AI and security
+- [News](https://bulutmf.github.io/news.html): talks, papers, podcasts and other updates, newest first
+- [Projects archive](https://bulutmf.github.io/projects.html): research projects from IBM Research
+
+## News
+
+- Oct 2026: Spoke at [un]prompted on using AI agents to automate purple-team simulations—from building the lab to running attacks and reviewing the results.
+- Jul 2026: Presented our paper "AVDA: Autonomous Vibe Detection Authoring for Cybersecurity" at FSE 2026 in Montreal, Canada.
+- Jun 2026: Spoke on autonomous detection engineering at the Silicon Valley Cybersecurity Conference in San Jose, California, USA.
+- Mar 2026: Our paper "AVDA: Autonomous Vibe Detection Authoring for Cybersecurity" has been accepted at FSE 2026 (ACM International Conference on the Foundations of Software Engineering)!
+- Jan 2026: Published in Microsoft Security Blog on AI-assisted detection engineering—practical tips for defenders on extracting TTPs from threat reports and analyzing detection coverage gaps with AI.
+- Dec 2025: Presented on autonomous detection engineering at ACSAC—AI-driven detection authoring and lessons from agentic security systems.
+- Nov 2025: Interviewed on Kesisen Yollar, featuring Turkish-origin tech professionals in the US. (in Turkish)
+- Oct 2025: Invited talk on AI and Cybersecurity at the Turkish AI Summit 2025. (in Turkish)
+- Sep 2025: Talk on "Chasing Threat Actors with AI" at Artificial Unintelligence Conference.
+- Aug 2025: Guest on the Harness podcast discussing AI and security intersections—detection engineering, AI hardening, and future possibilities.
+- Feb 2025: Spoke at the Harvard AI Forum on "AI Research, Innovation, and Opportunities".
+
+## Posts
+
+- [Sparks of Weight-Space Auditing, Part 2](https://bulutmf.github.io/posts/sparks-of-weight-space-auditing-part-2.html): I planted hidden rules in small language models and asked a frontier model to find them from the weights alone. Shown a backdoored model next to its clean twin, it picked the right one in all 17 pairs. Judging one model alone, naming what sets the backdoor off, or removing it went much worse, and in the same way each time: it found the evidence and declined to call it. (2026-11-10)
+- [Sparks of Weight-Space Auditing, Part 1](https://bulutmf.github.io/posts/sparks-of-weight-space-auditing.html): Can a frontier LLM find, explain and remove a backdoor in a neural network by reading its weights? I tested the "weight-space programming" idea on tiny phishing classifiers. With a code sandbox the model picked the backdoored twin in 20 of 20 pairs, named the exact trigger in six, and repaired nine. (2026-11-05)
+- [Jev and the Hard Work of Reliable Automation](https://bulutmf.github.io/posts/jev-thoughts.html): TypeSafe's Jev turns model judgments into structured answers that software can act on. The harder work is defining the right questions, gathering the right context, and keeping both current as environments change. (2026-09-26)
+- [Hugging Face Was Breached. The Attacker Was a Reward Function.](https://bulutmf.github.io/posts/nobody-attacked-hugging-face.html): At Black Hat, OpenAI described how one of its own evaluation runs broke out of a closed environment and breached both Hugging Face and its own infrastructure. There was no attacker. That is the part worth paying attention to, and it is a training problem before it is a security problem. (2026-08-11)
+- [Ground Truth Is a Security Control](https://bulutmf.github.io/posts/ground-truth-is-a-security-control.html): The industry wants a self-driving SOC, but past tickets and analyst dispositions teach models queue behavior, not attacker truth. Autonomous purple teaming is the missing crash-test infrastructure: controlled, repeatable experiments that validate detections and generate the environment-specific evidence security models need. (2026-05-14)
+- [Offense Tolerates Noisy AI. Defense Can't.](https://bulutmf.github.io/posts/offense-tolerates-noisy-ai.html): AI does not fail symmetrically. Hallucinations, indeterminism, and overconfident errors help offense first. Defenders only win when models are embedded in systems that are grounded, bounded, and reversible. (2026-04-13)
+- [Mythos and the Shrinking Patch Window](https://bulutmf.github.io/posts/mythos-and-the-shrinking-patch-window.html): Anthropic says its new model can autonomously find and weaponize zero-days across major software. If that claim broadly holds up, the real story is that exploit development may be becoming cheap, autonomous, and accessible faster than defenders can adapt. (2026-04-08)
+- [Defenders Think in Shifts. Attackers Think in Loops.](https://bulutmf.github.io/posts/defenders-think-in-shifts-attackers-think-in-loops.html): Most security teams still defend in shifts while attackers now operate in continuous loops at machine speed. The answer is not panic, but architecture, identity governance, automation, and workflows built for continuity. (2026-04-03)
+- [Talk Is Cheap. In the Age of AI, Code Is Cheaper.](https://bulutmf.github.io/posts/speed-is-the-new-moat.html): AI has compressed the cost of building software and the cost of copying it. The durable edge is no longer just code quality, but how fast an organization can ship, learn, and adapt on top of the right architecture. (2026-03-27)
+- [From Browser Tabs to Insights: My Friday Reads 9/27/2024](https://bulutmf.github.io/posts/friday-reads.html): As anyone in tech, I constantly get bombarded with countless papers, links, and resources to read. I dedicate Fridays to tackling this "technical debt" by reading through as much as possible. (2024-09-27)
+- [Paper Summary: Language Models are Few-Shot Learners (GPT-3 Paper)](https://bulutmf.github.io/posts/gpt3-paper.html): This paper is one of the important foundational papers from OpenAI, published in 2020. GPT-3 demonstrates that LLMs pretrained with large volume of data can learn very quickly with few examples, possibly cutting the need for fine-tuning. (2023-01-13)
+- [Paper Summary: Large Language Models Encode Clinical Knowledge](https://bulutmf.github.io/posts/clinical-knowledge.html): This is a recent paper from Google Research and DeepMind that introduces Med-PaLM, a Large Language Model tailored to answer questions about the clinical (medical) domain, achieving SOTA results on various domain specific datasets. (2023-01-06)
+- [Metaverse [and] Security](https://bulutmf.github.io/posts/metaverse-security.html): You probably heard the buzz around "metaverse". Regardless of which side of the argument you are in, in this article, I discuss metaverse security — from infrastructure to identity to data privacy. (2022-06-06)
+- [Paper Summary: Obfuscation Revealed — Leveraging Electromagnetic Signals for Obfuscated Malware Classification](https://bulutmf.github.io/posts/obfuscation-revealed.html): This paper proposes a methodology to use side channel information (electromagnetic signals) to identify malware activity, type, and identity, even in the presence of obfuscation. A paper from ACSAC 2021. (2022-01-14)
+- [Natural Language to Risk Score for CIS Benchmarks using Deep Neural Networks](https://bulutmf.github.io/posts/nl-risk-score.html): Risk management is a fundamental part of Cloud Service Management. This post explains how an AI-based approach can standardize different domains to quantify risk using NLP, applied in IBM Cloud Pak for Multicloud Management. (2019-11-20)
+- [Before beginning…](https://bulutmf.github.io/posts/before-beginning.html): A disclosure: I am not an avid blogger, however, I do read and write quite a lot and always willing to become an avid blogger. (2019-01-22)
+
+## Publications
+
+- [AVDA: Autonomous Vibe Detection Authoring for Cybersecurity](https://arxiv.org/abs/2603.25930): M.F. Bulut, C. DePaolis, R. Batta, A. Mangal. Conference, 2026. ACM International Conference on the Foundations of Software Engineering (FSE) 2026
+- [Turning Threat Reports into Detection Insights with AI](https://www.microsoft.com/en-us/security/blog/2026/01/29/turning-threat-reports-detection-insights-ai/): M.F. Bulut. Blog, 2026. Microsoft Security Blog
+- [Towards Autonomous Detection Engineering](https://docs.google.com/presentation/d/1a6eVw_8GHwsz1ic2fbQLYsZBnt9m3NEf/edit?rtpof=true&sd=true): M.F. Bulut, A. Mangal. Case Study, 2025. ACSAC 2025
+- [SecEncoder: Logs are All You Need in Security](https://arxiv.org/pdf/2411.07528): M.F. Bulut, Y. Liu, N. Ahmad, M. Turner, S. Ouahmane, C. Andrews, L. Greenwald. Arxiv, 2024. Arxiv
+- [TIPS: Threat Actor Informed Prioritization of Applications using SecEncoder](https://arxiv.org/pdf/2411.07519): M.F. Bulut, A. Tamersoy, N. Ahmad, Y. Liu, L. Greenwald. Arxiv, 2024. Arxiv
+- [GreenABR+: Generalized Energy-Aware Adaptive Bitrate Streaming](https://bulutmf.github.io/publications.html): B. Turkkan, T. Dai, A. Raman, T. Kosar, C. Chen, M. F. Bulut, J. Zola, D. Sow. Journal, 2024. ACM Transactions on Multimedia Computing
+- [Towards Sustainable Cloud Software Systems through Energy-Aware Code Smell Refactoring](https://bulutmf.github.io/publications.html): A. Imran, T. Kosar, J. Zola, M. F. Bulut. Conference, 2024. IEEE Cloud
+- [GreenNFV: Energy-Efficient Network Function Virtualization with Service Level Agreement Constraints](https://bulutmf.github.io/publications.html): MD Nine, T. Kosar, M. F. Bulut, J. Hwang. Conference, 2023. SC: International Conference for High Performance Computing, Networking, Storage and Analysis
+- [Predicting the Impact of Batch Refactoring Code Smells on Application Resource Consumption](https://bulutmf.github.io/publications.html): A. Imran, T. Kosar, J. Zola, M. F. Bulut. Arxiv, 2023. Arxiv
+- [GreenABR: Energy-Aware Adaptive Bitrate Streaming with Deep Reinforcement Learning](https://bulutmf.github.io/publications.html): B. Turkkan, T. Dai, A. Raman, T. Kosar, C. Chen, M. F. Bulut, J. Zola, D. Sow. Conference, 2022. ACM MMSys
+- [Vulnerability Prioritization: An Offensive Security Approach](https://bulutmf.github.io/publications.html): M. F. Bulut, S. Ocepek, A. Adebayo, D. Sow. Arxiv, 2022. Arxiv
+- [Automated Compliance Blueprint Optimization with Artificial Intelligence](https://bulutmf.github.io/publications.html): A. Adebayo, D. Sow, M. F. Bulut. Arxiv, 2022. Arxiv
+- [Attack Techniques and Threat Identification for Vulnerabilities](https://bulutmf.github.io/publications.html): C. Adam, M. F. Bulut, D. Sow, S. Ocepek, C. Bedell, Lilian Ngweta. Arxiv, 2022. Arxiv
+- [NL2Vul: Natural Language to Standard Vulnerability Score for Cloud Security Posture Management](https://bulutmf.github.io/publications.html): M. F. Bulut, J. Hwang. Conference, 2021. IEEE Cloud
+- [Failure-Aware Application Placement Modeling and Optimization in High Turnover DevOps Environment](https://bulutmf.github.io/publications.html): T. Suk, J. Hwang, M. F. Bulut, Z. Zeng. Conference, 2019. IEEE Cloud
+- [Cognitive Compliance: Analyze, Monitor and Enforce Compliance in the Cloud](https://bulutmf.github.io/publications.html): M. F. Bulut, C. Adam, M. Hernanzdez, M. Vukovic. Conference, 2019. IEEE Cloud
+- [Cross-layer Optimization of Big Data Transfer Throughput and Energy Consumption](https://bulutmf.github.io/publications.html): L. Tacchio, MD Nine, T. Kosar, M. F. Bulut, J. Hwang. Conference, 2019. IEEE Cloud
+- [Technical Health Check for Cloud Service Providers](https://bulutmf.github.io/publications.html): M.F. Bulut, H. Sun, P. Arora, M. Vukovic, K. Koenig, J. Young. Arxiv, 2019. Arxiv
+- [Energy-Aware Data Throughput Optimization for Next Generation Internet](https://bulutmf.github.io/publications.html): T. Kosar, I. Alan, M. F. Bulut. Journal, 2019. Elsevier Information Science
+- [GreenNF: Energy Efficient Network Function Virtualization](https://bulutmf.github.io/publications.html): MD Nine, J. Hwang, M. F. Bulut, T. Kosar. Poster, 2018. OSDI
+- [GreenDataFlow: Minimizing the Energy Footprint of Global Data Movement](https://bulutmf.github.io/publications.html): MD Nine, L. Tacchio, A. Imran, T. Kosar, M. F. Bulut, J. Hwang. Conference, 2018. IEEE BigData
+- [FastHLA: Energy Efficient Mobile Data Transfer Optimization Based on Historical Log Analysis](https://bulutmf.github.io/publications.html): K. Guner, MD Nine, M. F. Bulut, T. Kosar. Conference, 2018. ACM MOBIWAC
+- [Building a Cognitive Platform for the Managed IT Services Lifecycle](https://bulutmf.github.io/publications.html): K. Kloeckner, C. Adam, N. Anerousis, N. Ayachitula, M. F. Bulut et al.. Journal, 2018. IBM Journal of Research & Development
+- [Cataloger: Catalog Recommendation Service for IT Change Requests](https://bulutmf.github.io/publications.html): A. Kalia, J. Xiao, M. F. Bulut, M. Vukovic, N. Anerousis. Conference, 2017. ICSOC
+- [Design and Evaluation of a Self Service Delivery Framework](https://bulutmf.github.io/publications.html): C. Adam, N. Anerousis, M. F. Bulut, R. Filepp, A. Kalia, B. Peterson, J. Rofrano, M. Vukovic, J. Xiao. Conference, 2017. ICSOC
+- [Coffee Shop Wait-Time Monitoring using Smartphones](https://bulutmf.github.io/publications.html): M. F. Bulut, M. Demirbas, H. Ferhatosmanoglu. Journal, 2015. IEEE Transactions on Mobile Computing
+- [Crowdsourced Location-based Sensing](https://bulutmf.github.io/publications.html): M. F. Bulut. PhD Thesis, 2014. Computer Science and Engineering, University at Buffalo
+- [Coffee Shop Line Length Monitoring using Smartphones](https://bulutmf.github.io/publications.html): M. F. Bulut, M. Demirbas. Poster, 2014. HotMobile
+- [A Holistic Approach for Energy Efficient Proximity Alert on Android](https://bulutmf.github.io/publications.html): M. F. Bulut, M. Demirbas. Conference, 2013. IEEE Global Communications Conference, IEEE Globecom
+- [Participant Behavior in PhoneLab](https://bulutmf.github.io/publications.html): A. Nandugudi, A. Maiti, M. F. Bulut, S. Batra, T. Ki, G. Challen, M. Demirbas, S. Ko, T. Kosar, C. Qiao. Conference, 2013. Third International Conference on the Analysis of Mobile Phone Datasets (NetMob)
+- [Trend Sensing via Twitter](https://bulutmf.github.io/publications.html): Y. Yilmaz, M. F. Bulut, C. G. Akcora, M. A. Bayir, M. Demirbas. Journal, 2013. International Journal of Ad Hoc and Ubiquitous Computing, IJAHUC
+- [PhoneLab: A Large Programmable Smartphone Testbed](https://bulutmf.github.io/publications.html): A. Nandugudi, A. Maiti, T. Ki, M. F. Bulut, M. Demirbas, T. Kosar, C. Qiao, S. Ko, G. Challen. Workshop, 2013. Workshop on Sensing and Big Data Mining (SenseMine) in conjunction with ACM SenSys
+- [CrowdReply: A Crowdsourced Multiple Choice Question Answering System](https://bulutmf.github.io/publications.html): B. Aydin, Y. Yilmaz, M. F. Bulut, M. Demirbas. Workshop, 2013. Workshop on Mobile Sensing in conjunction with IPSN
+- [Energy Efficient Proximity Alert on Android](https://bulutmf.github.io/publications.html): M. F. Bulut, M. Demirbas. Workshop, 2013. International Workshop on Pervasive Collaboration and Social Networking (PerCol) in conjunction with PerCom
+- [Eywa: Crowdsourced and Cloudsourced omniscience](https://bulutmf.github.io/publications.html): M. Demirbas, Y. Yilmaz, M. F. Bulut. Workshop, 2013. International Workshop on Pervasive Collaboration and Social Networking (PerCol) in conjunction with PerCom
+- [LineKing: Crowdsourced Line Wait-Time Estimation using Smartphones](https://bulutmf.github.io/publications.html): M. F. Bulut, Y. S. Yilmaz, M. Demirbas, N. Ferhatosmanoglu, H. Ferhatosmanoglu. Conference, 2012. International Conference on Mobile Computing, Applications and Services, MobiCASE
+- [PhoneLab: A Large-scale Participatory Smartphone Testbed](https://bulutmf.github.io/publications.html): R. Baldawa, M. Benedict, M. F. Bulut, G. Challen, M. Demirbas, J. Inamdar, T. Ki, S. Ko, T. Kosar, L. Mandvekar, A. Sathyaraja, C. Qiao, S. Zawicki. Poster, 2012. NSDI
+- [Crowdsourcing Location-based Queries](https://bulutmf.github.io/publications.html): M. F. Bulut, Y. S. Yilmaz, M. Demirbas. Workshop, 2011. Proceedings of International Workshop on Pervasive Collaboration and Social Networking (PerCol) in conjunction with PerCom
+- [Recognizing faces in news photographs on the web](https://bulutmf.github.io/publications.html): H. Zitouni, M. F. Bulut, P. Duygulu. Conference, 2009. Computer and Information Sciences (ISCIS)
+- [Naming of Faces on Photographs by Using the Relationship between People](https://bulutmf.github.io/publications.html): M. F. Bulut, P. Duygulu. Conference, 2009. IEEE 17th Signal Processing and Communications Applications Conference (SIU)
+
+## Elsewhere
+
+- [LinkedIn](https://www.linkedin.com/in/fatih-bulut-18ba5511)
+- [Google Scholar](https://scholar.google.com/citations?user=aUaOP48AAAAJ)

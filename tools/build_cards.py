@@ -4,6 +4,7 @@ Run it from the repo root after adding a post or changing a title:
 
     python3 tools/build_cards.py            # every post
     python3 tools/build_cards.py jev-thoughts   # one post, by file name without .html
+    python3 tools/build_cards.py --pages    # the home, research, publications, talks, blog and news pages (see PAGE_CARDS)
 
 For each post card in blog.html it draws a 1200 x 630 image (title, an optional one-line subtitle, the tags or a small copy of
 the post's chart, the site name) and saves it as images/cards/<post>.png. It then makes sure the post's <head> names that image, so a link
@@ -25,6 +26,23 @@ from build_site import ROOT, SITE, posts, read, write
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 OUT = ROOT / "images" / "cards"
 WIDTH, HEIGHT = 1200, 630
+
+# The top-level pages' cards: the page, the title and one-line subtitle drawn on the card, and the labels at the bottom left.
+PAGE_CARDS = [
+    {"href": "index.html", "title": "Fatih Bulut",
+     "subtitle": "Security & AI researcher building AI systems that make security operations autonomous.",
+     "tags": ["Principal Applied Scientist", "Microsoft"]},
+    {"href": "blog.html", "title": "Blog", "subtitle": "Essays and experiments on AI and security.",
+     "tags": ["Security", "AI", "LLMs"]},
+    {"href": "publications.html", "title": "Publications", "subtitle": "Research papers and technical articles.",
+     "tags": ["Security", "AI", "Systems"]},
+    {"href": "research.html", "title": "Research", "subtitle": "Selected recent work in security and AI, newest first.",
+     "tags": ["Security", "AI"]},
+    {"href": "talks.html", "title": "Talks", "subtitle": "Talks and podcasts on AI and security.",
+     "tags": ["Speaking", "Podcasts"]},
+    {"href": "news.html", "title": "News", "subtitle": "Talks, papers, podcasts and other updates, newest first.",
+     "tags": ["Security", "AI"]},
+]
 
 PAGE = """<!doctype html>
 <meta charset="utf-8">
@@ -84,7 +102,7 @@ def bars_of(page: str) -> str:
 
 def draw(post: dict, work: Path) -> Path:
     page, _ = read(ROOT / post["href"])
-    sub = subtitle_of(page)
+    sub = post.get("subtitle") or subtitle_of(page)
     left = bars_of(page) or '<div class="tags">' + "".join(f"<span>{html.escape(tag)}</span>" for tag in post["tags"]) + "</div>"
     card = work / "card.html"
     # a hyphenated word such as "Weight-Space" stays on one line
@@ -119,7 +137,10 @@ def point_at(post: dict) -> None:
 
 def main() -> None:
     wanted = set(sys.argv[1:])
-    items = [p for p in posts() if not wanted or Path(p["href"]).stem in wanted]
+    if wanted == {"--pages"}:
+        items = [card for card in PAGE_CARDS if (ROOT / card["href"]).exists()]
+    else:
+        items = [p for p in posts() if not wanted or Path(p["href"]).stem in wanted]
     assert items, f"no post matches {sorted(wanted)}"
     assert Path(CHROME).exists(), f"Google Chrome was not found at {CHROME}"
     OUT.mkdir(parents=True, exist_ok=True)
@@ -128,7 +149,7 @@ def main() -> None:
             target = draw(post, Path(tmp))
             point_at(post)
             print(f"{target.relative_to(ROOT)}  {target.stat().st_size // 1024} KB")
-    print(f"{len(items)} cards drawn; each post now names its card")
+    print(f"{len(items)} cards drawn; each page now names its card")
 
 
 if __name__ == "__main__":

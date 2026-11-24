@@ -535,7 +535,8 @@ a:hover {
   transition: background var(--transition-fast);
 }
 
-.pub-card:last-child {
+.pub-card:last-child,
+.pub-card.is-last {
   border-bottom: none;
 }
 
@@ -1669,4 +1670,340 @@ a.stat:hover::after {
     margin-top: var(--spacing-6);
   }
 
+}
+
+/* ===== Talks page ===== */
+.talks {
+  max-width: 880px;
+}
+
+.talks-section {
+  margin-bottom: var(--spacing-12);
+}
+
+.talks-section > .section-title {
+  margin-bottom: var(--spacing-4);
+}
+
+.talk-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.talk {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4) 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.talk:last-child {
+  border-bottom: none;
+}
+
+.talk-date {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+  padding-top: 1px;
+}
+
+.talk-event {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+
+.talk-title {
+  margin: var(--spacing-1) 0;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.talk-desc {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.talk-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.speaker-bio {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+}
+
+.speaker-bio p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.speaker-bio {
+  margin-bottom: var(--spacing-4);
+}
+
+.speaker-bio h3 {
+  margin: 0 0 var(--spacing-2);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.talks-note,
+.talks-invite {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.talks-note {
+  margin: 0 0 var(--spacing-4);
+}
+
+.talks-invite {
+  margin-top: var(--spacing-6);
+}
+
+@media (max-width: 600px) {
+  .talk {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-1);
+  }
+}
+
+/* ===== Research page ===== */
+.research {
+  max-width: 880px;
+}
+
+.thread {
+  margin-bottom: var(--spacing-12);
+}
+
+.thread-head {
+  margin-bottom: var(--spacing-6);
+}
+
+.thread-num {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--accent-primary);
+}
+
+.thread-title {
+  margin: var(--spacing-1) 0 var(--spacing-2);
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.thread-summary {
+  margin: 0;
+  max-width: 720px;
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.timeline {
+  list-style: none;
+  margin: 0 0 0 4.5rem;
+  padding: 0;
+  border-left: 2px solid var(--border-color);
+}
+
+.tl-item {
+  position: relative;
+  padding: 0 0 var(--spacing-6) var(--spacing-6);
+}
+
+.tl-item:last-child {
+  padding-bottom: 0;
+}
+
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 0.35rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent-primary);
+}
+
+.tl-item.now::before {
+  background: var(--accent-primary);
+}
+
+.tl-year {
+  position: absolute;
+  left: -4.5rem;
+  top: 0.15rem;
+  width: 3.5rem;
+  text-align: right;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.tl-kind {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.tl-title {
+  display: block;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+a.tl-title:hover {
+  color: var(--accent-primary);
+}
+
+.tl-note {
+  margin: var(--spacing-1) 0 0;
+  font-size: var(--font-size-sm);
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.research-roots {
+  padding: var(--spacing-6);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+}
+
+.research-roots p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+  .timeline {
+    margin-left: var(--spacing-2);
+  }
+
+  .tl-year {
+    position: static;
+    display: block;
+    width: auto;
+    text-align: left;
+  }
+}
+
+/* Five nav links: keep the name on one line, and tighten the gap on mid-size screens */
+.nav-brand {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .nav-links {
+    gap: var(--spacing-6);
+  }
+}
+
+@media (min-width: 601px) and (max-width: 760px) {
+  .nav-links {
+    gap: var(--spacing-4);
+  }
+}
+
+
+
+/* ===== Home page: Latest Posts, News and Recent Publications in three columns, one row style ===== */
+.home-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-8);
+  align-items: start;
+  margin-top: var(--spacing-12);
+}
+
+.home-list .section-header {
+  margin-bottom: var(--spacing-2);
+}
+
+.home-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.home-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--spacing-4) 0;
+  border-top: 1px solid var(--border-color);
+  color: inherit;
+  text-decoration: none;
+}
+
+.home-row-meta {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+}
+
+.home-row-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--text-primary);
+  transition: color var(--transition-fast);
+}
+
+a.home-row:hover .home-row-title {
+  color: var(--accent-primary);
+}
+
+.home-row-text {
+  font-size: var(--font-size-sm);
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+  .home-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== News page: the full list, in the home page row style ===== */
+.news-page {
+  max-width: 760px;
 }
