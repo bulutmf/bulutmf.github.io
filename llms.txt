@@ -18,7 +18,7 @@ At IBM Research, as a Senior Technical Staff Member, I built ML-driven solutions
 
 ## News
 
-- Oct 2026: Spoke at [un]prompted on using AI agents to automate purple-team simulations—from building the lab to running attacks and reviewing the results.
+- Oct 2026: Spoke at [un]prompted on using AI agents to automate purple-team simulations—from building the lab to running attacks and reviewing the results ( slides ).
 - Jul 2026: Presented our paper "AVDA: Autonomous Vibe Detection Authoring for Cybersecurity" at FSE 2026 in Montreal, Canada.
 - Jun 2026: Spoke on autonomous detection engineering at the Silicon Valley Cybersecurity Conference in San Jose, California, USA.
 - Mar 2026: Our paper "AVDA: Autonomous Vibe Detection Authoring for Cybersecurity" has been accepted at FSE 2026 (ACM International Conference on the Foundations of Software Engineering)!
