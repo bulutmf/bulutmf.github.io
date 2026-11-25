@@ -2007,3 +2007,32 @@ a.home-row:hover .home-row-title {
 .news-page {
   max-width: 760px;
 }
+
+/* ===== Home page: profile photo next to the name ===== */
+.bio-header {
+  justify-content: flex-start;
+}
+
+.bio-photo {
+  width: 112px;
+  height: 112px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--bg-card);
+  box-shadow: 0 0 0 1px var(--border-color);
+}
+
+@media (min-width: 601px) {
+  .bio-header {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .bio-photo {
+    width: 88px;
+    height: 88px;
+  }
+}
