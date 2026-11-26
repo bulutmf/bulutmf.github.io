@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Fatih Bulut: Blog</title>
-    <link>https://bulutmf.github.io/blog.html</link>
-    <description>Thoughts on AI, security, LLMs, and more.</description>
+    <title>Fatih Bulut: Blog and News</title>
+    <link>https://bulutmf.github.io/</link>
+    <description>Posts on AI and security, and news of talks, papers, podcasts and other updates.</description>
     <language>en</language>
     <atom:link href="https://bulutmf.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     <lastBuildDate>Tue, 10 Nov 2026 00:00:00 +0000</lastBuildDate>
@@ -30,6 +30,14 @@
       <category>Backdoors</category>
     </item>
     <item>
+      <title>Spoke at [un]prompted on using AI agents to automate purple-team simulations</title>
+      <link>https://www.youtube.com/watch?v=cwmaCyHcPVY</link>
+      <guid isPermaLink="false">news-2026-10-spoke-at-un-prompted-on-using-ai-agents</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Spoke at &lt;strong&gt;[un]prompted&lt;/strong&gt; on &lt;a href="https://www.youtube.com/watch?v=cwmaCyHcPVY" target="_blank"&gt;using AI agents to automate purple-team simulations&lt;/a&gt;—from building the lab to running attacks and reviewing the results (&lt;a href="https://docs.google.com/presentation/d/1oKdb9k6B40aRG2SZLmAsBNpiWtcSXE5t/edit?rtpof=true&amp;sd=true" target="_blank"&gt;slides&lt;/a&gt;).</description>
+      <category>News</category>
+    </item>
+    <item>
       <title>Jev and the Hard Work of Reliable Automation</title>
       <link>https://bulutmf.github.io/posts/jev-thoughts.html</link>
       <guid isPermaLink="true">https://bulutmf.github.io/posts/jev-thoughts.html</guid>
@@ -51,6 +59,22 @@
       <category>OpenAI</category>
       <category>Hugging Face</category>
       <category>Reward Hacking</category>
+    </item>
+    <item>
+      <title>Presented our paper "AVDA: Autonomous Vibe Detection Authoring for Cybersecurity" at FSE 2026 in Montreal, Canada</title>
+      <link>https://bulutmf.github.io/news.html</link>
+      <guid isPermaLink="false">news-2026-07-presented-our-paper-avda-autonomous-vibe-detection-authoring</guid>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 +0000</pubDate>
+      <description>Presented our paper &lt;strong&gt;"AVDA: Autonomous Vibe Detection Authoring for Cybersecurity"&lt;/strong&gt; at &lt;strong&gt;FSE 2026&lt;/strong&gt; in Montreal, Canada.</description>
+      <category>News</category>
+    </item>
+    <item>
+      <title>Spoke on autonomous detection engineering at the Silicon Valley Cybersecurity Conference in San Jose, California, USA</title>
+      <link>https://bulutmf.github.io/news.html</link>
+      <guid isPermaLink="false">news-2026-06-spoke-on-autonomous-detection-engineering-at-the-silicon</guid>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Spoke on autonomous detection engineering at the Silicon Valley Cybersecurity Conference in San Jose, California, USA.</description>
+      <category>News</category>
     </item>
     <item>
       <title>Ground Truth Is a Security Control</title>
@@ -104,6 +128,70 @@
       <category>AI</category>
       <category>Engineering</category>
       <category>Architecture</category>
+    </item>
+    <item>
+      <title>Our paper "AVDA: Autonomous Vibe Detection Authoring for Cybersecurity" has been accepted at FSE 2026</title>
+      <link>https://bulutmf.github.io/news.html</link>
+      <guid isPermaLink="false">news-2026-03-our-paper-avda-autonomous-vibe-detection-authoring-for</guid>
+      <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
+      <description>Our paper &lt;strong&gt;"AVDA: Autonomous Vibe Detection Authoring for Cybersecurity"&lt;/strong&gt; has been accepted at &lt;strong&gt;FSE 2026&lt;/strong&gt; (ACM International Conference on the Foundations of Software Engineering)!</description>
+      <category>News</category>
+    </item>
+    <item>
+      <title>Published in Microsoft Security Blog on AI-assisted detection engineering</title>
+      <link>https://www.microsoft.com/en-us/security/blog/2026/01/29/turning-threat-reports-detection-insights-ai/</link>
+      <guid isPermaLink="false">news-2026-01-published-in-microsoft-security-blog-on-ai-assisted</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <description>Published in &lt;a href="https://www.microsoft.com/en-us/security/blog/2026/01/29/turning-threat-reports-detection-insights-ai/" target="_blank"&gt;Microsoft Security Blog&lt;/a&gt; on AI-assisted detection engineering—practical tips for defenders on extracting TTPs from threat reports and analyzing detection coverage gaps with AI.</description>
+      <category>News</category>
+    </item>
+    <item>
+      <title>Presented on autonomous detection engineering at ACSAC</title>
+      <link>https://docs.google.com/presentation/d/1a6eVw_8GHwsz1ic2fbQLYsZBnt9m3NEf/edit?rtpof=true&amp;sd=true</link>
+      <guid isPermaLink="false">news-2025-12-presented-on-autonomous-detection-engineering-at-acsac</guid>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <description>Presented on &lt;a href="https://docs.google.com/presentation/d/1a6eVw_8GHwsz1ic2fbQLYsZBnt9m3NEf/edit?rtpof=true&amp;sd=true" target="_blank"&gt;autonomous detection engineering at ACSAC&lt;/a&gt;—AI-driven detection authoring and lessons from agentic security systems.</description>
+      <category>News</category>
+    </item>
+    <item>
+      <title>Interviewed on Kesisen Yollar, featuring Turkish-origin tech professionals in the US</title>
+      <link>https://www.youtube.com/watch?v=DYzHYmtfiBY</link>
+      <guid isPermaLink="false">news-2025-11-interviewed-on-kesisen-yollar-featuring-turkish-origin-tech</guid>
+      <pubDate>Sat, 01 Nov 2025 00:00:00 +0000</pubDate>
+      <description>Interviewed on &lt;a href="https://www.youtube.com/watch?v=DYzHYmtfiBY" target="_blank"&gt;Kesisen Yollar&lt;/a&gt;, featuring Turkish-origin tech professionals in the US. &lt;em&gt;(in Turkish)&lt;/em&gt;</description>
+      <category>News</category>
+    </item>
+    <item>
+      <title>Invited talk on AI and Cybersecurity at the Turkish AI Summit 2025</title>
+      <link>https://youtu.be/PiJpDvAMCg4?t=23457</link>
+      <guid isPermaLink="false">news-2025-10-invited-talk-on-ai-and-cybersecurity-at-the</guid>
+      <pubDate>Wed, 01 Oct 2025 00:00:00 +0000</pubDate>
+      <description>Invited talk on AI and Cybersecurity at the &lt;a href="https://youtu.be/PiJpDvAMCg4?t=23457" target="_blank"&gt;Turkish AI Summit 2025&lt;/a&gt;. &lt;em&gt;(in Turkish)&lt;/em&gt;</description>
+      <category>News</category>
+    </item>
+    <item>
+      <title>Talk on "Chasing Threat Actors with AI" at Artificial Unintelligence Conference</title>
+      <link>https://docs.google.com/presentation/d/1PpmjJIvAo1sYSUoU1CGGCDVEfgFn2Us5/edit?rtpof=true&amp;sd=true</link>
+      <guid isPermaLink="false">news-2025-09-talk-on-chasing-threat-actors-with-ai-at</guid>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+      <description>Talk on &lt;a href="https://docs.google.com/presentation/d/1PpmjJIvAo1sYSUoU1CGGCDVEfgFn2Us5/edit?rtpof=true&amp;sd=true" target="_blank"&gt;"Chasing Threat Actors with AI"&lt;/a&gt; at Artificial Unintelligence Conference.</description>
+      <category>News</category>
+    </item>
+    <item>
+      <title>Guest on the Harness podcast discussing AI and security intersections</title>
+      <link>https://www.youtube.com/watch?v=UgMyFzQoq2M</link>
+      <guid isPermaLink="false">news-2025-08-guest-on-the-harness-podcast-discussing-ai-and</guid>
+      <pubDate>Fri, 01 Aug 2025 00:00:00 +0000</pubDate>
+      <description>Guest on the &lt;a href="https://www.youtube.com/watch?v=UgMyFzQoq2M" target="_blank"&gt;Harness podcast&lt;/a&gt; discussing AI and security intersections—detection engineering, AI hardening, and future possibilities.</description>
+      <category>News</category>
+    </item>
+    <item>
+      <title>Spoke at the Harvard AI Forum on "AI Research, Innovation, and Opportunities"</title>
+      <link>https://www.linkedin.com/posts/globalturksai_harvard-forum1-forum2-activity-7295446673139392513-RWlu</link>
+      <guid isPermaLink="false">news-2025-02-spoke-at-the-harvard-ai-forum-on-ai</guid>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
+      <description>Spoke at the &lt;a href="https://www.linkedin.com/posts/globalturksai_harvard-forum1-forum2-activity-7295446673139392513-RWlu" target="_blank"&gt;Harvard AI Forum&lt;/a&gt; on "AI Research, Innovation, and Opportunities".</description>
+      <category>News</category>
     </item>
     <item>
       <title>From Browser Tabs to Insights: My Friday Reads 9/27/2024</title>
